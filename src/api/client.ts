@@ -277,11 +277,37 @@ export const api = {
   },
 
   // Segments
-  async listSegments(search?: string): Promise<AuctionSegment[]> {
-    const params: Record<string, any> = {}
-    if (search) params.search = search
-    const res = await apiFetch<AuctionSegment[]>('/price-engine/clustering/segments', { params })
-    return res.data
+  /** One page of segments (API caps per-page at 100; sort: id | name | createdAt, "-" for descending). */
+  async listSegments(params?: {
+    search?: string
+    sort?: string
+    page?: number
+    'per-page'?: number
+  }): Promise<{ segments: AuctionSegment[]; totalCount?: number; totalPages?: number }> {
+    const queryParams: Record<string, any> = {}
+    if (params?.search) queryParams.search = params.search
+    if (params?.sort) queryParams.sort = params.sort
+    if (params?.page) queryParams.page = params.page
+    if (params?.['per-page']) queryParams['per-page'] = params['per-page']
+    const res = await apiFetch<AuctionSegment[]>('/price-engine/clustering/segments', { params: queryParams })
+    const totalCount = res.headers.get('X-Pagination-Total-Count')
+      ? parseInt(res.headers.get('X-Pagination-Total-Count')!, 10)
+      : undefined
+    const totalPages = res.headers.get('X-Pagination-Page-Count')
+      ? parseInt(res.headers.get('X-Pagination-Page-Count')!, 10)
+      : undefined
+    return { segments: res.data, totalCount, totalPages }
+  },
+
+  /** Every segment, fetched page by page (for dropdowns). */
+  async listAllSegments(): Promise<AuctionSegment[]> {
+    const all: AuctionSegment[] = []
+    for (let page = 0; page < 100; page++) {
+      const res = await this.listSegments({ page, 'per-page': 100, sort: 'id' })
+      all.push(...res.segments)
+      if (res.totalPages !== undefined ? page + 1 >= res.totalPages : res.segments.length < 100) break
+    }
+    return all
   },
 
   async getSegment(id: number): Promise<AuctionSegment> {
