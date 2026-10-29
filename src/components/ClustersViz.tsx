@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Sparkles,
   TrendingUp,
@@ -10,363 +10,729 @@ import {
   ChevronRight,
   SlidersHorizontal,
   ListOrdered,
-} from 'lucide-react'
-import type { Cluster, Centroid, ClusterAssignment } from '../types/clustering'
-import { FEATURE_GROUPS } from '../types/clustering'
-import { api } from '../api/client'
-import { computePCA } from '../utils/pca'
-import { PlotlyChart } from './PlotlyChart'
-import { SegmentAuctionsModal } from './SegmentAuctionsModal'
-import { ClusterComparison } from './ClusterComparison'
+  Crosshair,
+  X,
+} from "lucide-react";
+import type { Cluster, Centroid, ClusterAssignment } from "../types/clustering";
+import { FEATURE_GROUPS } from "../types/clustering";
+import { api } from "../api/client";
+import { computePCA } from "../utils/pca";
+import {
+  voronoiCells,
+  paddedBounds,
+  placeInCell,
+  scaledCell,
+  type Point,
+  type Bounds,
+} from "../utils/voronoi";
+import { PlotlyChart } from "./PlotlyChart";
+import { SegmentAuctionsModal } from "./SegmentAuctionsModal";
+import { ClusterComparison } from "./ClusterComparison";
 
 const SEGMENT_COLORS = [
-  '#a855f7', // purple
-  '#06b6d4', // cyan
-  '#f59e0b', // amber
-  '#10b981', // emerald
-  '#ec4899', // pink
-  '#3b82f6', // blue
-  '#f43f5e', // rose
-  '#84cc16', // lime
-]
+  "#a855f7", // purple
+  "#06b6d4", // cyan
+  "#f59e0b", // amber
+  "#10b981", // emerald
+  "#ec4899", // pink
+  "#3b82f6", // blue
+  "#f43f5e", // rose
+  "#84cc16", // lime
+];
 
-const OFFER_PAGE_SIZE = 100 // API caps per-page at 100
-const OFFER_MAX_PAGES = 5 // 500 offers max on the canvas
-const OFFER_RADIUS_SCALE = 0.3 // max offer radius as a fraction of the centroid spread on the canvas
-const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5))
+const OFFER_PAGE_SIZE = 100; // API caps per-page at 100
+const OFFER_MAX_PAGES = 5; // 500 offers max on the canvas
+const OFFER_RADIUS_SCALE = 0.3; // fallback max offer radius (fraction of centroid spread) when there is no cell
+const OFFER_MAX_FRACTION = 0.9; // farthest offer sits at this fraction of its cell's extent
+const OFFER_MIN_FRACTION = 0.06;
+const MAX_PINNED_OFFERS = 10;
+const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
+const AXIS_PAD = 0.12; // axis padding as a fraction of the larger data span
 
 /**
- * Places offers around their segment's centroid: radius grows with the 19D centroid
- * distance (normalized to the farthest offer, scaled to the centroid spread on the canvas),
- * angle follows the golden angle so dots spread evenly and deterministically.
+ * Places offers inside their segment's Voronoi cell: the 19D centroid distance (normalized to
+ * the farthest offer) becomes a fraction of the cell's extent in the dot's direction, and the
+ * angle follows the golden angle so dots spread evenly and deterministically. The offer is
+ * assigned to that segment, so its dot never leaves the region.
  * Positions are approximate – the true 19D feature vector is not exposed by the API.
  */
+/**
+ * Voronoi cell of every segment in the current projection, used for placing offers. Outer cells
+ * are unbounded, so they are clipped to a box moderately larger than the centroid spread; that
+ * box, not the plot, limits how far an outer segment's offers can be drawn from its centroid.
+ */
+function cellsBySegment(
+  centroidXY: Map<number, { x: number; y: number }>,
+): Map<number, Point[]> {
+  const ids = [...centroidXY.keys()];
+  const sites: Point[] = ids.map((id) => [
+    centroidXY.get(id)!.x,
+    centroidXY.get(id)!.y,
+  ]);
+  const cells =
+    sites.length >= 2
+      ? voronoiCells(sites, paddedBounds(sites, OFFER_RADIUS_SCALE, 0.25))
+      : sites.map(() => []);
+  const out = new Map<number, Point[]>();
+  ids.forEach((id, i) => out.set(id, cells[i]));
+  return out;
+}
+
+/** Canvas spread of the centroids (largest axis range), the unit the offer radius is scaled to. */
+function centroidExtent(
+  centroidXY: Map<number, { x: number; y: number }>,
+): number {
+  const xs = [...centroidXY.values()].map((p) => p.x);
+  const ys = [...centroidXY.values()].map((p) => p.y);
+  const spread = Math.max(
+    xs.length ? Math.max(...xs) - Math.min(...xs) : 0,
+    ys.length ? Math.max(...ys) - Math.min(...ys) : 0,
+  );
+  return spread > 1e-9 ? spread : 1;
+}
+
+/** Extent of every numeric x/y pair in the traces (the points Plotly would autorange on). */
+function traceExtent(traces: any[]): Point[] {
+  const pts: Point[] = [];
+  traces.forEach((t) => {
+    if (!Array.isArray(t.x) || !Array.isArray(t.y)) return;
+    for (let i = 0; i < t.x.length; i++) {
+      const x = t.x[i];
+      const y = t.y[i];
+      if (
+        typeof x === "number" &&
+        typeof y === "number" &&
+        isFinite(x) &&
+        isFinite(y)
+      )
+        pts.push([x, y]);
+    }
+  });
+  return pts;
+}
+
+/** Deterministic angle for an offer id so the highlighted point does not jump between renders. */
+function offerAngle(offerId: string): number {
+  let h = 0;
+  for (let i = 0; i < offerId.length; i++)
+    h = (h * 31 + offerId.charCodeAt(i)) >>> 0;
+  return ((h % 3600) / 3600) * 2 * Math.PI;
+}
+
 function placeOffersAroundCentroids(
   offers: ClusterAssignment[],
   centroidXY: Map<number, { x: number; y: number }>,
 ): Map<number, { xs: number[]; ys: number[]; offers: ClusterAssignment[] }> {
-  const bySegment = new Map<number, { xs: number[]; ys: number[]; offers: ClusterAssignment[] }>()
-  const xs = [...centroidXY.values()].map((p) => p.x)
-  const ys = [...centroidXY.values()].map((p) => p.y)
-  const spread = Math.max(
-    xs.length ? Math.max(...xs) - Math.min(...xs) : 0,
-    ys.length ? Math.max(...ys) - Math.min(...ys) : 0,
-  )
-  const extent = spread > 1e-9 ? spread : 1
-  const maxDistance = offers.reduce((m, a) => Math.max(m, a.distance ?? 0), 0) || 1
-  const maxRadius = extent * OFFER_RADIUS_SCALE
+  const bySegment = new Map<
+    number,
+    { xs: number[]; ys: number[]; offers: ClusterAssignment[] }
+  >();
+  const extent = centroidExtent(centroidXY);
+  const cells = cellsBySegment(centroidXY);
+  const maxDistance =
+    offers.reduce((m, a) => Math.max(m, a.distance ?? 0), 0) || 1;
+  const maxRadius = extent * OFFER_RADIUS_SCALE;
   offers.forEach((a) => {
-    const segId = a.segment?.id
-    const center = segId !== undefined ? centroidXY.get(segId) : undefined
-    if (!center) return
-    let bucket = bySegment.get(segId)
+    const segId = a.segment?.id;
+    const center = segId !== undefined ? centroidXY.get(segId) : undefined;
+    if (!center) return;
+    let bucket = bySegment.get(segId);
     if (!bucket) {
-      bucket = { xs: [], ys: [], offers: [] }
-      bySegment.set(segId, bucket)
+      bucket = { xs: [], ys: [], offers: [] };
+      bySegment.set(segId, bucket);
     }
-    const i = bucket.offers.length
-    const r = Math.max(maxRadius * 0.08, ((a.distance ?? 0) / maxDistance) * maxRadius)
-    const theta = i * GOLDEN_ANGLE
-    bucket.xs.push(center.x + r * Math.cos(theta))
-    bucket.ys.push(center.y + r * Math.sin(theta))
-    bucket.offers.push(a)
-  })
-  return bySegment
+    const i = bucket.offers.length;
+    const f = Math.max(
+      OFFER_MIN_FRACTION,
+      ((a.distance ?? 0) / maxDistance) * OFFER_MAX_FRACTION,
+    );
+    const theta = i * GOLDEN_ANGLE;
+    const [x, y] = placeInCell(
+      [center.x, center.y],
+      f,
+      theta,
+      cells.get(segId),
+      maxRadius,
+    );
+    bucket.xs.push(x);
+    bucket.ys.push(y);
+    bucket.offers.push(a);
+  });
+  return bySegment;
 }
 
 interface ClustersVizProps {
   /** Navigate to the Assignments tab with the given offer id pre-searched. */
-  onOpenOfferAssignments?: (offerId: string) => void
+  onOpenOfferAssignments?: (offerId: string) => void;
 }
 
-export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments }) => {
-  const [clusters, setClusters] = useState<Cluster[]>([])
-  const [selectedClusterId, setSelectedClusterId] = useState<number | null>(null)
-  const [selectedClusterDetail, setSelectedClusterDetail] = useState<Cluster | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [actionLoading, setActionLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [successMsg, setSuccessMsg] = useState<string | null>(null)
+export const ClustersViz: React.FC<ClustersVizProps> = ({
+  onOpenOfferAssignments,
+}) => {
+  const [clusters, setClusters] = useState<Cluster[]>([]);
+  const [selectedClusterId, setSelectedClusterId] = useState<number | null>(
+    null,
+  );
+  const [selectedClusterDetail, setSelectedClusterDetail] =
+    useState<Cluster | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [actionLoading, setActionLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
   // Viz controls
-  const [vizMode, setVizMode] = useState<'scatter' | 'pca'>('scatter')
-  const [xAxisFeature, setXAxisFeature] = useState<string>('priceLevel')
-  const [yAxisFeature, setYAxisFeature] = useState<string>('gapToBest')
-  const [useSourceUnits, setUseSourceUnits] = useState(false)
-  const [showDriftVectors, setShowDriftVectors] = useState(true)
-  const [scaleBubbleSize, setScaleBubbleSize] = useState(true)
-  const [showOffers, setShowOffers] = useState(false)
+  const [vizMode, setVizMode] = useState<"scatter" | "pca">("scatter");
+  const [xAxisFeature, setXAxisFeature] = useState<string>("priceLevel");
+  const [yAxisFeature, setYAxisFeature] = useState<string>("gapToBest");
+  const [useSourceUnits, setUseSourceUnits] = useState(false);
+  const [showDriftVectors, setShowDriftVectors] = useState(true);
+  const [scaleBubbleSize, setScaleBubbleSize] = useState(true);
+  const [showOffers, setShowOffers] = useState(false);
+  const [showVoronoi, setShowVoronoi] = useState(true);
 
   // Offers (cluster assignments) overlay
   const [offersResult, setOffersResult] = useState<{
-    clusterId: number
-    offers: ClusterAssignment[]
-    total: number | undefined
-  } | null>(null)
-  const [offersLoading, setOffersLoading] = useState(false)
+    clusterId: number;
+    offers: ClusterAssignment[];
+    total: number | undefined;
+  } | null>(null);
+  const [offersLoading, setOffersLoading] = useState(false);
+
+  // Pinned offers ("find offer on the chart"), up to MAX_PINNED_OFFERS per cluster
+  const [findOfferInput, setFindOfferInput] = useState("");
+  const [findOfferLoading, setFindOfferLoading] = useState(false);
+  const [findOfferError, setFindOfferError] = useState<string | null>(null);
+  const [pins, setPins] = useState<
+    { clusterId: number; assignment: ClusterAssignment }[]
+  >([]);
+  const pinnedOffers = useMemo(
+    () =>
+      pins
+        .filter((p) => p.clusterId === selectedClusterId)
+        .map((p) => p.assignment),
+    [pins, selectedClusterId],
+  );
   // Only offers fetched for the currently selected cluster are rendered
   const offers = useMemo(
-    () => (offersResult && offersResult.clusterId === selectedClusterId ? offersResult.offers : []),
+    () =>
+      offersResult && offersResult.clusterId === selectedClusterId
+        ? offersResult.offers
+        : [],
     [offersResult, selectedClusterId],
-  )
-  const offersTotal = offersResult?.clusterId === selectedClusterId ? offersResult.total : undefined
+  );
+  const offersTotal =
+    offersResult?.clusterId === selectedClusterId
+      ? offersResult.total
+      : undefined;
 
   // Drawer / Inspection
-  const [inspectedCentroid, setInspectedCentroid] = useState<Centroid | null>(null)
-  const [auctionsCentroid, setAuctionsCentroid] = useState<{ centroid: Centroid; color: string } | null>(null)
+  const [inspectedCentroid, setInspectedCentroid] = useState<Centroid | null>(
+    null,
+  );
+  const [auctionsCentroid, setAuctionsCentroid] = useState<{
+    centroid: Centroid;
+    color: string;
+  } | null>(null);
 
   // Load cluster list
   const loadClusters = async () => {
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
     try {
-      const list = await api.listClusters()
-      setClusters(list)
+      const list = await api.listClusters();
+      setClusters(list);
       if (list.length > 0) {
         // default select Promoted cluster if available, else first
-        const promoted = list.find((c) => c.marking === 'Promoted')
-        const initialId = promoted ? promoted.id : list[0].id
-        setSelectedClusterId((prev) => (prev ? prev : initialId))
+        const promoted = list.find((c) => c.marking === "Promoted");
+        const initialId = promoted ? promoted.id : list[0].id;
+        setSelectedClusterId((prev) => (prev ? prev : initialId));
       }
     } catch (err: any) {
-      setError(err?.message || 'Failed to load clusters')
+      setError(err?.message || "Failed to load clusters");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
-    loadClusters()
-  }, [])
+    loadClusters();
+  }, []);
 
   // Load cluster detail when selectedClusterId changes
   useEffect(() => {
-    if (!selectedClusterId) return
+    if (!selectedClusterId) return;
     const fetchDetail = async () => {
-      setLoading(true)
+      setLoading(true);
       try {
-        const detail = await api.getCluster(selectedClusterId)
-        setSelectedClusterDetail(detail)
+        const detail = await api.getCluster(selectedClusterId);
+        setSelectedClusterDetail(detail);
       } catch (err: any) {
-        setError(err?.message || 'Failed to fetch cluster detail')
+        setError(err?.message || "Failed to fetch cluster detail");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchDetail()
-  }, [selectedClusterId])
+    };
+    fetchDetail();
+  }, [selectedClusterId]);
 
   // Load offers (assignments) for the overlay when enabled
   useEffect(() => {
-    if (!showOffers || !selectedClusterId) return
-    const clusterId = selectedClusterId
-    let cancelled = false
+    if (!showOffers || !selectedClusterId) return;
+    const clusterId = selectedClusterId;
+    let cancelled = false;
     const fetchOffers = async () => {
       try {
-        const collected: ClusterAssignment[] = []
-        let total: number | undefined
+        const collected: ClusterAssignment[] = [];
+        let total: number | undefined;
         for (let page = 0; page < OFFER_MAX_PAGES; page++) {
-          if (page === 0) setOffersLoading(true)
+          if (page === 0) setOffersLoading(true);
           const res = await api.listAssignments({
             cluster: clusterId,
             page,
-            'per-page': OFFER_PAGE_SIZE,
-          })
-          if (cancelled) return
-          collected.push(...res.assignments)
-          total = res.totalCount
-          const lastPage = res.totalPages !== undefined ? page + 1 >= res.totalPages : res.assignments.length < OFFER_PAGE_SIZE
-          if (lastPage) break
+            "per-page": OFFER_PAGE_SIZE,
+          });
+          if (cancelled) return;
+          collected.push(...res.assignments);
+          total = res.totalCount;
+          const lastPage =
+            res.totalPages !== undefined
+              ? page + 1 >= res.totalPages
+              : res.assignments.length < OFFER_PAGE_SIZE;
+          if (lastPage) break;
         }
-        setOffersResult({ clusterId, offers: collected, total: total ?? collected.length })
+        setOffersResult({
+          clusterId,
+          offers: collected,
+          total: total ?? collected.length,
+        });
       } catch (err: any) {
-        if (!cancelled) setError(err?.message || 'Failed to load offers for cluster')
+        if (!cancelled)
+          setError(err?.message || "Failed to load offers for cluster");
       } finally {
-        if (!cancelled) setOffersLoading(false)
+        if (!cancelled) setOffersLoading(false);
       }
-    }
-    fetchOffers()
+    };
+    fetchOffers();
     return () => {
-      cancelled = true
-    }
-  }, [showOffers, selectedClusterId])
+      cancelled = true;
+    };
+  }, [showOffers, selectedClusterId]);
 
   // Handle Promote
   const handlePromote = async (id: number) => {
-    if (!window.confirm(`Are you sure you want to PROMOTE Cluster #${id} into force? This will retire any currently promoted cluster.`)) {
-      return
+    if (
+      !window.confirm(
+        `Are you sure you want to PROMOTE Cluster #${id} into force? This will retire any currently promoted cluster.`,
+      )
+    ) {
+      return;
     }
-    setActionLoading(true)
-    setError(null)
-    setSuccessMsg(null)
+    setActionLoading(true);
+    setError(null);
+    setSuccessMsg(null);
     try {
-      const updated = await api.transitionCluster(id, 'Promote')
-      setSuccessMsg(`Cluster #${id} successfully Promoted!`)
-      setSelectedClusterDetail(updated)
-      await loadClusters()
+      const updated = await api.transitionCluster(id, "Promote");
+      setSuccessMsg(`Cluster #${id} successfully Promoted!`);
+      setSelectedClusterDetail(updated);
+      await loadClusters();
     } catch (err: any) {
-      setError(err?.message || 'Failed to promote cluster')
+      setError(err?.message || "Failed to promote cluster");
     } finally {
-      setActionLoading(false)
+      setActionLoading(false);
     }
-  }
+  };
 
   // Handle Retire
   const handleRetire = async (id: number) => {
     if (!window.confirm(`Are you sure you want to RETIRE Cluster #${id}?`)) {
-      return
+      return;
     }
-    setActionLoading(true)
-    setError(null)
-    setSuccessMsg(null)
+    setActionLoading(true);
+    setError(null);
+    setSuccessMsg(null);
     try {
-      const updated = await api.transitionCluster(id, 'Retire')
-      setSuccessMsg(`Cluster #${id} successfully Retired.`)
-      setSelectedClusterDetail(updated)
-      await loadClusters()
+      const updated = await api.transitionCluster(id, "Retire");
+      setSuccessMsg(`Cluster #${id} successfully Retired.`);
+      setSelectedClusterDetail(updated);
+      await loadClusters();
     } catch (err: any) {
-      setError(err?.message || 'Failed to retire cluster')
+      setError(err?.message || "Failed to retire cluster");
     } finally {
-      setActionLoading(false)
+      setActionLoading(false);
     }
-  }
+  };
 
   // Feature names list
   const featureNames = useMemo(() => {
-    if (selectedClusterDetail?.featureNames && selectedClusterDetail.featureNames.length > 0) {
-      return selectedClusterDetail.featureNames
+    if (
+      selectedClusterDetail?.featureNames &&
+      selectedClusterDetail.featureNames.length > 0
+    ) {
+      return selectedClusterDetail.featureNames;
     }
-    return Object.keys(FEATURE_GROUPS)
-  }, [selectedClusterDetail])
+    return Object.keys(FEATURE_GROUPS);
+  }, [selectedClusterDetail]);
 
   const featureIndices = useMemo(() => {
-    const map: Record<string, number> = {}
+    const map: Record<string, number> = {};
     featureNames.forEach((name, idx) => {
-      map[name] = idx
-    })
-    return map
-  }, [featureNames])
+      map[name] = idx;
+    });
+    return map;
+  }, [featureNames]);
 
-  const centroids = selectedClusterDetail?.centroids || []
+  const centroids = selectedClusterDetail?.centroids || [];
 
   // Euclidean drift calculation for each centroid
   const centroidDrifts = useMemo(() => {
     return centroids.map((c) => {
-      let sumSq = 0
+      let sumSq = 0;
       for (let i = 0; i < c.scaled.length; i++) {
-        const diff = (c.scaled[i] ?? 0) - (c.anchor[i] ?? 0)
-        sumSq += diff * diff
+        const diff = (c.scaled[i] ?? 0) - (c.anchor[i] ?? 0);
+        sumSq += diff * diff;
       }
-      return Math.sqrt(sumSq)
-    })
-  }, [centroids])
+      return Math.sqrt(sumSq);
+    });
+  }, [centroids]);
 
   // PCA calculation for PCA mode
   const pcaResult = useMemo(() => {
-    if (vizMode !== 'pca' || centroids.length < 2) return null
-    const scaledMatrix = centroids.map((c) => c.scaled)
-    return computePCA(scaledMatrix)
-  }, [vizMode, centroids])
+    if (vizMode !== "pca" || centroids.length < 2) return null;
+    const scaledMatrix = centroids.map((c) => c.scaled);
+    return computePCA(scaledMatrix);
+  }, [vizMode, centroids]);
+
+  const handleFindOffer = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const offerId = findOfferInput.trim();
+    if (!offerId || !selectedClusterId) return;
+    const clusterId = selectedClusterId;
+    if (pinnedOffers.some((a) => a.offerId === offerId)) {
+      setFindOfferError(`Offer ${offerId} is already on the chart`);
+      return;
+    }
+    if (pinnedOffers.length >= MAX_PINNED_OFFERS) {
+      setFindOfferError(
+        `Up to ${MAX_PINNED_OFFERS} offers can be shown at once; remove one first`,
+      );
+      return;
+    }
+    setFindOfferLoading(true);
+    setFindOfferError(null);
+    try {
+      const res = await api.listAssignments({
+        cluster: clusterId,
+        offerId,
+        "per-page": 10,
+      });
+      const match =
+        res.assignments.find((a) => a.offerId === offerId) ??
+        res.assignments[0];
+      if (!match) {
+        setFindOfferError(
+          `Offer ${offerId} is not assigned in cluster #${clusterId}`,
+        );
+      } else {
+        setPins((prev) => [
+          ...prev.filter(
+            (p) =>
+              !(
+                p.clusterId === clusterId &&
+                p.assignment.offerId === match.offerId
+              ),
+          ),
+          { clusterId, assignment: match },
+        ]);
+        setFindOfferInput("");
+      }
+    } catch (err: any) {
+      setFindOfferError(err?.message || "Failed to look up the offer");
+    } finally {
+      setFindOfferLoading(false);
+    }
+  };
+
+  // Voronoi cells of the centroids in the current 2D projection (nearest-centroid regions of the plane).
+  // Returned as layout shapes: shapes do not take part in autorange and are clipped to the plot area,
+  // so the chart keeps the scale it has without them.
+  const buildVoronoiShapes = useCallback(
+    (
+      centroidXY: Map<number, { x: number; y: number }>,
+      bounds: Bounds,
+    ): any[] => {
+      if (!showVoronoi || centroids.length < 2) return [];
+      const sites: Point[] = [];
+      const siteIdx: number[] = [];
+      centroids.forEach((c, idx) => {
+        const xy =
+          c.segment?.id !== undefined
+            ? centroidXY.get(c.segment.id)
+            : undefined;
+        if (!xy) return;
+        sites.push([xy.x, xy.y]);
+        siteIdx.push(idx);
+      });
+      if (sites.length < 2) return [];
+      const cells = voronoiCells(sites, bounds);
+      const shapes: any[] = [];
+      cells.forEach((cell, k) => {
+        if (cell.length < 3) return;
+        const color = SEGMENT_COLORS[siteIdx[k] % SEGMENT_COLORS.length];
+        const path =
+          cell
+            .map((p, i) => `${i === 0 ? "M" : "L"} ${p[0]} ${p[1]}`)
+            .join(" ") + " Z";
+        shapes.push({
+          type: "path",
+          path,
+          xref: "x",
+          yref: "y",
+          layer: "below",
+          fillcolor: color + "1f", // ~12% alpha
+          line: { color: color + "80", width: 1 },
+        });
+      });
+      return shapes;
+    },
+    [showVoronoi, centroids],
+  );
+
+  // Halo + outlined dot + iso-outline for every pinned offer (position approximate, see placeOffersAroundCentroids)
+  const buildHighlightTraces = useCallback(
+    (centroidXY: Map<number, { x: number; y: number }>): any[] => {
+      if (pinnedOffers.length === 0) return [];
+      const extent = centroidExtent(centroidXY);
+      const maxRadius = extent * OFFER_RADIUS_SCALE;
+      const cells = cellsBySegment(centroidXY);
+      // Same scale as the offers overlay when it is loaded, otherwise the farthest pinned offer sets the outer edge
+      const refDistance =
+        (offers.length > 0 ? offers : pinnedOffers).reduce(
+          (m, a) => Math.max(m, a.distance ?? 0),
+          0,
+        ) || 1;
+      const traces: any[] = [];
+      pinnedOffers.forEach((pinned) => {
+        const segId = pinned.segment?.id;
+        const center = segId !== undefined ? centroidXY.get(segId) : undefined;
+        if (!center) return;
+        const idx = centroids.findIndex((c) => c.segment?.id === segId);
+        const color =
+          SEGMENT_COLORS[(idx < 0 ? 0 : idx) % SEGMENT_COLORS.length];
+        const f = Math.max(
+          OFFER_MIN_FRACTION,
+          Math.min(1, (pinned.distance ?? 0) / refDistance) *
+            OFFER_MAX_FRACTION,
+        );
+        const theta = offerAngle(pinned.offerId);
+        const cell = cells.get(segId);
+        const c: Point = [center.x, center.y];
+        const [px, py] = placeInCell(c, f, theta, cell, maxRadius);
+        // Iso-line of "this far from the centroid": the cell shrunk by the same fraction
+        const ring =
+          cell && cell.length >= 3
+            ? scaledCell(c, f, cell)
+            : scaledCell(
+                c,
+                1,
+                Array.from({ length: 72 }, (_, i): Point => [
+                  center.x + f * maxRadius * Math.cos((i / 72) * 2 * Math.PI),
+                  center.y + f * maxRadius * Math.sin((i / 72) * 2 * Math.PI),
+                ]),
+              );
+        const ringX = ring.xs;
+        const ringY = ring.ys;
+        const segmentLabel = pinned.segment?.name || `Segment #${segId}`;
+        traces.push(
+          {
+            x: ringX,
+            y: ringY,
+            mode: "lines",
+            showlegend: false,
+            hoverinfo: "skip",
+            line: { color: color, width: 1, dash: "dot" },
+            opacity: 0.6,
+          },
+          // Soft halo behind the point
+          {
+            x: [px],
+            y: [py],
+            mode: "markers",
+            showlegend: false,
+            hoverinfo: "skip",
+            marker: {
+              symbol: "circle",
+              size: 30,
+              color: color,
+              opacity: 0.22,
+              line: { width: 0 },
+            },
+          },
+          // Core point with white outline, labelled with the offer id tail
+          {
+            x: [px],
+            y: [py],
+            mode: "markers+text",
+            name: `Offer ${pinned.offerId.slice(-8)}`,
+            showlegend: false,
+            text: [pinned.offerId.slice(-8)],
+            textposition: "bottom center",
+            textfont: {
+              color: "#cbd5e1",
+              size: 10,
+              family: "ui-monospace, monospace",
+            },
+            customdata: [
+              [
+                pinned.offerId,
+                pinned.productId,
+                pinned.marking,
+                (pinned.distance ?? 0).toFixed(4),
+              ],
+            ],
+            marker: {
+              symbol: "circle",
+              size: 11,
+              color: color,
+              opacity: 1,
+              line: { color: "#f8fafc", width: 2 },
+            },
+            hovertemplate:
+              `Offer <b>%{customdata[0]}</b><br>` +
+              `Product: %{customdata[1]}<br>` +
+              `Segment: <b>${segmentLabel}</b><br>` +
+              `State: %{customdata[2]}<br>` +
+              `Centroid distance: <b>%{customdata[3]}</b><br>` +
+              `<i>Position approximate: somewhere on the dotted outline</i><br>` +
+              `<i>Click to open in Assignments</i><extra></extra>`,
+          },
+        );
+      });
+      return traces;
+    },
+    [pinnedOffers, centroids, offers],
+  );
 
   // Builds one scatter trace per segment for the offers overlay
-  const buildOfferTraces = useCallback((centroidXY: Map<number, { x: number; y: number }>): any[] => {
-    if (!showOffers || offers.length === 0) return []
-    const placed = placeOffersAroundCentroids(offers, centroidXY)
-    const traces: any[] = []
-    centroids.forEach((c, idx) => {
-      const bucket = placed.get(c.segment?.id)
-      if (!bucket) return
-      const color = SEGMENT_COLORS[idx % SEGMENT_COLORS.length]
-      const segmentLabel = c.segment?.name ? `${c.segment.name}` : `Segment #${c.segment?.id}`
-      traces.push({
-        x: bucket.xs,
-        y: bucket.ys,
-        mode: 'markers',
-        name: `${segmentLabel} offers`,
-        showlegend: false,
-        customdata: bucket.offers.map((a) => [a.offerId, a.productId, a.marking, (a.distance ?? 0).toFixed(4)]),
-        marker: {
-          size: 6,
-          color: color,
-          opacity: 0.55,
-          line: { color: '#020617', width: 0.5 },
-        },
-        hovertemplate:
-          `Offer <b>%{customdata[0]}</b><br>` +
-          `Product: %{customdata[1]}<br>` +
-          `Segment: <b>${segmentLabel}</b><br>` +
-          `State: %{customdata[2]}<br>` +
-          `Centroid distance: <b>%{customdata[3]}</b><br>` +
-          `<i>Click to open in Assignments</i><extra></extra>`,
-      })
-    })
-    return traces
-  }, [showOffers, offers, centroids])
+  const buildOfferTraces = useCallback(
+    (centroidXY: Map<number, { x: number; y: number }>): any[] => {
+      if (!showOffers || offers.length === 0) return [];
+      const placed = placeOffersAroundCentroids(offers, centroidXY);
+      const traces: any[] = [];
+      centroids.forEach((c, idx) => {
+        const bucket = placed.get(c.segment?.id);
+        if (!bucket) return;
+        const color = SEGMENT_COLORS[idx % SEGMENT_COLORS.length];
+        const segmentLabel = c.segment?.name
+          ? `${c.segment.name}`
+          : `Segment #${c.segment?.id}`;
+        traces.push({
+          x: bucket.xs,
+          y: bucket.ys,
+          mode: "markers",
+          name: `${segmentLabel} offers`,
+          showlegend: false,
+          customdata: bucket.offers.map((a) => [
+            a.offerId,
+            a.productId,
+            a.marking,
+            (a.distance ?? 0).toFixed(4),
+          ]),
+          marker: {
+            size: 6,
+            color: color,
+            opacity: 0.55,
+            line: { color: "#020617", width: 0.5 },
+          },
+          hovertemplate:
+            `Offer <b>%{customdata[0]}</b><br>` +
+            `Product: %{customdata[1]}<br>` +
+            `Segment: <b>${segmentLabel}</b><br>` +
+            `State: %{customdata[2]}<br>` +
+            `Centroid distance: <b>%{customdata[3]}</b><br>` +
+            `<i>Click to open in Assignments</i><extra></extra>`,
+        });
+      });
+      return traces;
+    },
+    [showOffers, offers, centroids],
+  );
 
   // Prepare Plotly data and layout
   const { plotData, plotLayout } = useMemo(() => {
     if (!centroids || centroids.length === 0) {
-      return { plotData: [], plotLayout: {} }
+      return { plotData: [], plotLayout: {} };
     }
 
-    const traces: any[] = []
-    const annotations: any[] = []
+    const traces: any[] = [];
+    const annotations: any[] = [];
 
-    if (vizMode === 'scatter') {
-      const xIdx = featureIndices[xAxisFeature] ?? 0
-      const yIdx = featureIndices[yAxisFeature] ?? 1
-      const centroidXY = new Map<number, { x: number; y: number }>()
+    if (vizMode === "scatter") {
+      const xIdx = featureIndices[xAxisFeature] ?? 0;
+      const yIdx = featureIndices[yAxisFeature] ?? 1;
+      const centroidXY = new Map<number, { x: number; y: number }>();
 
       // 0. Offers overlay (drawn first so centroids stay on top)
       centroids.forEach((c) => {
-        const vals = useSourceUnits ? c.source : c.scaled
+        const vals = useSourceUnits ? c.source : c.scaled;
         if (c.segment?.id !== undefined) {
-          centroidXY.set(c.segment.id, { x: vals[xIdx] ?? 0, y: vals[yIdx] ?? 0 })
+          centroidXY.set(c.segment.id, {
+            x: vals[xIdx] ?? 0,
+            y: vals[yIdx] ?? 0,
+          });
         }
-      })
-      traces.push(...buildOfferTraces(centroidXY))
+      });
+      traces.push(...buildOfferTraces(centroidXY));
+      traces.push(...buildHighlightTraces(centroidXY));
 
       // 1. Scaled / Current centroids trace
       centroids.forEach((c, idx) => {
-        const color = SEGMENT_COLORS[idx % SEGMENT_COLORS.length]
-        const vals = useSourceUnits ? c.source : c.scaled
+        const color = SEGMENT_COLORS[idx % SEGMENT_COLORS.length];
+        const vals = useSourceUnits ? c.source : c.scaled;
         const anchors = useSourceUnits
           ? c.source // anchor is in scaled space, but for visualization in source space we project or use scaled
-          : c.anchor
+          : c.anchor;
 
-        const xVal = vals[xIdx] ?? 0
-        const yVal = vals[yIdx] ?? 0
-        const anchorX = anchors[xIdx] ?? 0
-        const anchorY = anchors[yIdx] ?? 0
+        const xVal = vals[xIdx] ?? 0;
+        const yVal = vals[yIdx] ?? 0;
+        const anchorX = anchors[xIdx] ?? 0;
+        const anchorY = anchors[yIdx] ?? 0;
 
-        const driftDist = centroidDrifts[idx]?.toFixed(4) || '0.0000'
+        const driftDist = centroidDrifts[idx]?.toFixed(4) || "0.0000";
 
         // Bubble size calculation
-        let markerSize = 22
+        let markerSize = 22;
         if (scaleBubbleSize) {
-          const minSize = Math.min(...centroids.map((ce) => ce.size || 1))
-          const maxSize = Math.max(...centroids.map((ce) => ce.size || 1))
-          const norm = maxSize > minSize ? (c.size - minSize) / (maxSize - minSize) : 0.5
-          markerSize = 16 + norm * 34 // 16 to 50 px
+          const minSize = Math.min(...centroids.map((ce) => ce.size || 1));
+          const maxSize = Math.max(...centroids.map((ce) => ce.size || 1));
+          const norm =
+            maxSize > minSize ? (c.size - minSize) / (maxSize - minSize) : 0.5;
+          markerSize = 16 + norm * 34; // 16 to 50 px
         }
 
-        const segmentLabel = c.segment?.name ? `${c.segment.name}` : `Segment #${c.segment?.id}`
-        const inheritedText = c.inherited === true ? 'Yes (Inherited)' : c.inherited === false ? 'No (New)' : 'N/A'
+        const segmentLabel = c.segment?.name
+          ? `${c.segment.name}`
+          : `Segment #${c.segment?.id}`;
+        const inheritedText =
+          c.inherited === true
+            ? "Yes (Inherited)"
+            : c.inherited === false
+              ? "No (New)"
+              : "N/A";
 
         // Centroid marker trace
         traces.push({
           x: [xVal],
           y: [yVal],
-          mode: 'markers+text',
+          mode: "markers+text",
           name: `${segmentLabel} (ID: ${c.id})`,
           text: [segmentLabel],
-          textposition: 'top center',
-          textfont: { color: color, size: 12, family: 'system-ui' },
+          textposition: "top center",
+          textfont: { color: color, size: 12, family: "system-ui" },
           marker: {
             size: [markerSize],
             color: color,
             opacity: 0.85,
-            line: { color: '#ffffff', width: 2 },
+            line: { color: "#ffffff", width: 2 },
           },
           hovertemplate:
             `<b>${segmentLabel}</b> (Centroid #${c.id})<br>` +
@@ -376,113 +742,137 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
             `<br>` +
             `${xAxisFeature}: <b>%{x:.4f}</b><br>` +
             `${yAxisFeature}: <b>%{y:.4f}</b><extra></extra>`,
-        })
+        });
 
         // Anchor baseline point & Drift arrow
         if (showDriftVectors && !useSourceUnits) {
           traces.push({
             x: [anchorX],
             y: [anchorY],
-            mode: 'markers',
+            mode: "markers",
             name: `${segmentLabel} [Anchor]`,
             showlegend: false,
             marker: {
-              symbol: 'x',
+              symbol: "x",
               size: 10,
               color: color,
               opacity: 0.6,
             },
-            hoverinfo: 'none',
-          })
+            hoverinfo: "none",
+          });
 
           // Arrow from anchor to scaled
-          const dx = xVal - anchorX
-          const dy = yVal - anchorY
+          const dx = xVal - anchorX;
+          const dy = yVal - anchorY;
           if (Math.hypot(dx, dy) > 0.005) {
             annotations.push({
               ax: anchorX,
               ay: anchorY,
-              axref: 'x',
-              ayref: 'y',
+              axref: "x",
+              ayref: "y",
               x: xVal,
               y: yVal,
-              xref: 'x',
-              yref: 'y',
+              xref: "x",
+              yref: "y",
               showarrow: true,
               arrowhead: 2,
               arrowsize: 1.2,
               arrowwidth: 2,
               arrowcolor: color,
               opacity: 0.7,
-            })
+            });
           }
         }
-      })
+      });
 
-      const xLabel = `${xAxisFeature} (${useSourceUnits ? 'Original Units' : 'Scaled Space [-3, 3]'})`
-      const yLabel = `${yAxisFeature} (${useSourceUnits ? 'Original Units' : 'Scaled Space [-3, 3]'})`
+      // Fixed axis ranges from the plotted points so the Voronoi cells (clipped to them) never change the scale
+      const bounds = paddedBounds(traceExtent(traces), AXIS_PAD, 0.05);
+      const shapes = buildVoronoiShapes(centroidXY, bounds);
+
+      const xLabel = `${xAxisFeature} (${useSourceUnits ? "Original Units" : "Scaled Space [-3, 3]"})`;
+      const yLabel = `${yAxisFeature} (${useSourceUnits ? "Original Units" : "Scaled Space [-3, 3]"})`;
 
       return {
         plotData: traces,
         plotLayout: {
           title: {
             text: `Centroid Scatter: ${xAxisFeature} vs ${yAxisFeature}`,
-            font: { color: '#f8fafc', size: 16 },
+            font: { color: "#f8fafc", size: 16 },
           },
-          xaxis: { title: { text: xLabel, font: { color: '#94a3b8' } } },
-          yaxis: { title: { text: yLabel, font: { color: '#94a3b8' } } },
+          xaxis: {
+            title: { text: xLabel, font: { color: "#94a3b8" } },
+            range: [bounds.xMin, bounds.xMax],
+          },
+          yaxis: {
+            title: { text: yLabel, font: { color: "#94a3b8" } },
+            range: [bounds.yMin, bounds.yMax],
+          },
           annotations,
+          shapes,
         },
-      }
+      };
     } else {
       // PCA 2D Mode
       if (!pcaResult) {
         return {
           plotData: [],
           plotLayout: {
-            title: { text: 'Need at least 2 centroids for PCA projection', font: { color: '#f8fafc' } },
+            title: {
+              text: "Need at least 2 centroids for PCA projection",
+              font: { color: "#f8fafc" },
+            },
           },
-        }
+        };
       }
 
-      const centroidXY = new Map<number, { x: number; y: number }>()
+      const centroidXY = new Map<number, { x: number; y: number }>();
       centroids.forEach((c) => {
-        const [px, py] = pcaResult.project(c.scaled)
-        if (c.segment?.id !== undefined) centroidXY.set(c.segment.id, { x: px, y: py })
-      })
-      traces.push(...buildOfferTraces(centroidXY))
+        const [px, py] = pcaResult.project(c.scaled);
+        if (c.segment?.id !== undefined)
+          centroidXY.set(c.segment.id, { x: px, y: py });
+      });
+      traces.push(...buildOfferTraces(centroidXY));
+      traces.push(...buildHighlightTraces(centroidXY));
 
       centroids.forEach((c, idx) => {
-        const color = SEGMENT_COLORS[idx % SEGMENT_COLORS.length]
-        const [pc1Scaled, pc2Scaled] = pcaResult.project(c.scaled)
-        const [pc1Anchor, pc2Anchor] = pcaResult.project(c.anchor)
+        const color = SEGMENT_COLORS[idx % SEGMENT_COLORS.length];
+        const [pc1Scaled, pc2Scaled] = pcaResult.project(c.scaled);
+        const [pc1Anchor, pc2Anchor] = pcaResult.project(c.anchor);
 
-        const driftDist = centroidDrifts[idx]?.toFixed(4) || '0.0000'
+        const driftDist = centroidDrifts[idx]?.toFixed(4) || "0.0000";
 
-        let markerSize = 22
+        let markerSize = 22;
         if (scaleBubbleSize) {
-          const minSize = Math.min(...centroids.map((ce) => ce.size || 1))
-          const maxSize = Math.max(...centroids.map((ce) => ce.size || 1))
-          const norm = maxSize > minSize ? (c.size - minSize) / (maxSize - minSize) : 0.5
-          markerSize = 16 + norm * 34
+          const minSize = Math.min(...centroids.map((ce) => ce.size || 1));
+          const maxSize = Math.max(...centroids.map((ce) => ce.size || 1));
+          const norm =
+            maxSize > minSize ? (c.size - minSize) / (maxSize - minSize) : 0.5;
+          markerSize = 16 + norm * 34;
         }
 
-        const segmentLabel = c.segment?.name ? `${c.segment.name}` : `Segment #${c.segment?.id}`
-        const inheritedText = c.inherited === true ? 'Yes (Inherited)' : c.inherited === false ? 'No (New)' : 'N/A'
+        const segmentLabel = c.segment?.name
+          ? `${c.segment.name}`
+          : `Segment #${c.segment?.id}`;
+        const inheritedText =
+          c.inherited === true
+            ? "Yes (Inherited)"
+            : c.inherited === false
+              ? "No (New)"
+              : "N/A";
 
         traces.push({
           x: [pc1Scaled],
           y: [pc2Scaled],
-          mode: 'markers+text',
+          mode: "markers+text",
           name: `${segmentLabel} (ID: ${c.id})`,
           text: [segmentLabel],
-          textposition: 'top center',
-          textfont: { color: color, size: 12, family: 'system-ui' },
+          textposition: "top center",
+          textfont: { color: color, size: 12, family: "system-ui" },
           marker: {
             size: [markerSize],
             color: color,
             opacity: 0.85,
-            line: { color: '#ffffff', width: 2 },
+            line: { color: "#ffffff", width: 2 },
           },
           hovertemplate:
             `<b>${segmentLabel}</b> (Centroid #${c.id})<br>` +
@@ -490,62 +880,82 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
             `Inherited: ${inheritedText}<br>` +
             `Total Euclidean Drift: <b>${driftDist}</b><br>` +
             `PC1: <b>%{x:.3f}</b>, PC2: <b>%{y:.3f}</b><extra></extra>`,
-        })
+        });
 
         if (showDriftVectors) {
           traces.push({
             x: [pc1Anchor],
             y: [pc2Anchor],
-            mode: 'markers',
+            mode: "markers",
             name: `${segmentLabel} [Anchor]`,
             showlegend: false,
             marker: {
-              symbol: 'x',
+              symbol: "x",
               size: 10,
               color: color,
               opacity: 0.6,
             },
-            hoverinfo: 'none',
-          })
+            hoverinfo: "none",
+          });
 
-          const dx = pc1Scaled - pc1Anchor
-          const dy = pc2Scaled - pc2Anchor
+          const dx = pc1Scaled - pc1Anchor;
+          const dy = pc2Scaled - pc2Anchor;
           if (Math.hypot(dx, dy) > 0.005) {
             annotations.push({
               ax: pc1Anchor,
               ay: pc2Anchor,
-              axref: 'x',
-              ayref: 'y',
+              axref: "x",
+              ayref: "y",
               x: pc1Scaled,
               y: pc2Scaled,
-              xref: 'x',
-              yref: 'y',
+              xref: "x",
+              yref: "y",
               showarrow: true,
               arrowhead: 2,
               arrowsize: 1.2,
               arrowwidth: 2,
               arrowcolor: color,
               opacity: 0.7,
-            })
+            });
           }
         }
-      })
+      });
 
-      const pc1Var = ((pcaResult.explainedVarianceRatio[0] || 0) * 100).toFixed(1)
-      const pc2Var = ((pcaResult.explainedVarianceRatio[1] || 0) * 100).toFixed(1)
+      const bounds = paddedBounds(traceExtent(traces), AXIS_PAD, 0.05);
+      const shapes = buildVoronoiShapes(centroidXY, bounds);
+
+      const pc1Var = ((pcaResult.explainedVarianceRatio[0] || 0) * 100).toFixed(
+        1,
+      );
+      const pc2Var = ((pcaResult.explainedVarianceRatio[1] || 0) * 100).toFixed(
+        1,
+      );
 
       return {
         plotData: traces,
         plotLayout: {
           title: {
             text: `PCA 2D Projection (PC1: ${pc1Var}%, PC2: ${pc2Var}% variance explained)`,
-            font: { color: '#f8fafc', size: 16 },
+            font: { color: "#f8fafc", size: 16 },
           },
-          xaxis: { title: { text: `Principal Component 1 (${pc1Var}% var)`, font: { color: '#94a3b8' } } },
-          yaxis: { title: { text: `Principal Component 2 (${pc2Var}% var)`, font: { color: '#94a3b8' } } },
+          xaxis: {
+            title: {
+              text: `Principal Component 1 (${pc1Var}% var)`,
+              font: { color: "#94a3b8" },
+            },
+            range: [bounds.xMin, bounds.xMax],
+          },
+          yaxis: {
+            title: {
+              text: `Principal Component 2 (${pc2Var}% var)`,
+              font: { color: "#94a3b8" },
+            },
+            range: [bounds.yMin, bounds.yMax],
+          },
           annotations,
+          shapes,
         },
-      }
+      };
     }
   }, [
     centroids,
@@ -559,14 +969,18 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
     centroidDrifts,
     pcaResult,
     buildOfferTraces,
-  ])
+    buildHighlightTraces,
+    buildVoronoiShapes,
+  ]);
 
   const handlePointClick = (point: any) => {
-    const offerId = Array.isArray(point?.customdata) ? point.customdata[0] : undefined
-    if (typeof offerId === 'string' && offerId && onOpenOfferAssignments) {
-      onOpenOfferAssignments(offerId)
+    const offerId = Array.isArray(point?.customdata)
+      ? point.customdata[0]
+      : undefined;
+    if (typeof offerId === "string" && offerId && onOpenOfferAssignments) {
+      onOpenOfferAssignments(offerId);
     }
-  }
+  };
 
   return (
     <div className="space-y-6">
@@ -591,7 +1005,9 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <Layers className="w-5 h-5 text-purple-400" />
-            <h2 className="text-base font-semibold text-slate-100">Auction Clusters</h2>
+            <h2 className="text-base font-semibold text-slate-100">
+              Auction Clusters
+            </h2>
             <span className="text-xs text-slate-400 px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
               {clusters.length} total
             </span>
@@ -601,7 +1017,9 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
             disabled={loading}
             className="flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+            <RefreshCw
+              className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`}
+            />
             <span>Refresh</span>
           </button>
         </div>
@@ -609,13 +1027,13 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
         {/* Cluster list pills */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {clusters.map((c) => {
-            const isSelected = selectedClusterId === c.id
+            const isSelected = selectedClusterId === c.id;
             const markingColor =
-              c.marking === 'Promoted'
-                ? 'bg-emerald-950/60 text-emerald-400 border-emerald-700'
-                : c.marking === 'Candidate'
-                ? 'bg-amber-950/60 text-amber-400 border-amber-700'
-                : 'bg-slate-800 text-slate-400 border-slate-700'
+              c.marking === "Promoted"
+                ? "bg-emerald-950/60 text-emerald-400 border-emerald-700"
+                : c.marking === "Candidate"
+                  ? "bg-amber-950/60 text-amber-400 border-amber-700"
+                  : "bg-slate-800 text-slate-400 border-slate-700";
 
             return (
               <div
@@ -623,34 +1041,46 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                 onClick={() => setSelectedClusterId(c.id)}
                 className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
                   isSelected
-                    ? 'bg-purple-950/40 border-purple-500 shadow-lg shadow-purple-500/10 ring-1 ring-purple-500/50'
-                    : 'bg-slate-950/60 border-slate-800/80 hover:border-slate-700 hover:bg-slate-800/30'
+                    ? "bg-purple-950/40 border-purple-500 shadow-lg shadow-purple-500/10 ring-1 ring-purple-500/50"
+                    : "bg-slate-950/60 border-slate-800/80 hover:border-slate-700 hover:bg-slate-800/30"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center space-x-2">
-                    <span className="font-bold text-sm text-slate-100">Cluster #{c.id}</span>
+                    <span className="font-bold text-sm text-slate-100">
+                      Cluster #{c.id}
+                    </span>
                   </div>
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium border ${markingColor}`}>
+                  <span
+                    className={`text-xs px-2 py-0.5 rounded-full font-medium border ${markingColor}`}
+                  >
                     {c.marking}
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs text-slate-400">
                   <div>
                     <span className="text-slate-500 block">Groups (k)</span>
-                    <span className="font-semibold text-slate-300">{c.segmentCount} segments</span>
+                    <span className="font-semibold text-slate-300">
+                      {c.segmentCount} segments
+                    </span>
                   </div>
                   <div>
                     <span className="text-slate-500 block">Inertia</span>
-                    <span className="font-semibold text-slate-300">{c.inertia?.toFixed(1) ?? 'N/A'}</span>
+                    <span className="font-semibold text-slate-300">
+                      {c.inertia?.toFixed(1) ?? "N/A"}
+                    </span>
                   </div>
                 </div>
                 <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 font-mono">
                   <span>v: {c.vectorVersion?.slice(0, 12)}...</span>
-                  <span>{c.createdAt ? new Date(c.createdAt).toLocaleDateString() : ''}</span>
+                  <span>
+                    {c.createdAt
+                      ? new Date(c.createdAt).toLocaleDateString()
+                      : ""}
+                  </span>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -666,31 +1096,43 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                 </h3>
                 <span
                   className={`text-xs px-2.5 py-0.5 rounded-full font-medium border ${
-                    selectedClusterDetail.marking === 'Promoted'
-                      ? 'bg-emerald-950 text-emerald-400 border-emerald-700'
-                      : selectedClusterDetail.marking === 'Candidate'
-                      ? 'bg-amber-950 text-amber-400 border-amber-700'
-                      : 'bg-slate-800 text-slate-400 border-slate-700'
+                    selectedClusterDetail.marking === "Promoted"
+                      ? "bg-emerald-950 text-emerald-400 border-emerald-700"
+                      : selectedClusterDetail.marking === "Candidate"
+                        ? "bg-amber-950 text-amber-400 border-amber-700"
+                        : "bg-slate-800 text-slate-400 border-slate-700"
                   }`}
                 >
                   {selectedClusterDetail.marking}
                 </span>
                 {selectedClusterDetail.promotedAt && (
                   <span className="text-xs text-emerald-400/80 font-mono">
-                    Promoted at {new Date(selectedClusterDetail.promotedAt).toLocaleString()}
+                    Promoted at{" "}
+                    {new Date(
+                      selectedClusterDetail.promotedAt,
+                    ).toLocaleString()}
                   </span>
                 )}
               </div>
               <p className="text-xs text-slate-400 mt-1">
-                Vector Version: <code className="text-purple-300 font-mono">{selectedClusterDetail.vectorVersion}</code> •
-                Feature Set: <code className="text-purple-300 font-mono">{selectedClusterDetail.featureSetVersion}</code> •
-                Inertia: <b className="text-slate-200">{selectedClusterDetail.inertia?.toFixed(2) ?? 'N/A'}</b>
+                Vector Version:{" "}
+                <code className="text-purple-300 font-mono">
+                  {selectedClusterDetail.vectorVersion}
+                </code>{" "}
+                • Feature Set:{" "}
+                <code className="text-purple-300 font-mono">
+                  {selectedClusterDetail.featureSetVersion}
+                </code>{" "}
+                • Inertia:{" "}
+                <b className="text-slate-200">
+                  {selectedClusterDetail.inertia?.toFixed(2) ?? "N/A"}
+                </b>
               </p>
             </div>
 
             {/* Lifecycle Action Buttons */}
             <div className="flex items-center space-x-3">
-              {selectedClusterDetail.marking === 'Candidate' && (
+              {selectedClusterDetail.marking === "Candidate" && (
                 <button
                   onClick={() => handlePromote(selectedClusterDetail.id)}
                   disabled={actionLoading}
@@ -700,7 +1142,8 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                   <span>Promote to Active</span>
                 </button>
               )}
-              {(selectedClusterDetail.marking === 'Candidate' || selectedClusterDetail.marking === 'Promoted') && (
+              {(selectedClusterDetail.marking === "Candidate" ||
+                selectedClusterDetail.marking === "Promoted") && (
                 <button
                   onClick={() => handleRetire(selectedClusterDetail.id)}
                   disabled={actionLoading}
@@ -719,22 +1162,22 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
               {/* Mode Toggle */}
               <div className="flex items-center space-x-1 bg-slate-900 p-1 rounded-xl border border-slate-800">
                 <button
-                  onClick={() => setVizMode('scatter')}
+                  onClick={() => setVizMode("scatter")}
                   className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                    vizMode === 'scatter'
-                      ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30'
-                      : 'text-slate-400 hover:text-slate-200'
+                    vizMode === "scatter"
+                      ? "bg-purple-600 text-white shadow-md shadow-purple-600/30"
+                      : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
                   <TrendingUp className="w-3.5 h-3.5" />
                   <span>2D Feature Scatter</span>
                 </button>
                 <button
-                  onClick={() => setVizMode('pca')}
+                  onClick={() => setVizMode("pca")}
                   className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                    vizMode === 'pca'
-                      ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30'
-                      : 'text-slate-400 hover:text-slate-200'
+                    vizMode === "pca"
+                      ? "bg-purple-600 text-white shadow-md shadow-purple-600/30"
+                      : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
                   <Sparkles className="w-3.5 h-3.5" />
@@ -743,10 +1186,12 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
               </div>
 
               {/* Feature Selectors (if Scatter Mode) */}
-              {vizMode === 'scatter' && (
+              {vizMode === "scatter" && (
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs text-slate-400 font-medium">X Axis:</span>
+                    <span className="text-xs text-slate-400 font-medium">
+                      X Axis:
+                    </span>
                     <select
                       value={xAxisFeature}
                       onChange={(e) => setXAxisFeature(e.target.value)}
@@ -754,14 +1199,17 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                     >
                       {featureNames.map((fn) => (
                         <option key={fn} value={fn}>
-                          {FEATURE_GROUPS[fn]?.label || fn} ({FEATURE_GROUPS[fn]?.group || 'Other'})
+                          {FEATURE_GROUPS[fn]?.label || fn} (
+                          {FEATURE_GROUPS[fn]?.group || "Other"})
                         </option>
                       ))}
                     </select>
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs text-slate-400 font-medium">Y Axis:</span>
+                    <span className="text-xs text-slate-400 font-medium">
+                      Y Axis:
+                    </span>
                     <select
                       value={yAxisFeature}
                       onChange={(e) => setYAxisFeature(e.target.value)}
@@ -769,7 +1217,8 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                     >
                       {featureNames.map((fn) => (
                         <option key={fn} value={fn}>
-                          {FEATURE_GROUPS[fn]?.label || fn} ({FEATURE_GROUPS[fn]?.group || 'Other'})
+                          {FEATURE_GROUPS[fn]?.label || fn} (
+                          {FEATURE_GROUPS[fn]?.group || "Other"})
                         </option>
                       ))}
                     </select>
@@ -780,11 +1229,11 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                       onClick={() => setUseSourceUnits(!useSourceUnits)}
                       className={`text-xs px-2.5 py-1 rounded-lg border font-medium transition-colors ${
                         useSourceUnits
-                          ? 'bg-indigo-950/60 text-indigo-300 border-indigo-700'
-                          : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-300'
+                          ? "bg-indigo-950/60 text-indigo-300 border-indigo-700"
+                          : "bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-300"
                       }`}
                     >
-                      {useSourceUnits ? 'Source Units' : 'Scaled [-3, 3]'}
+                      {useSourceUnits ? "Source Units" : "Scaled [-3, 3]"}
                     </button>
                   </div>
                 </div>
@@ -792,6 +1241,19 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
 
               {/* Toggles */}
               <div className="flex items-center space-x-4 text-xs text-slate-300">
+                <label
+                  className="flex items-center space-x-2 cursor-pointer"
+                  title="Nearest-centroid regions of the 2D projection"
+                >
+                  <input
+                    type="checkbox"
+                    checked={showVoronoi}
+                    onChange={(e) => setShowVoronoi(e.target.checked)}
+                    className="rounded bg-slate-900 border-slate-700 text-purple-600 focus:ring-purple-500"
+                  />
+                  <span>Voronoi Regions</span>
+                </label>
+
                 <label className="flex items-center space-x-2 cursor-pointer">
                   <input
                     type="checkbox"
@@ -823,23 +1285,145 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                   {showOffers && (
                     <span className="text-[11px] text-slate-500 font-mono">
                       {offersLoading
-                        ? 'loading…'
-                        : offersTotal !== undefined && offersTotal > offers.length
-                        ? `${offers.length} of ${offersTotal}`
-                        : `${offers.length}`}
+                        ? "loading…"
+                        : offersTotal !== undefined &&
+                            offersTotal > offers.length
+                          ? `${offers.length} of ${offersTotal}`
+                          : `${offers.length}`}
                     </span>
                   )}
                 </label>
               </div>
             </div>
 
+            {/* Find offer on the chart */}
+            <form
+              onSubmit={handleFindOffer}
+              className="flex flex-wrap items-center gap-3 px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800"
+            >
+              <div className="flex items-center space-x-2">
+                <Crosshair className="w-4 h-4 text-purple-400" />
+                <span className="text-xs text-slate-300 font-medium">
+                  Find offer:
+                </span>
+              </div>
+              <input
+                type="text"
+                value={findOfferInput}
+                onChange={(e) => setFindOfferInput(e.target.value)}
+                placeholder="Offer ID…"
+                className="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500 font-mono"
+              />
+              <button
+                type="submit"
+                disabled={findOfferLoading || !findOfferInput.trim()}
+                className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white text-xs font-medium"
+              >
+                {findOfferLoading ? "Looking up…" : "Add to chart"}
+              </button>
+              <span className="text-[11px] text-slate-500 font-mono">
+                {pinnedOffers.length}/{MAX_PINNED_OFFERS}
+              </span>
+              {pinnedOffers.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPins((prev) =>
+                      prev.filter((p) => p.clusterId !== selectedClusterId),
+                    );
+                    setFindOfferError(null);
+                  }}
+                  className="inline-flex items-center space-x-1 text-[11px] text-slate-400 hover:text-slate-200"
+                  title="Remove all pinned offers"
+                >
+                  <X className="w-3 h-3" />
+                  <span>clear all</span>
+                </button>
+              )}
+              {findOfferError && (
+                <span className="text-xs text-rose-300 flex items-center space-x-1">
+                  <AlertCircle className="w-3.5 h-3.5" />
+                  <span>{findOfferError}</span>
+                </span>
+              )}
+              {pinnedOffers.length > 0 && (
+                <div className="w-full flex flex-wrap gap-2 pt-1">
+                  {pinnedOffers.map((a) => {
+                    const idx = centroids.findIndex(
+                      (c) => c.segment?.id === a.segment?.id,
+                    );
+                    const color =
+                      SEGMENT_COLORS[
+                        (idx < 0 ? 0 : idx) % SEGMENT_COLORS.length
+                      ];
+                    return (
+                      <span
+                        key={a.offerId}
+                        className="inline-flex items-center space-x-2 pl-2 pr-1 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px]"
+                        title={`${a.offerId} · ${a.segment?.name || `Segment #${a.segment?.id}`} · distance ${a.distance?.toFixed(4) ?? "—"} · ${a.marking}`}
+                      >
+                        <span
+                          className="w-2 h-2 rounded-full shrink-0"
+                          style={{ backgroundColor: color }}
+                        />
+                        <span className="font-mono text-slate-200">
+                          …{a.offerId.slice(-8)}
+                        </span>
+                        <span className="text-slate-400">
+                          {a.segment?.name || `#${a.segment?.id}`}
+                        </span>
+                        <span className="font-mono text-slate-500">
+                          {a.distance?.toFixed(3) ?? "—"}
+                        </span>
+                        {a.marking === "Pending" && (
+                          <span className="text-amber-300">pending</span>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setPins((prev) =>
+                              prev.filter(
+                                (p) =>
+                                  !(
+                                    p.clusterId === selectedClusterId &&
+                                    p.assignment.offerId === a.offerId
+                                  ),
+                              ),
+                            )
+                          }
+                          className="p-0.5 rounded text-slate-500 hover:text-rose-300 hover:bg-slate-800"
+                          title="Remove from chart"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+            </form>
+
             {/* Plotly Canvas Container */}
             <div className="rounded-2xl border border-slate-800 overflow-hidden bg-slate-950 p-2">
-              <PlotlyChart data={plotData} layout={plotLayout} onPointClick={handlePointClick} />
-              {showOffers && (
+              <PlotlyChart
+                data={plotData}
+                layout={plotLayout}
+                onPointClick={handlePointClick}
+              />
+              {showVoronoi && (
                 <p className="px-2 pb-1 text-[11px] text-slate-500">
-                  Offer dots are placed around their segment centroid at a radius proportional to centroid distance
-                  (angle is arbitrary). Hover for details, click to open the offer in Assignments.
+                  Voronoi regions are nearest-centroid areas of this 2D
+                  projection only; the real assignment uses all 19 features, so
+                  an offer can sit in another segment's region here.
+                </p>
+              )}
+              {(showOffers || pinnedOffers.length > 0) && (
+                <p className="px-2 pb-1 text-[11px] text-slate-500">
+                  Offer points are placed inside their segment's region:
+                  centroid distance sets how far from the centroid towards the
+                  region edge, the angle is arbitrary (the API exposes no
+                  per-offer feature vector). Hover for details, click to open
+                  the offer in Assignments.
                 </p>
               )}
             </div>
@@ -870,25 +1454,39 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                 </thead>
                 <tbody className="divide-y divide-slate-800/80 bg-slate-900/40">
                   {centroids.map((c, idx) => {
-                    const drift = centroidDrifts[idx] ?? 0
+                    const drift = centroidDrifts[idx] ?? 0;
                     const driftColor =
                       drift > 0.5
-                        ? 'text-rose-400'
+                        ? "text-rose-400"
                         : drift > 0.1
-                        ? 'text-amber-400'
-                        : 'text-emerald-400'
+                          ? "text-amber-400"
+                          : "text-emerald-400";
 
                     return (
-                      <tr key={c.id} className="hover:bg-slate-800/40 transition-colors">
-                        <td className="px-4 py-3 font-mono font-medium text-slate-300">#{c.id}</td>
+                      <tr
+                        key={c.id}
+                        className="hover:bg-slate-800/40 transition-colors"
+                      >
+                        <td className="px-4 py-3 font-mono font-medium text-slate-300">
+                          #{c.id}
+                        </td>
                         <td className="px-4 py-3">
                           <div className="flex items-center space-x-2">
                             <span
                               className="w-3 h-3 rounded-full shrink-0"
-                              style={{ backgroundColor: SEGMENT_COLORS[idx % SEGMENT_COLORS.length] }}
+                              style={{
+                                backgroundColor:
+                                  SEGMENT_COLORS[idx % SEGMENT_COLORS.length],
+                              }}
                             />
                             <span className="font-semibold text-slate-200">
-                              {c.segment?.name ? c.segment.name : <i className="text-slate-500 font-normal">Unnamed</i>}
+                              {c.segment?.name ? (
+                                c.segment.name
+                              ) : (
+                                <i className="text-slate-500 font-normal">
+                                  Unnamed
+                                </i>
+                              )}
                             </span>
                             <span className="text-slate-500 text-[11px] font-mono">
                               (Segment #{c.segment?.id})
@@ -920,7 +1518,11 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                           <div className="inline-flex items-center space-x-2">
                             <button
                               onClick={() =>
-                                setAuctionsCentroid({ centroid: c, color: SEGMENT_COLORS[idx % SEGMENT_COLORS.length] })
+                                setAuctionsCentroid({
+                                  centroid: c,
+                                  color:
+                                    SEGMENT_COLORS[idx % SEGMENT_COLORS.length],
+                                })
                               }
                               className="inline-flex items-center space-x-1 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors"
                             >
@@ -937,7 +1539,7 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                           </div>
                         </td>
                       </tr>
-                    )
+                    );
                   })}
                 </tbody>
               </table>
@@ -948,7 +1550,10 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
 
       {/* Cluster vs cluster comparison */}
       {selectedClusterDetail && clusters.length > 1 && (
-        <ClusterComparison clusters={clusters} selected={selectedClusterDetail} />
+        <ClusterComparison
+          clusters={clusters}
+          selected={selectedClusterDetail}
+        />
       )}
 
       {/* Segment Auctions Modal */}
@@ -973,7 +1578,8 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                   Centroid #{inspectedCentroid.id} Feature Vector Breakdown
                 </h3>
                 <span className="text-xs text-slate-400 px-2 py-0.5 bg-slate-800 rounded font-medium">
-                  {inspectedCentroid.segment?.name || `Segment #${inspectedCentroid.segment?.id}`}
+                  {inspectedCentroid.segment?.name ||
+                    `Segment #${inspectedCentroid.segment?.id}`}
                 </span>
               </div>
               <button
@@ -986,8 +1592,10 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
 
             <div className="p-6 overflow-y-auto space-y-4">
               <p className="text-xs text-slate-400">
-                19 aggregated features over the feature window. Scaled features are normalized via robust IQR scaling:{' '}
-                <code>(value - median) / IQR</code>, clipped to ±3. Anchor represents the trained baseline.
+                19 aggregated features over the feature window. Scaled features
+                are normalized via robust IQR scaling:{" "}
+                <code>(value - median) / IQR</code>, clipped to ±3. Anchor
+                represents the trained baseline.
               </p>
 
               <div className="overflow-x-auto rounded-xl border border-slate-800">
@@ -1004,36 +1612,49 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
                   </thead>
                   <tbody className="divide-y divide-slate-800/80 bg-slate-900/40">
                     {featureNames.map((fn, idx) => {
-                      const scaledVal = inspectedCentroid.scaled[idx] ?? 0
-                      const anchorVal = inspectedCentroid.anchor[idx] ?? 0
-                      const sourceVal = inspectedCentroid.source[idx] ?? 0
-                      const shift = scaledVal - anchorVal
-                      const meta = FEATURE_GROUPS[fn]
+                      const scaledVal = inspectedCentroid.scaled[idx] ?? 0;
+                      const anchorVal = inspectedCentroid.anchor[idx] ?? 0;
+                      const sourceVal = inspectedCentroid.source[idx] ?? 0;
+                      const shift = scaledVal - anchorVal;
+                      const meta = FEATURE_GROUPS[fn];
 
                       return (
-                        <tr key={fn} className="hover:bg-slate-800/40 transition-colors">
+                        <tr
+                          key={fn}
+                          className="hover:bg-slate-800/40 transition-colors"
+                        >
                           <td className="px-3.5 py-2 font-semibold text-slate-200">
                             {meta?.label || fn}
                           </td>
-                          <td className="px-3.5 py-2 text-slate-400">{meta?.group || '—'}</td>
-                          <td className="px-3.5 py-2 text-purple-300">{scaledVal.toFixed(4)}</td>
-                          <td className="px-3.5 py-2 text-slate-300">{anchorVal.toFixed(4)}</td>
+                          <td className="px-3.5 py-2 text-slate-400">
+                            {meta?.group || "—"}
+                          </td>
+                          <td className="px-3.5 py-2 text-purple-300">
+                            {scaledVal.toFixed(4)}
+                          </td>
+                          <td className="px-3.5 py-2 text-slate-300">
+                            {anchorVal.toFixed(4)}
+                          </td>
                           <td className="px-3.5 py-2">
                             <span
                               className={
                                 Math.abs(shift) > 0.05
                                   ? shift > 0
-                                    ? 'text-amber-400'
-                                    : 'text-indigo-400'
-                                  : 'text-slate-400'
+                                    ? "text-amber-400"
+                                    : "text-indigo-400"
+                                  : "text-slate-400"
                               }
                             >
-                              {shift > 0 ? `+${shift.toFixed(4)}` : shift.toFixed(4)}
+                              {shift > 0
+                                ? `+${shift.toFixed(4)}`
+                                : shift.toFixed(4)}
                             </span>
                           </td>
-                          <td className="px-3.5 py-2 text-slate-400">{sourceVal.toFixed(4)}</td>
+                          <td className="px-3.5 py-2 text-slate-400">
+                            {sourceVal.toFixed(4)}
+                          </td>
                         </tr>
-                      )
+                      );
                     })}
                   </tbody>
                 </table>
@@ -1052,5 +1673,5 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({ onOpenOfferAssignments
         </div>
       )}
     </div>
-  )
-}
+  );
+};
