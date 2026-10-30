@@ -9,7 +9,7 @@ interface SettingsModalProps {
 }
 
 const DEFAULT_DEV_TOKEN =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJFZERTQSIsImtpZCI6ImF1dGgta2V5LTIwMjYtMDUifQ.eyJleHAiOjE4MjQ4MDQzNzksImlhdCI6MTc5MzI2ODM3OSwidWlkIjoxMX0.-uh05K8q4wKssW5pzhd4CdfRAa1nyGAZxxCat0Yc889gz_yhXxmbNcCDowrTYH5GeeaaGc21JnR_baT8SUi1Cw'
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJFZERTQSIsImtpZCI6ImF1dGgta2V5LTIwMjYtMDUifQ.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEiLCJleHAiOjE3OTMzNTc5MTEsImlhdCI6MTc5MzM1MDcxMSwidWlkIjoxMX0._UTafhHcoQdqNl3UiIMTMUaXztDGjP09ShMmFVsfo7htkz4BveYaocC90uqXipg8pPkOiAaMTnvBX7SBqm9dBQ'
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, onSaved }) => {
   const [config, setConfig] = useState(getStoredConfig())
@@ -93,7 +93,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, o
                 onClick={() => setConfig({ ...config, baseUrl: 'http://localhost:2080/v2.0' })}
                 className="text-xs text-purple-400 hover:underline"
               >
-                Local Direct (http://localhost:2080/v2.0)
+                Local API (http://localhost:2080/v2.0)
               </button>
               <span className="text-slate-600">•</span>
               <button
