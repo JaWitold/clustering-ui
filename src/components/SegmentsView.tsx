@@ -10,13 +10,27 @@ import {
   X,
   Sliders,
   Check,
+  Search,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 import type { AuctionSegment, SegmentStrategy } from '../types/clustering'
 import { CUT_STRATEGY_NAMES, HIKE_STRATEGY_NAMES } from '../types/clustering'
 import { api } from '../api/client'
 
+const SEGMENTS_PER_PAGE = 20
+
 export const SegmentsView: React.FC = () => {
+  // Paginated page of the segments list
   const [segments, setSegments] = useState<AuctionSegment[]>([])
+  const [segmentsTotal, setSegmentsTotal] = useState<number | undefined>(undefined)
+  const [segmentsPages, setSegmentsPages] = useState<number | undefined>(undefined)
+  const [page, setPage] = useState(0)
+  const [searchInput, setSearchInput] = useState('')
+  const [search, setSearch] = useState('')
+  const [sort, setSort] = useState<'id' | '-id' | 'name' | '-createdAt'>('-id')
+  // Every segment, for the strategy form dropdown
+  const [allSegments, setAllSegments] = useState<AuctionSegment[]>([])
   const [strategies, setStrategies] = useState<SegmentStrategy[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -45,11 +59,15 @@ export const SegmentsView: React.FC = () => {
     setLoading(true)
     setError(null)
     try {
-      const [segList, stratList] = await Promise.all([
-        api.listSegments(),
+      const [segPage, all, stratList] = await Promise.all([
+        api.listSegments({ search: search || undefined, sort, page, 'per-page': SEGMENTS_PER_PAGE }),
+        api.listAllSegments(),
         api.listSegmentStrategies(),
       ])
-      setSegments(segList)
+      setSegments(segPage.segments)
+      setSegmentsTotal(segPage.totalCount)
+      setSegmentsPages(segPage.totalPages)
+      setAllSegments(all)
       setStrategies(stratList)
     } catch (err: any) {
       setError(err?.message || 'Failed to load segments or strategies')
@@ -60,7 +78,13 @@ export const SegmentsView: React.FC = () => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [page, search, sort])
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setPage(0)
+    setSearch(searchInput.trim())
+  }
 
   // Handle Rename
   const handleStartRename = (seg: AuctionSegment) => {
@@ -90,9 +114,9 @@ export const SegmentsView: React.FC = () => {
   const handleOpenCreateStrategy = () => {
     setEditingStrategy(null)
     // Pick first segment not yet mapped if possible
-    const unmapped = segments.find((s) => !strategies.some((st) => st.segment.id === s.id))
+    const unmapped = allSegments.find((s) => !strategies.some((st) => st.segment.id === s.id))
     setStrategyForm({
-      segmentId: unmapped ? unmapped.id : segments[0]?.id || 1,
+      segmentId: unmapped ? unmapped.id : allSegments[0]?.id || 1,
       cutStrategy: CUT_STRATEGY_NAMES[0],
       hikeStrategy: HIKE_STRATEGY_NAMES[0],
       lastFreeChangeCutStrategy: CUT_STRATEGY_NAMES[0],
@@ -196,16 +220,71 @@ export const SegmentsView: React.FC = () => {
             </h2>
             <p className="text-xs text-slate-400 mt-1">
               Segments outlive retraining through inheritance. Renaming a segment updates its display name everywhere.
+              Every training run creates new segments for groups it could not inherit, so most segments belong to
+              candidate or retired clusters.
             </p>
           </div>
-          <button
-            onClick={fetchData}
-            disabled={loading}
-            className="flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
-            <span>Refresh</span>
-          </button>
+          <div className="flex items-center space-x-2">
+            <span className="text-xs px-2.5 py-1 rounded-full bg-purple-950/80 text-purple-300 border border-purple-800/80 font-mono">
+              Total: {segmentsTotal !== undefined ? segmentsTotal : '…'}
+            </span>
+            <button
+              onClick={fetchData}
+              disabled={loading}
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+              <span>Refresh</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Search & sort */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 flex-1 min-w-[240px]">
+            <div className="relative w-full max-w-sm">
+              <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+              <input
+                type="text"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                placeholder="Search by name…"
+                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500"
+              />
+            </div>
+            <button type="submit" className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium">
+              Search
+            </button>
+            {search && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchInput('')
+                  setSearch('')
+                  setPage(0)
+                }}
+                className="text-[11px] text-slate-400 hover:text-slate-200"
+              >
+                clear
+              </button>
+            )}
+          </form>
+          <div className="flex items-center space-x-2">
+            <span className="text-xs text-slate-400">Sort:</span>
+            <select
+              value={sort}
+              onChange={(e) => {
+                setSort(e.target.value as typeof sort)
+                setPage(0)
+              }}
+              className="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500"
+            >
+              <option value="-id">Newest first</option>
+              <option value="id">Oldest first</option>
+              <option value="name">Name A→Z</option>
+              <option value="-createdAt">Created (newest)</option>
+            </select>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -229,6 +308,37 @@ export const SegmentsView: React.FC = () => {
               </button>
             </div>
           ))}
+          {segments.length === 0 && !loading && (
+            <div className="md:col-span-3 px-4 py-8 text-center text-slate-500 text-xs">
+              No segments{search ? ` matching "${search}"` : ''}.
+            </div>
+          )}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-800 text-xs">
+          <div className="text-slate-400">
+            Page <span className="font-semibold text-slate-200">{page + 1}</span>
+            {segmentsPages !== undefined && <span> of {segmentsPages}</span>}
+          </div>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setPage((p) => Math.max(0, p - 1))}
+              disabled={page <= 0 || loading}
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+              <span>Previous</span>
+            </button>
+            <button
+              onClick={() => setPage((p) => p + 1)}
+              disabled={(segmentsPages !== undefined && page + 1 >= segmentsPages) || loading}
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200"
+            >
+              <span>Next</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -409,7 +519,7 @@ export const SegmentsView: React.FC = () => {
                     }
                     className="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-200 focus:outline-none focus:border-purple-500"
                   >
-                    {segments.map((s) => (
+                    {allSegments.map((s) => (
                       <option key={s.id} value={s.id}>
                         {s.name || `Segment #${s.id}`}
                       </option>

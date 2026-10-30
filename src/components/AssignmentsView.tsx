@@ -35,7 +35,7 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
 
   // Load segments list for dropdown
   useEffect(() => {
-    api.listSegments().then(setSegments).catch(console.error)
+    api.listAllSegments().then(setSegments).catch(console.error)
   }, [])
 
   const fetchAssignments = async () => {

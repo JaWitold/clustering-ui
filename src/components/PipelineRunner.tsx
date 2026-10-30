@@ -298,6 +298,11 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
               Trigger asynchronous background tasks through the price engine clustering API endpoints.
               Each trigger dispatches a deduplicated message on the worker queue.
             </p>
+            <p className="text-xs text-slate-500 mt-2 max-w-2xl">
+              Schedule: <span className="text-slate-300">daily 01:00</span> Measure → Vectorize → Assign for yesterday;{' '}
+              <span className="text-slate-300">weekly Mon 03:00</span> Update Centroids; Training is{' '}
+              <span className="text-slate-300">on demand only</span>. Use the buttons below for reruns and backfills.
+            </p>
           </div>
           <button
             onClick={onNavigateToRuns}
@@ -321,7 +326,7 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
               <code className="text-[11px] text-slate-500 font-mono">POST /market-days</code>
             </div>
 
-            <h3 className="text-base font-bold text-slate-100 mb-1">Measure Market Days</h3>
+            <h3 className="text-base font-bold text-slate-100 mb-1">Measure Market Days (Daily)</h3>
             <p className="text-xs text-slate-400 mb-5 leading-relaxed">
               Replays parser offer history hour by hour to compute daily market metrics (best prices, top competitor activity, standings).
             </p>
@@ -379,6 +384,11 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
                 </button>
               </div>
 
+              <div className="p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 space-y-1">
+                <div>• Runs daily (cron 01:00) for yesterday, first in the daily chain</div>
+                <div>• Backfill at most 30 days; re-measuring a day overwrites it</div>
+              </div>
+
               <button
                 type="submit"
                 disabled={measureLoading}
@@ -422,7 +432,7 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
               <code className="text-[11px] text-slate-500 font-mono">POST /feature-vectors</code>
             </div>
 
-            <h3 className="text-base font-bold text-slate-100 mb-1">Vectorize Features</h3>
+            <h3 className="text-base font-bold text-slate-100 mb-1">Vectorize Features (Daily)</h3>
             <p className="text-xs text-slate-400 mb-5 leading-relaxed">
               Aggregates the past 14 market days of each product into 19 numerical features per our offer and writes documents to OpenSearch.
             </p>
@@ -453,6 +463,7 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
               </div>
 
               <div className="p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 space-y-1">
+                <div>• Runs daily right after Measure, for the same day</div>
                 <div>• Requires usable days ≥ 7 in feature window</div>
                 <div>• Writes 19D vectors + vector version hash</div>
               </div>
@@ -500,7 +511,7 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
               <code className="text-[11px] text-slate-500 font-mono">POST /clusters</code>
             </div>
 
-            <h3 className="text-base font-bold text-slate-100 mb-1">Train Auction Clusters</h3>
+            <h3 className="text-base font-bold text-slate-100 mb-1">Train Auction Clusters (On demand)</h3>
             <p className="text-xs text-slate-400 mb-5 leading-relaxed">
               Fits robust IQR scaler, trains k-means models via ML Commons across k range with restarts, matches inherited segments.
             </p>
@@ -567,6 +578,11 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
                 </div>
               </div>
 
+              <div className="p-3 rounded-lg bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 space-y-1">
+                <div>• On demand only, never scheduled (e.g. monthly or after a feature-set change)</div>
+                <div>• Needs vectors for the day; creates Candidates to review before Promote</div>
+              </div>
+
               <button
                 type="submit"
                 disabled={trainLoading}
@@ -616,7 +632,9 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
           title="Assign Segments (Daily)"
           description="Moves every vectorized auction of the day to the nearest segment of the promoted cluster, through the hysteresis that keeps an auction in its segment until another has been nearest long enough."
           notes={[
+            'Requires Measure and Vectorize for the same day first (daily chain: Measure → Vectorize → Assign)',
             'Requires a Promoted cluster and feature vectors for the day',
+            'Backfill missed days in ascending order',
             'Day must be finished (before today), Y-m-d',
             'Creates a DailyAssignment run',
           ]}

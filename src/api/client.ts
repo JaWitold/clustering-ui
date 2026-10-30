@@ -8,7 +8,7 @@ import type {
 
 const DEFAULT_BASE_URL = 'http://localhost:2080/v2.0'
 const DEFAULT_TOKEN =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJFZERTQSIsImtpZCI6ImF1dGgta2V5LTIwMjYtMDUifQ.eyJleHAiOjE4MjQ4MDQzNzksImlhdCI6MTc5MzI2ODM3OSwidWlkIjoxMX0.-uh05K8q4wKssW5pzhd4CdfRAa1nyGAZxxCat0Yc889gz_yhXxmbNcCDowrTYH5GeeaaGc21JnR_baT8SUi1Cw'
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJFZERTQSIsImtpZCI6ImF1dGgta2V5LTIwMjYtMDUifQ.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODEiLCJleHAiOjE3OTMzNTc5MTEsImlhdCI6MTc5MzM1MDcxMSwidWlkIjoxMX0._UTafhHcoQdqNl3UiIMTMUaXztDGjP09ShMmFVsfo7htkz4BveYaocC90uqXipg8pPkOiAaMTnvBX7SBqm9dBQ'
 
 export interface ApiConfig {
   baseUrl: string
@@ -277,11 +277,37 @@ export const api = {
   },
 
   // Segments
-  async listSegments(search?: string): Promise<AuctionSegment[]> {
-    const params: Record<string, any> = {}
-    if (search) params.search = search
-    const res = await apiFetch<AuctionSegment[]>('/price-engine/clustering/segments', { params })
-    return res.data
+  /** One page of segments (API caps per-page at 100; sort: id | name | createdAt, "-" for descending). */
+  async listSegments(params?: {
+    search?: string
+    sort?: string
+    page?: number
+    'per-page'?: number
+  }): Promise<{ segments: AuctionSegment[]; totalCount?: number; totalPages?: number }> {
+    const queryParams: Record<string, any> = {}
+    if (params?.search) queryParams.search = params.search
+    if (params?.sort) queryParams.sort = params.sort
+    if (params?.page) queryParams.page = params.page
+    if (params?.['per-page']) queryParams['per-page'] = params['per-page']
+    const res = await apiFetch<AuctionSegment[]>('/price-engine/clustering/segments', { params: queryParams })
+    const totalCount = res.headers.get('X-Pagination-Total-Count')
+      ? parseInt(res.headers.get('X-Pagination-Total-Count')!, 10)
+      : undefined
+    const totalPages = res.headers.get('X-Pagination-Page-Count')
+      ? parseInt(res.headers.get('X-Pagination-Page-Count')!, 10)
+      : undefined
+    return { segments: res.data, totalCount, totalPages }
+  },
+
+  /** Every segment, fetched page by page (for dropdowns). */
+  async listAllSegments(): Promise<AuctionSegment[]> {
+    const all: AuctionSegment[] = []
+    for (let page = 0; page < 100; page++) {
+      const res = await this.listSegments({ page, 'per-page': 100, sort: 'id' })
+      all.push(...res.segments)
+      if (res.totalPages !== undefined ? page + 1 >= res.totalPages : res.segments.length < 100) break
+    }
+    return all
   },
 
   async getSegment(id: number): Promise<AuctionSegment> {
