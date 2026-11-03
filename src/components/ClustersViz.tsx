@@ -452,7 +452,7 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
     setLoading(true);
     setError(null);
     try {
-      const list = await api.listClusters();
+      const list = await api.listClusters({ "per-page": OFFER_PAGE_SIZE });
       setClusters(list);
       if (list.length > 0) {
         // default select Promoted cluster if available, else first
