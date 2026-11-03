@@ -181,14 +181,14 @@ export const RunsMonitor: React.FC = () => {
           <table className="min-w-full divide-y divide-slate-800 text-left text-xs">
             <thead className="bg-slate-950/80 text-slate-400 font-semibold uppercase tracking-wider">
               <tr>
-                <th className="px-4 py-3">Run ID</th>
-                <th className="px-4 py-3">Stage / Type</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Target Day</th>
-                <th className="px-4 py-3">Cluster ID</th>
-                <th className="px-4 py-3">Started</th>
-                <th className="px-4 py-3">Duration</th>
-                <th className="px-4 py-3 text-right">Summary & Output</th>
+                <th className="px-4 py-3 whitespace-nowrap">Run ID</th>
+                <th className="px-4 py-3 whitespace-nowrap">Stage / Type</th>
+                <th className="px-4 py-3 whitespace-nowrap">Status</th>
+                <th className="px-4 py-3 whitespace-nowrap">Target Day</th>
+                <th className="px-4 py-3 whitespace-nowrap">Cluster ID</th>
+                <th className="px-4 py-3 whitespace-nowrap">Started</th>
+                <th className="px-4 py-3 whitespace-nowrap">Duration</th>
+                <th className="px-4 py-3 whitespace-nowrap text-right">Summary & Output</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/80 bg-slate-900/40">
@@ -215,13 +215,13 @@ export const RunsMonitor: React.FC = () => {
                     onClick={() => handleInspectRun(r)}
                     className="hover:bg-slate-800/40 cursor-pointer transition-colors"
                   >
-                    <td className="px-4 py-3 font-mono font-medium text-slate-300">#{r.id}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 font-mono font-medium text-slate-300 whitespace-nowrap">#{r.id}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
                       <span className={`px-2 py-0.5 rounded text-[11px] font-medium border ${typeBadge}`}>
                         {r.type}
                       </span>
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 whitespace-nowrap">
                       <span className={`inline-flex items-center space-x-1 px-2 py-0.5 rounded text-[11px] font-medium border ${statusBadge}`}>
                         {r.marking === 'Completed' ? (
                           <CheckCircle2 className="w-3 h-3 text-emerald-400" />
@@ -233,17 +233,17 @@ export const RunsMonitor: React.FC = () => {
                         <span>{r.marking}</span>
                       </span>
                     </td>
-                    <td className="px-4 py-3 font-mono text-slate-300">{r.day}</td>
-                    <td className="px-4 py-3 font-mono text-slate-400">
+                    <td className="px-4 py-3 font-mono text-slate-300 whitespace-nowrap">{r.day}</td>
+                    <td className="px-4 py-3 font-mono text-slate-400 whitespace-nowrap">
                       {r.cluster?.id ? `Cluster #${r.cluster.id}` : '—'}
                     </td>
-                    <td className="px-4 py-3 text-slate-400">
+                    <td className="px-4 py-3 text-slate-400 whitespace-nowrap">
                       {r.startedAt ? new Date(r.startedAt).toLocaleTimeString() : '—'}
                     </td>
-                    <td className="px-4 py-3 font-mono text-slate-300">
+                    <td className="px-4 py-3 font-mono text-slate-300 whitespace-nowrap">
                       {formatDuration(r.startedAt, r.finishedAt)}
                     </td>
-                    <td className="px-4 py-3 text-right">
+                    <td className="px-4 py-3 text-right whitespace-nowrap">
                       <button
                         onClick={(e) => {
                           e.stopPropagation()
@@ -276,8 +276,8 @@ export const RunsMonitor: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl max-h-[85vh] shadow-2xl flex flex-col overflow-hidden">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/60">
-              <div className="flex items-center space-x-2">
-                <FileText className="w-5 h-5 text-purple-400" />
+              <div className="flex flex-wrap items-center gap-2">
+                <FileText className="w-5 h-5 text-purple-400 shrink-0" />
                 <h3 className="text-base font-bold text-slate-100">
                   Run #{selectedRun.id} • {selectedRun.type}
                 </h3>
@@ -287,7 +287,7 @@ export const RunsMonitor: React.FC = () => {
               </div>
               <button
                 onClick={() => setSelectedRun(null)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 shrink-0 ml-2"
               >
                 <X className="w-5 h-5" />
               </button>

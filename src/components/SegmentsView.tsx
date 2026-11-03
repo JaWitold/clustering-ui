@@ -212,7 +212,7 @@ export const SegmentsView: React.FC = () => {
 
       {/* Top Section: Segments List */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div>
             <h2 className="text-lg font-bold text-slate-100 flex items-center space-x-2">
               <Tag className="w-5 h-5 text-purple-400" />
@@ -224,7 +224,7 @@ export const SegmentsView: React.FC = () => {
               candidate or retired clusters.
             </p>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 shrink-0 self-start sm:self-auto">
             <span className="text-xs px-2.5 py-1 rounded-full bg-purple-950/80 text-purple-300 border border-purple-800/80 font-mono">
               Total: {segmentsTotal !== undefined ? segmentsTotal : '…'}
             </span>
@@ -241,8 +241,8 @@ export const SegmentsView: React.FC = () => {
 
         {/* Search & sort */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 flex-1 min-w-[240px]">
-            <div className="relative w-full max-w-sm">
+          <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 w-full sm:w-auto flex-1 max-w-md">
+            <div className="relative w-full">
               <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
               <input
                 type="text"
@@ -252,7 +252,7 @@ export const SegmentsView: React.FC = () => {
                 className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500"
               />
             </div>
-            <button type="submit" className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium">
+            <button type="submit" className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium shrink-0">
               Search
             </button>
             {search && (
@@ -263,7 +263,7 @@ export const SegmentsView: React.FC = () => {
                   setSearch('')
                   setPage(0)
                 }}
-                className="text-[11px] text-slate-400 hover:text-slate-200"
+                className="text-[11px] text-slate-400 hover:text-slate-200 shrink-0"
               >
                 clear
               </button>
@@ -316,7 +316,7 @@ export const SegmentsView: React.FC = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-800 text-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-3 border-t border-slate-800 text-xs">
           <div className="text-slate-400">
             Page <span className="font-semibold text-slate-200">{page + 1}</span>
             {segmentsPages !== undefined && <span> of {segmentsPages}</span>}
@@ -367,31 +367,31 @@ export const SegmentsView: React.FC = () => {
           <table className="min-w-full divide-y divide-slate-800 text-left text-xs">
             <thead className="bg-slate-950/80 text-slate-400 font-semibold uppercase tracking-wider">
               <tr>
-                <th className="px-4 py-3">Mapping ID</th>
-                <th className="px-4 py-3">Segment</th>
-                <th className="px-4 py-3">Cut Strategy</th>
-                <th className="px-4 py-3">Hike Strategy</th>
-                <th className="px-4 py-3">Last Free Cut</th>
-                <th className="px-4 py-3">Last Free Hike</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Note</th>
-                <th className="px-4 py-3 text-right">Actions</th>
+                <th className="px-4 py-3 whitespace-nowrap">Mapping ID</th>
+                <th className="px-4 py-3 whitespace-nowrap">Segment</th>
+                <th className="px-4 py-3 whitespace-nowrap">Cut Strategy</th>
+                <th className="px-4 py-3 whitespace-nowrap">Hike Strategy</th>
+                <th className="px-4 py-3 whitespace-nowrap">Last Free Cut</th>
+                <th className="px-4 py-3 whitespace-nowrap">Last Free Hike</th>
+                <th className="px-4 py-3 whitespace-nowrap">Status</th>
+                <th className="px-4 py-3 whitespace-nowrap">Note</th>
+                <th className="px-4 py-3 whitespace-nowrap text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/80 bg-slate-900/40">
               {strategies.map((st) => (
                 <tr key={st.id} className="hover:bg-slate-800/40 transition-colors">
-                  <td className="px-4 py-3 font-mono font-medium text-slate-400">#{st.id}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 font-mono font-medium text-slate-400 whitespace-nowrap">#{st.id}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">
                     <span className="font-bold text-slate-200">
                       {st.segment?.name || `Segment #${st.segment?.id}`}
                     </span>
                   </td>
-                  <td className="px-4 py-3 font-mono text-purple-300 font-medium">{st.cutStrategy}</td>
-                  <td className="px-4 py-3 font-mono text-indigo-300 font-medium">{st.hikeStrategy}</td>
-                  <td className="px-4 py-3 font-mono text-slate-300">{st.lastFreeChangeCutStrategy}</td>
-                  <td className="px-4 py-3 font-mono text-slate-300">{st.lastFreeChangeHikeStrategy}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 font-mono text-purple-300 font-medium whitespace-nowrap">{st.cutStrategy}</td>
+                  <td className="px-4 py-3 font-mono text-indigo-300 font-medium whitespace-nowrap">{st.hikeStrategy}</td>
+                  <td className="px-4 py-3 font-mono text-slate-300 whitespace-nowrap">{st.lastFreeChangeCutStrategy}</td>
+                  <td className="px-4 py-3 font-mono text-slate-300 whitespace-nowrap">{st.lastFreeChangeHikeStrategy}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">
                     {st.enabled ? (
                       <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-950/60 text-emerald-300 border border-emerald-800">
                         <Check className="w-3 h-3 text-emerald-400" />
@@ -406,7 +406,7 @@ export const SegmentsView: React.FC = () => {
                   <td className="px-4 py-3 text-slate-400 italic max-w-xs truncate">
                     {st.note || '—'}
                   </td>
-                  <td className="px-4 py-3 text-right space-x-2">
+                  <td className="px-4 py-3 text-right space-x-2 whitespace-nowrap">
                     <button
                       onClick={() => handleOpenEditStrategy(st)}
                       className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium"

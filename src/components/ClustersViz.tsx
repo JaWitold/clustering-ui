@@ -12,11 +12,13 @@ import {
   ListOrdered,
   Crosshair,
   X,
+  HelpCircle,
+  FolderKanban,
 } from "lucide-react";
 import type { Cluster, Centroid, ClusterAssignment } from "../types/clustering";
 import { FEATURE_GROUPS } from "../types/clustering";
 import { api } from "../api/client";
-import { computePCA } from "../utils/pca";
+import { computePCA, getComponentDetails } from "../utils/pca";
 import {
   voronoiCells,
   paddedBounds,
@@ -161,6 +163,161 @@ function placeOffersAroundCentroids(
   return bySegment;
 }
 
+const RUN_THEMES = [
+  {
+    badge: "bg-indigo-950/80 text-indigo-300 border-indigo-700/80",
+    cardBorder: "border-l-indigo-500",
+    cardBg: "hover:bg-indigo-950/20",
+    containerBorder: "border-indigo-800/40",
+    containerBg: "bg-indigo-950/10",
+    accentText: "text-indigo-400",
+  },
+  {
+    badge: "bg-cyan-950/80 text-cyan-300 border-cyan-700/80",
+    cardBorder: "border-l-cyan-500",
+    cardBg: "hover:bg-cyan-950/20",
+    containerBorder: "border-cyan-800/40",
+    containerBg: "bg-cyan-950/10",
+    accentText: "text-cyan-400",
+  },
+  {
+    badge: "bg-fuchsia-950/80 text-fuchsia-300 border-fuchsia-700/80",
+    cardBorder: "border-l-fuchsia-500",
+    cardBg: "hover:bg-fuchsia-950/20",
+    containerBorder: "border-fuchsia-800/40",
+    containerBg: "bg-fuchsia-950/10",
+    accentText: "text-fuchsia-400",
+  },
+  {
+    badge: "bg-amber-950/80 text-amber-300 border-amber-700/80",
+    cardBorder: "border-l-amber-500",
+    cardBg: "hover:bg-amber-950/20",
+    containerBorder: "border-amber-800/40",
+    containerBg: "bg-amber-950/10",
+    accentText: "text-amber-400",
+  },
+  {
+    badge: "bg-emerald-950/80 text-emerald-300 border-emerald-700/80",
+    cardBorder: "border-l-emerald-500",
+    cardBg: "hover:bg-emerald-950/20",
+    containerBorder: "border-emerald-800/40",
+    containerBg: "bg-emerald-950/10",
+    accentText: "text-emerald-400",
+  },
+  {
+    badge: "bg-sky-950/80 text-sky-300 border-sky-700/80",
+    cardBorder: "border-l-sky-500",
+    cardBg: "hover:bg-sky-950/20",
+    containerBorder: "border-sky-800/40",
+    containerBg: "bg-sky-950/10",
+    accentText: "text-sky-400",
+  },
+];
+
+function getRunTheme(
+  runId: number | null | undefined,
+  allRunIds: (number | null)[],
+) {
+  if (runId === null || runId === undefined) {
+    return {
+      badge: "bg-slate-800 text-slate-400 border-slate-700",
+      cardBorder: "border-l-slate-600",
+      cardBg: "hover:bg-slate-800/30",
+      containerBorder: "border-slate-800",
+      containerBg: "bg-slate-950/40",
+      accentText: "text-slate-400",
+    };
+  }
+  const idx = allRunIds.indexOf(runId);
+  return RUN_THEMES[Math.max(0, idx) % RUN_THEMES.length];
+}
+
+const InertiaTooltip: React.FC<{
+  value: number | null | undefined;
+  isMin?: boolean;
+}> = ({ value, isMin }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="relative">
+      <div
+        className="flex items-center space-x-1 cursor-pointer select-none"
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen((o) => !o);
+        }}
+      >
+        <span className="text-slate-500 block">Inertia</span>
+        <HelpCircle className="w-3 h-3 text-slate-500 hover:text-purple-400 transition-colors" />
+      </div>
+
+      {open && (
+        <div
+          className="absolute bottom-full left-0 mb-2 z-50 w-64 p-3 rounded-xl bg-slate-950/95 border border-slate-700 shadow-2xl backdrop-blur-md text-[11px] leading-relaxed text-slate-300 pointer-events-none"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex items-center space-x-1.5 font-semibold text-purple-300 mb-1">
+            <HelpCircle className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+            <span>Inertia (WCSS)</span>
+          </div>
+          <p className="text-slate-300">
+            Within-Cluster Sum of Squares measures how compact the clusters are. Lower values indicate tighter, more cohesive clusters. In k-means, higher k naturally lowers inertia.
+          </p>
+          <div className="absolute top-full left-4 -mt-1 border-4 border-transparent border-t-slate-700" />
+        </div>
+      )}
+
+      <div className="flex items-baseline space-x-1 mt-0.5">
+        <span
+          className={`font-semibold ${
+            isMin ? "text-emerald-400 font-bold" : "text-slate-300"
+          }`}
+        >
+          {value !== null && value !== undefined ? value.toFixed(1) : "N/A"}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const OverviewInertiaTooltip: React.FC<{
+  value: number | null | undefined;
+}> = ({ value }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span className="relative inline-flex items-center space-x-1 cursor-pointer border-b border-dotted border-slate-600">
+      <span
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onClick={() => setOpen((o) => !o)}
+        className="inline-flex items-center space-x-1"
+      >
+        <span>Inertia:</span>
+        <b className="text-slate-200">
+          {value !== null && value !== undefined ? value.toFixed(2) : "N/A"}
+        </b>
+        <HelpCircle className="w-3.5 h-3.5 text-slate-500 hover:text-purple-400 transition-colors inline" />
+      </span>
+
+      {open && (
+        <span className="absolute bottom-full left-0 mb-2 z-50 w-64 p-3 rounded-xl bg-slate-950/95 border border-slate-700 shadow-2xl backdrop-blur-md text-[11px] leading-relaxed text-slate-300 pointer-events-none block">
+          <span className="flex items-center space-x-1.5 font-semibold text-purple-300 mb-1">
+            <HelpCircle className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+            <span>Inertia (WCSS)</span>
+          </span>
+          <span className="text-slate-300 block">
+            Within-Cluster Sum of Squares measures how compact the clusters are. Lower values indicate tighter, more cohesive clusters. In k-means, higher k naturally lowers inertia.
+          </span>
+          <span className="absolute top-full left-4 -mt-1 border-4 border-transparent border-t-slate-700 block" />
+        </span>
+      )}
+    </span>
+  );
+};
+
 interface ClustersVizProps {
   /** Navigate to the Assignments tab with the given offer id pre-searched. */
   onOpenOfferAssignments?: (offerId: string) => void;
@@ -189,6 +346,62 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
   const [scaleBubbleSize, setScaleBubbleSize] = useState(true);
   const [showOffers, setShowOffers] = useState(false);
   const [showVoronoi, setShowVoronoi] = useState(true);
+  const [groupByRun, setGroupByRun] = useState(true);
+
+  // Grouping clusters by trainingRun.id
+  const uniqueRunIds = useMemo(() => {
+    const ids: (number | null)[] = [];
+    clusters.forEach((c) => {
+      const id = c.trainingRun?.id ?? null;
+      if (!ids.includes(id)) ids.push(id);
+    });
+    return ids;
+  }, [clusters]);
+
+  const runGroups = useMemo(() => {
+    const groupsMap = new Map<
+      number | string,
+      {
+        runId: number | null;
+        clusters: Cluster[];
+        createdAt?: string;
+        hasPromoted: boolean;
+      }
+    >();
+
+    clusters.forEach((c) => {
+      const runId = c.trainingRun?.id ?? null;
+      const key = runId !== null ? runId : "none";
+      if (!groupsMap.has(key)) {
+        groupsMap.set(key, {
+          runId,
+          clusters: [],
+          createdAt: c.createdAt,
+          hasPromoted: false,
+        });
+      }
+      const grp = groupsMap.get(key)!;
+      grp.clusters.push(c);
+      if (c.marking === "Promoted") grp.hasPromoted = true;
+    });
+
+    return Array.from(groupsMap.values());
+  }, [clusters]);
+
+  // Minimum inertia per trainingRun.id to visually highlight/backlight the best cluster in each batch
+  const minInertiaByRun = useMemo(() => {
+    const map = new Map<number | null, number>();
+    clusters.forEach((c) => {
+      const runId = c.trainingRun?.id ?? null;
+      if (c.inertia !== null && c.inertia !== undefined) {
+        const cur = map.get(runId);
+        if (cur === undefined || c.inertia < cur) {
+          map.set(runId, c.inertia);
+        }
+      }
+    });
+    return map;
+  }, [clusters]);
 
   // Offers (cluster assignments) overlay
   const [offersResult, setOffersResult] = useState<{
@@ -401,6 +614,28 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
     const scaledMatrix = centroids.map((c) => c.scaled);
     return computePCA(scaledMatrix);
   }, [vizMode, centroids]);
+
+  const pc1Details = useMemo(() => {
+    if (!pcaResult) return null;
+    return getComponentDetails(
+      pcaResult.pc1Coefficients,
+      pcaResult.explainedVarianceRatio[0] || 0,
+      1,
+      featureNames,
+      FEATURE_GROUPS,
+    );
+  }, [pcaResult, featureNames]);
+
+  const pc2Details = useMemo(() => {
+    if (!pcaResult) return null;
+    return getComponentDetails(
+      pcaResult.pc2Coefficients,
+      pcaResult.explainedVarianceRatio[1] || 0,
+      2,
+      featureNames,
+      FEATURE_GROUPS,
+    );
+  }, [pcaResult, featureNames]);
 
   const handleFindOffer = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -879,7 +1114,8 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
             `Size: <b>${c.size}</b> auctions<br>` +
             `Inherited: ${inheritedText}<br>` +
             `Total Euclidean Drift: <b>${driftDist}</b><br>` +
-            `PC1: <b>%{x:.3f}</b>, PC2: <b>%{y:.3f}</b><extra></extra>`,
+            `PC1${pc1Details?.shortName ? ` [${pc1Details.shortName}]` : ""}: <b>%{x:.3f}</b><br>` +
+            `PC2${pc2Details?.shortName ? ` [${pc2Details.shortName}]` : ""}: <b>%{y:.3f}</b><extra></extra>`,
         });
 
         if (showDriftVectors) {
@@ -935,8 +1171,10 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
         plotData: traces,
         plotLayout: {
           title: {
-            text: `PCA 2D Projection (PC1: ${pc1Var}%, PC2: ${pc2Var}% variance explained)`,
-            font: { color: "#f8fafc", size: 16 },
+            text: pc1Details && pc2Details
+              ? `PCA 2D Projection • PC1 (${pc1Details.shortName}) vs PC2 (${pc2Details.shortName})`
+              : `PCA 2D Projection (PC1: ${pc1Var}%, PC2: ${pc2Var}% variance explained)`,
+            font: { color: "#f8fafc", size: 15 },
           },
           xaxis: {
             title: {
@@ -968,6 +1206,8 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
     featureIndices,
     centroidDrifts,
     pcaResult,
+    pc1Details,
+    pc2Details,
     buildOfferTraces,
     buildHighlightTraces,
     buildVoronoiShapes,
@@ -980,6 +1220,84 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
     if (typeof offerId === "string" && offerId && onOpenOfferAssignments) {
       onOpenOfferAssignments(offerId);
     }
+  };
+
+  const renderClusterCard = (c: Cluster, theme: ReturnType<typeof getRunTheme>) => {
+    const isSelected = selectedClusterId === c.id;
+    const runId = c.trainingRun?.id;
+    const minInertia = minInertiaByRun.get(runId ?? null);
+    const isMinInertia =
+      c.inertia !== null &&
+      c.inertia !== undefined &&
+      minInertia !== undefined &&
+      Math.abs(c.inertia - minInertia) < 1e-4;
+
+    const markingColor =
+      c.marking === "Promoted"
+        ? "bg-emerald-950/60 text-emerald-400 border-emerald-700"
+        : c.marking === "Candidate"
+          ? "bg-amber-950/60 text-amber-400 border-amber-700"
+          : "bg-slate-800 text-slate-400 border-slate-700";
+
+    // Subtle backlight glow + green tint for minimal inertia
+    const baseBorderAndBg = isSelected
+      ? "bg-purple-950/40 border-purple-500 shadow-xl shadow-purple-500/15 ring-2 ring-purple-500/60"
+      : isMinInertia
+        ? "bg-emerald-950/20 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.14)] hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.22)]"
+        : `bg-slate-950/60 border-slate-800/80 hover:border-slate-700 ${theme.cardBg}`;
+
+    return (
+      <div
+        key={c.id}
+        onClick={() => setSelectedClusterId(c.id)}
+        className={`relative p-3.5 rounded-xl border border-l-4 cursor-pointer transition-all ${theme.cardBorder} ${baseBorderAndBg}`}
+      >
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center space-x-1.5 flex-wrap">
+            <span className="font-bold text-sm text-slate-100">
+              Cluster #{c.id}
+            </span>
+            {runId ? (
+              <span
+                className={`text-[10px] px-1.5 py-0.5 rounded font-mono font-medium border ${theme.badge}`}
+                title={`Trained in Pipeline Run #${runId}`}
+              >
+                Run #{runId}
+              </span>
+            ) : (
+              <span
+                className="text-[10px] px-1.5 py-0.5 rounded font-mono text-slate-500 border border-slate-800 bg-slate-900"
+                title="Training Run not recorded"
+              >
+                Run —
+              </span>
+            )}
+          </div>
+          <span
+            className={`text-xs px-2 py-0.5 rounded-full font-medium border shrink-0 ${markingColor}`}
+          >
+            {c.marking}
+          </span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-slate-400">
+          <div>
+            <span className="text-slate-500 block">Groups (k)</span>
+            <span className="font-semibold text-slate-300">
+              {c.segmentCount} segments
+            </span>
+          </div>
+          <InertiaTooltip value={c.inertia} isMin={isMinInertia} />
+        </div>
+        <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 font-mono">
+          <span>v: {c.vectorVersion?.slice(0, 12)}...</span>
+          <span>
+            {c.createdAt
+              ? new Date(c.createdAt).toLocaleDateString()
+              : ""}
+          </span>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -1002,87 +1320,99 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
 
       {/* Cluster Cards Selector */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-2">
             <Layers className="w-5 h-5 text-purple-400" />
             <h2 className="text-base font-semibold text-slate-100">
               Auction Clusters
             </h2>
-            <span className="text-xs text-slate-400 px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+            <span className="text-xs text-slate-400 px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono">
               {clusters.length} total
             </span>
+            {uniqueRunIds.filter(Boolean).length > 0 && (
+              <span className="text-xs text-indigo-400 px-2 py-0.5 rounded bg-indigo-950/60 border border-indigo-800/80 font-mono">
+                {uniqueRunIds.filter(Boolean).length} training batches
+              </span>
+            )}
           </div>
-          <button
-            onClick={loadClusters}
-            disabled={loading}
-            className="flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
-          >
-            <RefreshCw
-              className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`}
-            />
-            <span>Refresh</span>
-          </button>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setGroupByRun((g) => !g)}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                groupByRun
+                  ? "bg-purple-950/70 text-purple-300 border-purple-700 shadow-sm"
+                  : "bg-slate-800/80 text-slate-400 border-slate-700 hover:text-slate-200"
+              }`}
+              title={groupByRun ? "Showing clusters grouped by Training Run" : "Group clusters by Training Run"}
+            >
+              <FolderKanban className="w-3.5 h-3.5" />
+              <span>{groupByRun ? "Grouped by Run" : "Group by Run"}</span>
+            </button>
+            <button
+              onClick={loadClusters}
+              disabled={loading}
+              className="flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+            >
+              <RefreshCw
+                className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`}
+              />
+              <span>Refresh</span>
+            </button>
+          </div>
         </div>
 
         {/* Cluster list pills */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {clusters.map((c) => {
-            const isSelected = selectedClusterId === c.id;
-            const markingColor =
-              c.marking === "Promoted"
-                ? "bg-emerald-950/60 text-emerald-400 border-emerald-700"
-                : c.marking === "Candidate"
-                  ? "bg-amber-950/60 text-amber-400 border-amber-700"
-                  : "bg-slate-800 text-slate-400 border-slate-700";
+        {groupByRun ? (
+          <div className="space-y-4">
+            {runGroups.map((group) => {
+              const theme = getRunTheme(group.runId, uniqueRunIds);
+              return (
+                <div
+                  key={group.runId ?? "standalone"}
+                  className={`p-3.5 sm:p-4 rounded-xl border ${theme.containerBorder} ${theme.containerBg}`}
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center space-x-2 flex-wrap">
+                      <span
+                        className={`px-2.5 py-0.5 rounded font-mono font-bold text-xs border ${theme.badge}`}
+                      >
+                        {group.runId
+                          ? `Training Run #${group.runId}`
+                          : "Untracked Training Batch"}
+                      </span>
+                      <span className="text-xs text-slate-300 font-medium">
+                        {group.clusters.length}{" "}
+                        {group.clusters.length === 1 ? "cluster" : "clusters"}
+                      </span>
+                      {group.createdAt && (
+                        <span className="text-xs text-slate-500 font-mono">
+                          • {new Date(group.createdAt).toLocaleDateString()}
+                        </span>
+                      )}
+                    </div>
+                    {group.hasPromoted && (
+                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800 font-medium flex items-center space-x-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>Contains Active Promoted Cluster</span>
+                      </span>
+                    )}
+                  </div>
 
-            return (
-              <div
-                key={c.id}
-                onClick={() => setSelectedClusterId(c.id)}
-                className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
-                  isSelected
-                    ? "bg-purple-950/40 border-purple-500 shadow-lg shadow-purple-500/10 ring-1 ring-purple-500/50"
-                    : "bg-slate-950/60 border-slate-800/80 hover:border-slate-700 hover:bg-slate-800/30"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-2">
-                    <span className="font-bold text-sm text-slate-100">
-                      Cluster #{c.id}
-                    </span>
-                  </div>
-                  <span
-                    className={`text-xs px-2 py-0.5 rounded-full font-medium border ${markingColor}`}
-                  >
-                    {c.marking}
-                  </span>
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-xs text-slate-400">
-                  <div>
-                    <span className="text-slate-500 block">Groups (k)</span>
-                    <span className="font-semibold text-slate-300">
-                      {c.segmentCount} segments
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-slate-500 block">Inertia</span>
-                    <span className="font-semibold text-slate-300">
-                      {c.inertia?.toFixed(1) ?? "N/A"}
-                    </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                    {group.clusters.map((c) => renderClusterCard(c, theme))}
                   </div>
                 </div>
-                <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 font-mono">
-                  <span>v: {c.vectorVersion?.slice(0, 12)}...</span>
-                  <span>
-                    {c.createdAt
-                      ? new Date(c.createdAt).toLocaleDateString()
-                      : ""}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+            {clusters.map((c) => {
+              const theme = getRunTheme(c.trainingRun?.id, uniqueRunIds);
+              return renderClusterCard(c, theme);
+            })}
+          </div>
+        )}
       </div>
 
       {/* Selected Cluster Overview & Lifecycle Transitions */}
@@ -1090,12 +1420,20 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-slate-800">
             <div>
-              <div className="flex items-center space-x-3">
-                <h3 className="text-xl font-bold text-slate-100">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-100">
                   Cluster #{selectedClusterDetail.id} Overview
                 </h3>
+                {selectedClusterDetail.trainingRun?.id && (
+                  <span
+                    className={`text-xs px-2.5 py-0.5 rounded-full font-mono font-medium border ${getRunTheme(selectedClusterDetail.trainingRun.id, uniqueRunIds).badge}`}
+                    title={`Trained in Pipeline Run #${selectedClusterDetail.trainingRun.id}`}
+                  >
+                    Training Run #{selectedClusterDetail.trainingRun.id}
+                  </span>
+                )}
                 <span
-                  className={`text-xs px-2.5 py-0.5 rounded-full font-medium border ${
+                  className={`text-xs px-2.5 py-0.5 rounded-full font-medium border whitespace-nowrap ${
                     selectedClusterDetail.marking === "Promoted"
                       ? "bg-emerald-950 text-emerald-400 border-emerald-700"
                       : selectedClusterDetail.marking === "Candidate"
@@ -1106,7 +1444,7 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
                   {selectedClusterDetail.marking}
                 </span>
                 {selectedClusterDetail.promotedAt && (
-                  <span className="text-xs text-emerald-400/80 font-mono">
+                  <span className="text-xs text-emerald-400/80 font-mono whitespace-nowrap">
                     Promoted at{" "}
                     {new Date(
                       selectedClusterDetail.promotedAt,
@@ -1114,19 +1452,19 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
                   </span>
                 )}
               </div>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-400 mt-1 break-words">
                 Vector Version:{" "}
-                <code className="text-purple-300 font-mono">
+                <code className="text-purple-300 font-mono break-all">
                   {selectedClusterDetail.vectorVersion}
                 </code>{" "}
                 • Feature Set:{" "}
-                <code className="text-purple-300 font-mono">
+                <code className="text-purple-300 font-mono break-all">
                   {selectedClusterDetail.featureSetVersion}
                 </code>{" "}
-                • Inertia:{" "}
-                <b className="text-slate-200">
-                  {selectedClusterDetail.inertia?.toFixed(2) ?? "N/A"}
-                </b>
+                •{" "}
+                <OverviewInertiaTooltip
+                  value={selectedClusterDetail.inertia}
+                />
               </p>
             </div>
 
@@ -1239,8 +1577,47 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
                 </div>
               )}
 
+              {/* PCA Component Badges (if PCA Mode) */}
+              {vizMode === "pca" && pc1Details && pc2Details && (
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <div
+                    className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-purple-800/60 text-xs shadow-sm cursor-help"
+                    title={`Principal Component 1 (${pc1Details.variancePercent}% variance explained)\nTop Contributing Features:\n${pc1Details.topDrivers
+                      .map(
+                        (d) =>
+                          `• ${d.label} (${d.group}): ${d.coefficient >= 0 ? "+" : ""}${d.coefficient.toFixed(3)}`,
+                      )
+                      .join("\n")}`}
+                  >
+                    <span className="font-semibold text-purple-300">
+                      PC1 ({pc1Details.variancePercent}%):
+                    </span>
+                    <span className="text-slate-200 font-medium">
+                      {pc1Details.shortName}
+                    </span>
+                  </div>
+
+                  <div
+                    className="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-cyan-800/60 text-xs shadow-sm cursor-help"
+                    title={`Principal Component 2 (${pc2Details.variancePercent}% variance explained)\nTop Contributing Features:\n${pc2Details.topDrivers
+                      .map(
+                        (d) =>
+                          `• ${d.label} (${d.group}): ${d.coefficient >= 0 ? "+" : ""}${d.coefficient.toFixed(3)}`,
+                      )
+                      .join("\n")}`}
+                  >
+                    <span className="font-semibold text-cyan-300">
+                      PC2 ({pc2Details.variancePercent}%):
+                    </span>
+                    <span className="text-slate-200 font-medium">
+                      {pc2Details.shortName}
+                    </span>
+                  </div>
+                </div>
+              )}
+
               {/* Toggles */}
-              <div className="flex items-center space-x-4 text-xs text-slate-300">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-300">
                 <label
                   className="flex items-center space-x-2 cursor-pointer"
                   title="Nearest-centroid regions of the 2D projection"
@@ -1426,12 +1803,52 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
                   the offer in Assignments.
                 </p>
               )}
+              {vizMode === "pca" && pc1Details && pc2Details && (
+                <div className="mx-1 mt-1 px-3 py-2 rounded-lg bg-slate-900/60 border border-slate-800 text-[11px] text-slate-400 flex flex-col md:flex-row gap-2 md:gap-6 justify-between">
+                  <div className="flex items-center space-x-1.5 flex-wrap">
+                    <span className="font-semibold text-purple-300">
+                      PC1 ({pc1Details.variancePercent}% var):
+                    </span>{" "}
+                    <span className="text-slate-200 font-medium">
+                      {pc1Details.shortName}
+                    </span>{" "}
+                    <span className="text-slate-500">
+                      (
+                      {pc1Details.topDrivers
+                        .map(
+                          (d) =>
+                            `${d.label} ${d.coefficient >= 0 ? "+" : ""}${d.coefficient.toFixed(2)}`,
+                        )
+                        .join(", ")}
+                      )
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-1.5 flex-wrap">
+                    <span className="font-semibold text-cyan-300">
+                      PC2 ({pc2Details.variancePercent}% var):
+                    </span>{" "}
+                    <span className="text-slate-200 font-medium">
+                      {pc2Details.shortName}
+                    </span>{" "}
+                    <span className="text-slate-500">
+                      (
+                      {pc2Details.topDrivers
+                        .map(
+                          (d) =>
+                            `${d.label} ${d.coefficient >= 0 ? "+" : ""}${d.coefficient.toFixed(2)}`,
+                        )
+                        .join(", ")}
+                      )
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Centroids Table */}
           <div className="mt-8">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
               <h4 className="text-sm font-semibold text-slate-200">
                 Centroids & Segments Details ({centroids.length} groups)
               </h4>

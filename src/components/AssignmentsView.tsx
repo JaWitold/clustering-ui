@@ -95,8 +95,8 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
       {/* Filter Toolbar */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 flex-1 min-w-[240px]">
-            <div className="relative w-full max-w-sm">
+          <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 w-full sm:w-auto flex-1 max-w-md">
+            <div className="relative w-full">
               <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
               <input
                 type="text"
@@ -108,7 +108,7 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
             </div>
             <button
               type="submit"
-              className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium"
+              className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-medium shrink-0"
             >
               Search
             </button>
@@ -174,26 +174,26 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
           <table className="min-w-full divide-y divide-slate-800 text-left text-xs">
             <thead className="bg-slate-950/80 text-slate-400 font-semibold uppercase tracking-wider">
               <tr>
-                <th className="px-4 py-3">Offer ID</th>
-                <th className="px-4 py-3">Product ID</th>
-                <th className="px-4 py-3">Current Segment</th>
-                <th className="px-4 py-3">Hysteresis Status</th>
-                <th className="px-4 py-3">Candidate Segment</th>
-                <th className="px-4 py-3">Centroid Distance</th>
-                <th className="px-4 py-3">Target Day</th>
+                <th className="px-4 py-3 whitespace-nowrap">Offer ID</th>
+                <th className="px-4 py-3 whitespace-nowrap">Product ID</th>
+                <th className="px-4 py-3 whitespace-nowrap">Current Segment</th>
+                <th className="px-4 py-3 whitespace-nowrap">Hysteresis Status</th>
+                <th className="px-4 py-3 whitespace-nowrap">Candidate Segment</th>
+                <th className="px-4 py-3 whitespace-nowrap">Centroid Distance</th>
+                <th className="px-4 py-3 whitespace-nowrap">Target Day</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/80 bg-slate-900/40 font-mono">
               {assignments.map((a) => (
                 <tr key={a.id} className="hover:bg-slate-800/40 transition-colors">
-                  <td className="px-4 py-3 font-semibold text-purple-300">{a.offerId}</td>
-                  <td className="px-4 py-3 text-slate-400">{a.productId}</td>
-                  <td className="px-4 py-3 font-sans">
+                  <td className="px-4 py-3 font-semibold text-purple-300 whitespace-nowrap">{a.offerId}</td>
+                  <td className="px-4 py-3 text-slate-400 whitespace-nowrap">{a.productId}</td>
+                  <td className="px-4 py-3 font-sans whitespace-nowrap">
                     <span className="font-semibold text-slate-200">
                       {a.segment.name || `Segment #${a.segment.id}`}
                     </span>
                   </td>
-                  <td className="px-4 py-3 font-sans">
+                  <td className="px-4 py-3 font-sans whitespace-nowrap">
                     {a.marking === 'Stable' ? (
                       <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-950/60 text-emerald-300 border border-emerald-800">
                         <CheckCircle2 className="w-3 h-3 text-emerald-400" />
@@ -206,7 +206,7 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
                       </span>
                     )}
                   </td>
-                  <td className="px-4 py-3 font-sans text-slate-400">
+                  <td className="px-4 py-3 font-sans text-slate-400 whitespace-nowrap">
                     {a.candidateSegment ? (
                       <div>
                         <span className="text-amber-300 font-medium">
@@ -222,10 +222,10 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
                       <span className="text-slate-600">—</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-slate-300 font-semibold">
+                  <td className="px-4 py-3 text-slate-300 font-semibold whitespace-nowrap">
                     {a.distance !== null ? a.distance.toFixed(4) : '—'}
                   </td>
-                  <td className="px-4 py-3 text-slate-400">{a.day}</td>
+                  <td className="px-4 py-3 text-slate-400 whitespace-nowrap">{a.day}</td>
                 </tr>
               ))}
               {assignments.length === 0 && !loading && (
@@ -240,7 +240,7 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
         </div>
 
         {/* Pagination Bar */}
-        <div className="flex items-center justify-between px-6 py-3 border-t border-slate-800 bg-slate-950/60 text-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-3 border-t border-slate-800 bg-slate-950/60 text-xs">
           <div className="text-slate-400">
             Page <span className="font-semibold text-slate-200">{page + 1}</span>
             {totalPages !== undefined && <span> of {totalPages}</span>}

@@ -618,8 +618,8 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
       </div>
 
       {/* Operate the promoted cluster: on-demand reruns of the scheduled jobs */}
-      <div className="flex items-center space-x-3 pt-2">
-        <h3 className="text-sm font-semibold text-slate-200">Promoted Cluster Operations</h3>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 pt-2">
+        <h3 className="text-sm font-semibold text-slate-200 whitespace-nowrap">Promoted Cluster Operations</h3>
         <span className="text-xs text-slate-500">
           Reruns or backfills of the scheduled jobs. Each day is queued at most once while still queued or running.
         </span>

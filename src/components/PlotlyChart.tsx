@@ -36,7 +36,7 @@ export const PlotlyChart: React.FC<PlotlyChartProps> = ({
         color: '#94a3b8',
         family: 'system-ui, -apple-system, sans-serif',
       },
-      margin: { l: 60, r: 40, t: 50, b: 60 },
+      margin: { l: 50, r: 25, t: 50, b: 50 },
       hoverlabel: {
         bgcolor: '#1e293b',
         bordercolor: '#64748b',
@@ -59,7 +59,7 @@ export const PlotlyChart: React.FC<PlotlyChartProps> = ({
 
     const mergedConfig = {
       responsive: true,
-      displayModeBar: true,
+      displayModeBar: 'hover',
       displaylogo: false,
       modeBarButtonsToRemove: ['lasso2d', 'select2d'],
       ...config,

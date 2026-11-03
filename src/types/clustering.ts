@@ -28,7 +28,7 @@ export interface Cluster {
   featureNames?: string[]
   featureSetVersion: string
   vectorVersion: string
-  scalerStats?: Record<string, ScalerStat>
+  scalerStats?: Record<string, ScalerStat> | { scales: Record<string, ScalerStat> }
   marking: ClusterMarking
   openSearchModelId?: string | null
   inertia: number | null

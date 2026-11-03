@@ -86,7 +86,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, o
               placeholder="http://localhost:2080/v2.0"
               className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-purple-500 font-mono"
             />
-            <div className="flex items-center space-x-2 mt-1.5">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-1.5">
               <span className="text-xs text-slate-500">Presets:</span>
               <button
                 type="button"
@@ -155,17 +155,17 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, o
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-slate-800 bg-slate-950/40">
+        <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 px-6 py-4 border-t border-slate-800 bg-slate-950/40">
           <button
             type="button"
             onClick={handleTestConnection}
             disabled={testStatus.loading}
-            className="flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium transition-colors"
+            className="flex items-center justify-center space-x-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium transition-colors"
           >
             <RefreshCw className={`w-4 h-4 ${testStatus.loading ? 'animate-spin' : ''}`} />
             <span>Test Connection</span>
           </button>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center justify-end space-x-2">
             <button
               type="button"
               onClick={onClose}

@@ -264,11 +264,11 @@ export const ApiExplorer: React.FC = () => {
           {/* Request Form */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
             <form onSubmit={handleSend} className="space-y-4">
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                 <select
                   value={method}
                   onChange={(e) => setMethod(e.target.value as any)}
-                  className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-bold font-mono text-slate-200 focus:outline-none focus:border-purple-500"
+                  className="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-bold font-mono text-slate-200 focus:outline-none focus:border-purple-500 w-full sm:w-auto"
                 >
                   <option value="GET">GET</option>
                   <option value="POST">POST</option>
@@ -288,7 +288,7 @@ export const ApiExplorer: React.FC = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex items-center space-x-1.5 px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold shadow-lg shadow-purple-600/30 transition-all disabled:opacity-50"
+                  className="flex items-center justify-center space-x-1.5 px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold shadow-lg shadow-purple-600/30 transition-all disabled:opacity-50 shrink-0"
                 >
                   {loading ? (
                     <RefreshCw className="w-3.5 h-3.5 animate-spin" />

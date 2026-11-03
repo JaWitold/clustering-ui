@@ -157,3 +157,59 @@ export function computePCA(data: number[][]): PCAResult | null {
     pc2Coefficients: pc2,
   }
 }
+
+export interface ComponentDriver {
+  feature: string
+  label: string
+  group: string
+  coefficient: number
+  absCoefficient: number
+}
+
+export interface PrincipalComponentDetails {
+  index: number
+  varianceRatio: number
+  variancePercent: string
+  topDrivers: ComponentDriver[]
+  shortName: string
+}
+
+export function getComponentDetails(
+  coefficients: number[],
+  varRatio: number,
+  index: number,
+  featureNames: string[],
+  featureLabels?: Record<string, { label: string; group?: string }>,
+): PrincipalComponentDetails {
+  const drivers: ComponentDriver[] = featureNames.map((fn, i) => {
+    const coeff = coefficients[i] ?? 0
+    const meta = featureLabels?.[fn]
+    return {
+      feature: fn,
+      label: meta?.label || fn,
+      group: meta?.group || 'Other',
+      coefficient: coeff,
+      absCoefficient: Math.abs(coeff),
+    }
+  })
+
+  drivers.sort((a, b) => b.absCoefficient - a.absCoefficient)
+
+  const topDrivers = drivers.slice(0, 4)
+  const varPercent = ((varRatio || 0) * 100).toFixed(1)
+
+  const sign = (c: number) => (c >= 0 ? '+' : '−')
+  const shortName =
+    topDrivers
+      .slice(0, 2)
+      .map((d) => `${d.label} (${sign(d.coefficient)})`)
+      .join(' / ') || `PC${index}`
+
+  return {
+    index,
+    varianceRatio: varRatio,
+    variancePercent: varPercent,
+    topDrivers,
+    shortName,
+  }
+}

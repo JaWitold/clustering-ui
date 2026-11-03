@@ -7,6 +7,7 @@ import { RunsMonitor } from './components/RunsMonitor'
 import { AssignmentsView } from './components/AssignmentsView'
 import { SegmentsView } from './components/SegmentsView'
 import { ApiExplorer } from './components/ApiExplorer'
+import { CapacityReport } from './components/CapacityReport'
 import { api } from './api/client'
 
 export const App: React.FC = () => {
@@ -34,7 +35,7 @@ export const App: React.FC = () => {
   }, [])
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-purple-500/30">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-purple-500/30 overflow-x-hidden w-full">
       {/* Top Navigation */}
       <Navbar
         activeTab={activeTab}
@@ -46,7 +47,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {activeTab === 'viz' && (
           <ClustersViz
             onOpenOfferAssignments={(offerId) => {
@@ -64,6 +65,7 @@ export const App: React.FC = () => {
         )}
         {activeTab === 'segments' && <SegmentsView />}
         {activeTab === 'api-explorer' && <ApiExplorer />}
+        {activeTab === 'capacity' && <CapacityReport />}
       </main>
 
       {/* Footer */}
