@@ -19,6 +19,7 @@ import type { Cluster, Centroid, ClusterAssignment } from "../types/clustering";
 import { FEATURE_GROUPS } from "../types/clustering";
 import { api } from "../api/client";
 import { computePCA, getComponentDetails } from "../utils/pca";
+import { computeTSNE } from "../utils/tsne";
 import {
   voronoiCells,
   paddedBounds,
@@ -338,7 +339,7 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
   // Viz controls
-  const [vizMode, setVizMode] = useState<"scatter" | "pca">("scatter");
+  const [vizMode, setVizMode] = useState<"tsne" | "scatter" | "pca">("tsne");
   const [xAxisFeature, setXAxisFeature] = useState<string>("priceLevel");
   const [yAxisFeature, setYAxisFeature] = useState<string>("gapToBest");
   const [useSourceUnits, setUseSourceUnits] = useState(false);
@@ -452,7 +453,7 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
     setLoading(true);
     setError(null);
     try {
-      const list = await api.listClusters();
+      const list = await api.listClusters({ "per-page": OFFER_PAGE_SIZE });
       setClusters(list);
       if (list.length > 0) {
         // default select Promoted cluster if available, else first
@@ -614,6 +615,24 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
     const scaledMatrix = centroids.map((c) => c.scaled);
     return computePCA(scaledMatrix);
   }, [vizMode, centroids]);
+
+  // t-SNE layout: centroids and their (drifted) anchors embedded together so drift arrows share one space
+  const tsneLayout = useMemo(() => {
+    if (vizMode !== "tsne" || centroids.length < 2) return null;
+    const drifted = centroids.flatMap((_, i) =>
+      (centroidDrifts[i] ?? 0) > 1e-9 ? [i] : [],
+    );
+    const Y = computeTSNE([
+      ...centroids.map((c) => c.scaled),
+      ...drifted.map((i) => centroids[i].anchor),
+    ]);
+    if (!Y) return null;
+    const anchorAt = new Map(drifted.map((ci, k) => [ci, Y[centroids.length + k]]));
+    return centroids.map((_, i) => ({
+      scaled: Y[i],
+      anchor: anchorAt.get(i) ?? Y[i],
+    }));
+  }, [vizMode, centroids, centroidDrifts]);
 
   const pc1Details = useMemo(() => {
     if (!pcaResult) return null;
@@ -1047,13 +1066,21 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
         },
       };
     } else {
-      // PCA 2D Mode
-      if (!pcaResult) {
+      // Projection modes (t-SNE / PCA)
+      const isPca = vizMode === "pca";
+      const positions = isPca
+        ? pcaResult &&
+          centroids.map((c) => ({
+            scaled: pcaResult.project(c.scaled),
+            anchor: pcaResult.project(c.anchor),
+          }))
+        : tsneLayout;
+      if (!positions) {
         return {
           plotData: [],
           plotLayout: {
             title: {
-              text: "Need at least 2 centroids for PCA projection",
+              text: `Need at least 2 centroids for ${isPca ? "PCA" : "t-SNE"} projection`,
               font: { color: "#f8fafc" },
             },
           },
@@ -1061,8 +1088,8 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
       }
 
       const centroidXY = new Map<number, { x: number; y: number }>();
-      centroids.forEach((c) => {
-        const [px, py] = pcaResult.project(c.scaled);
+      centroids.forEach((c, idx) => {
+        const [px, py] = positions[idx].scaled;
         if (c.segment?.id !== undefined)
           centroidXY.set(c.segment.id, { x: px, y: py });
       });
@@ -1071,8 +1098,8 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
 
       centroids.forEach((c, idx) => {
         const color = SEGMENT_COLORS[idx % SEGMENT_COLORS.length];
-        const [pc1Scaled, pc2Scaled] = pcaResult.project(c.scaled);
-        const [pc1Anchor, pc2Anchor] = pcaResult.project(c.anchor);
+        const [pc1Scaled, pc2Scaled] = positions[idx].scaled;
+        const [pc1Anchor, pc2Anchor] = positions[idx].anchor;
 
         const driftDist = centroidDrifts[idx]?.toFixed(4) || "0.0000";
 
@@ -1114,8 +1141,11 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
             `Size: <b>${c.size}</b> auctions<br>` +
             `Inherited: ${inheritedText}<br>` +
             `Total Euclidean Drift: <b>${driftDist}</b><br>` +
-            `PC1${pc1Details?.shortName ? ` [${pc1Details.shortName}]` : ""}: <b>%{x:.3f}</b><br>` +
-            `PC2${pc2Details?.shortName ? ` [${pc2Details.shortName}]` : ""}: <b>%{y:.3f}</b><extra></extra>`,
+            (isPca
+              ? `PC1${pc1Details?.shortName ? ` [${pc1Details.shortName}]` : ""}: <b>%{x:.3f}</b><br>` +
+                `PC2${pc2Details?.shortName ? ` [${pc2Details.shortName}]` : ""}: <b>%{y:.3f}</b>`
+              : "") +
+            "<extra></extra>",
         });
 
         if (showDriftVectors) {
@@ -1160,10 +1190,35 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
       const bounds = paddedBounds(traceExtent(traces), AXIS_PAD, 0.05);
       const shapes = buildVoronoiShapes(centroidXY, bounds);
 
-      const pc1Var = ((pcaResult.explainedVarianceRatio[0] || 0) * 100).toFixed(
+      if (!isPca) {
+        return {
+          plotData: traces,
+          plotLayout: {
+            title: {
+              text: "t-SNE 2D Embedding • nearby centroids are similar across all features",
+              font: { color: "#f8fafc", size: 15 },
+            },
+            // t-SNE coordinates have no units; only relative proximity is meaningful
+            xaxis: {
+              title: { text: "t-SNE 1", font: { color: "#94a3b8" } },
+              range: [bounds.xMin, bounds.xMax],
+              showticklabels: false,
+            },
+            yaxis: {
+              title: { text: "t-SNE 2", font: { color: "#94a3b8" } },
+              range: [bounds.yMin, bounds.yMax],
+              showticklabels: false,
+            },
+            annotations,
+            shapes,
+          },
+        };
+      }
+
+      const pc1Var = ((pcaResult?.explainedVarianceRatio[0] || 0) * 100).toFixed(
         1,
       );
-      const pc2Var = ((pcaResult.explainedVarianceRatio[1] || 0) * 100).toFixed(
+      const pc2Var = ((pcaResult?.explainedVarianceRatio[1] || 0) * 100).toFixed(
         1,
       );
 
@@ -1206,6 +1261,7 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
     featureIndices,
     centroidDrifts,
     pcaResult,
+    tsneLayout,
     pc1Details,
     pc2Details,
     buildOfferTraces,
@@ -1499,6 +1555,17 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
             <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-xl bg-slate-950/60 border border-slate-800">
               {/* Mode Toggle */}
               <div className="flex items-center space-x-1 bg-slate-900 p-1 rounded-xl border border-slate-800">
+                <button
+                  onClick={() => setVizMode("tsne")}
+                  className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                    vizMode === "tsne"
+                      ? "bg-purple-600 text-white shadow-md shadow-purple-600/30"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  <Layers className="w-3.5 h-3.5" />
+                  <span>t-SNE 2D Embedding</span>
+                </button>
                 <button
                   onClick={() => setVizMode("scatter")}
                   className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${

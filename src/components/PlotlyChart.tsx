@@ -74,6 +74,7 @@ export const PlotlyChart: React.FC<PlotlyChartProps> = ({
     })
 
     const handleResize = () => {
+      if (!el.isConnected || null === el.offsetParent) return
       Plotly.Plots.resize(el)
     }
 

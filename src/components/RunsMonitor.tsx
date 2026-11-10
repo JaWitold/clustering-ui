@@ -10,9 +10,30 @@ import {
   FileText,
   ChevronRight,
   X,
+  RotateCcw,
 } from 'lucide-react'
 import type { ClusteringRun, RunType, RunMarking } from '../types/clustering'
 import { api } from '../api/client'
+
+type RetryState =
+  | { status: 'idle' }
+  | { status: 'checking' }
+  | { status: 'ready'; clusterId: number }
+  | { status: 'blocked'; reason: string }
+  | { status: 'sending' }
+  | { status: 'queued' }
+  | { status: 'error'; reason: string }
+
+const RETRYABLE: RunType[] = ['DailyAssignment', 'WeeklyUpdate']
+const WEEK_DAYS = 7
+
+const shiftDay = (day: string, days: number): string => {
+  const date = new Date(`${day}T00:00:00Z`)
+  date.setUTCDate(date.getUTCDate() + days)
+  return date.toISOString().slice(0, 10)
+}
+
+const isRetryable = (run: ClusteringRun): boolean => run.marking === 'Failed' && RETRYABLE.includes(run.type)
 
 export const RunsMonitor: React.FC = () => {
   const [runs, setRuns] = useState<ClusteringRun[]>([])
@@ -29,6 +50,7 @@ export const RunsMonitor: React.FC = () => {
   // Selected Run Modal
   const [selectedRun, setSelectedRun] = useState<ClusteringRun | null>(null)
   const [detailLoading, setDetailLoading] = useState(false)
+  const [retry, setRetry] = useState<RetryState>({ status: 'idle' })
 
   const fetchRuns = async () => {
     setLoading(true)
@@ -63,12 +85,72 @@ export const RunsMonitor: React.FC = () => {
     return () => clearInterval(timer)
   }, [autoRefresh, typeFilter, markingFilter, clusterFilter])
 
+  const checkRetry = async (run: ClusteringRun) => {
+    if (!isRetryable(run)) {
+      setRetry({ status: 'idle' })
+      return
+    }
+
+    setRetry({ status: 'checking' })
+    try {
+      const promoted = (await api.listClusters({ marking: 'Promoted' }))[0]
+      if (!promoted) {
+        setRetry({ status: 'blocked', reason: 'No cluster is promoted; the run would do nothing.' })
+        return
+      }
+      if (run.cluster?.id !== promoted.id) {
+        setRetry({
+          status: 'blocked',
+          reason: `This run belongs to cluster #${run.cluster?.id ?? '—'}, which is no longer promoted; a retry would run on cluster #${promoted.id}.`,
+        })
+        return
+      }
+
+      const latest = (await api.listRuns({ type: run.type, marking: 'Completed', cluster: promoted.id, sort: '-day', 'per-page': 10 })).runs[0]
+      if (run.type === 'DailyAssignment' && latest && latest.day > run.day) {
+        setRetry({
+          status: 'blocked',
+          reason: `A later assignment completed for ${latest.day}; the assigner refuses a day earlier than its latest completed run.`,
+        })
+        return
+      }
+      if (run.type === 'WeeklyUpdate' && latest && latest.day > shiftDay(run.day, -WEEK_DAYS)) {
+        setRetry({
+          status: 'blocked',
+          reason: `The update for the window ending ${latest.day} overlaps this one; the updater would skip it.`,
+        })
+        return
+      }
+
+      setRetry({ status: 'ready', clusterId: promoted.id })
+    } catch (err: any) {
+      setRetry({ status: 'error', reason: err?.message || 'Could not check whether the run can be retried.' })
+    }
+  }
+
+  const handleRetry = async (run: ClusteringRun) => {
+    setRetry({ status: 'sending' })
+    try {
+      if (run.type === 'DailyAssignment') {
+        await api.assignAuctionSegments({ day: run.day })
+      } else {
+        await api.updateClusterCentroids({ day: run.day })
+      }
+      setRetry({ status: 'queued' })
+      fetchRuns()
+    } catch (err: any) {
+      setRetry({ status: 'error', reason: err?.message || 'The retry request failed.' })
+    }
+  }
+
   const handleInspectRun = async (run: ClusteringRun) => {
     setSelectedRun(run)
+    setRetry({ status: 'idle' })
     setDetailLoading(true)
     try {
       const full = await api.getRun(run.id)
       setSelectedRun(full)
+      checkRetry(full)
     } catch (err: any) {
       console.error(err)
     } finally {
@@ -350,7 +432,30 @@ export const RunsMonitor: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex justify-end px-6 py-3 border-t border-slate-800 bg-slate-950/60">
+            <div className="flex items-center justify-end gap-3 px-6 py-3 border-t border-slate-800 bg-slate-950/60">
+              {isRetryable(selectedRun) && (
+                <div className="flex-1 text-xs">
+                  {retry.status === 'checking' && <span className="text-slate-500">Checking whether this day can be retried…</span>}
+                  {retry.status === 'ready' && (
+                    <span className="text-slate-400">
+                      Re-queues {selectedRun.type === 'DailyAssignment' ? 'the assignment' : 'the centroid update'} of {selectedRun.day} on cluster #{retry.clusterId}; a new run appears once a worker picks it up.
+                    </span>
+                  )}
+                  {retry.status === 'blocked' && <span className="text-amber-300">{retry.reason}</span>}
+                  {retry.status === 'queued' && <span className="text-emerald-300">Queued. The new run shows up in this list when the worker starts it.</span>}
+                  {retry.status === 'error' && <span className="text-rose-300">{retry.reason}</span>}
+                </div>
+              )}
+              {isRetryable(selectedRun) && (
+                <button
+                  onClick={() => handleRetry(selectedRun)}
+                  disabled={retry.status !== 'ready'}
+                  className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-purple-600/80 hover:bg-purple-600 disabled:bg-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed text-white text-xs font-semibold"
+                >
+                  <RotateCcw className={`w-3.5 h-3.5 ${retry.status === 'sending' ? 'animate-spin' : ''}`} />
+                  {retry.status === 'queued' ? 'Queued' : 'Retry'}
+                </button>
+              )}
               <button
                 onClick={() => setSelectedRun(null)}
                 className="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold"
