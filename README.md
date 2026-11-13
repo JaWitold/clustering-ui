@@ -18,6 +18,15 @@ npm run dev
 
 By default, the server runs on `http://localhost:5173`. Open this URL in your browser.
 
+### Standalone mode (no backend)
+
+```bash
+npm run dev:fixtures   # serves /v2.0/price-engine/clustering/* from fixtures/data/*.json
+npm run fixtures       # regenerate fixtures (optional date: npm run fixtures -- 2026-11-13)
+```
+
+`fixtures/generate.ts` ports graph-v2's `ClusteringFixtures` (3 months of trainings, daily/weekly runs incl. failures, 640 assignments, 12 strategies) into API-shaped JSON. `fixtures/mockApi.ts` is a Vite middleware mirroring list/detail serialization groups, Yii filter/sort/search and pagination headers; writes (transitions, renames, strategy CRUD) live in memory until restart, pipeline triggers answer `202`. A base URL saved in Settings overrides the fixture one — clear it to use fixtures.
+
 ---
 
 ## Key Features & Visualization Modes

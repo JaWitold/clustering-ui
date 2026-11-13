@@ -1,0 +1,6230 @@
+[
+  {
+    "id": 1,
+    "type": "Training",
+    "day": "2026-08-14",
+    "cluster": null,
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "clusters": 8,
+      "restarts": 3,
+      "bySegmentCount": {
+        "3": {
+          "inertia": 9846.205,
+          "segments": 3,
+          "inherited": 0
+        },
+        "4": {
+          "inertia": 7118.934,
+          "segments": 4,
+          "inherited": 0
+        },
+        "5": {
+          "inertia": 4210.612,
+          "segments": 5,
+          "inherited": 0
+        },
+        "6": {
+          "inertia": 2980.347,
+          "segments": 6,
+          "inherited": 0
+        },
+        "7": {
+          "inertia": 1760.218,
+          "segments": 7,
+          "inherited": 0
+        },
+        "8": {
+          "inertia": 186.441,
+          "segments": 8,
+          "inherited": 0
+        },
+        "9": {
+          "inertia": 185.107,
+          "segments": 8,
+          "inherited": 0
+        },
+        "10": {
+          "inertia": 184.736,
+          "segments": 8,
+          "inherited": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-15T02:00:00+00:00",
+    "finishedAt": "2026-08-15T02:07:29+00:00",
+    "createdAt": "2026-08-15T02:00:00+00:00",
+    "updatedAt": "2026-08-15T02:07:29+00:00"
+  },
+  {
+    "id": 2,
+    "type": "DailyAssignment",
+    "day": "2026-08-16",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 320,
+      "promoted": 0,
+      "unchanged": 0,
+      "pending": 0,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-17T01:00:00+00:00",
+    "finishedAt": "2026-08-17T01:00:20+00:00",
+    "createdAt": "2026-08-17T01:00:00+00:00",
+    "updatedAt": "2026-08-17T01:00:20+00:00"
+  },
+  {
+    "id": 3,
+    "type": "DailyAssignment",
+    "day": "2026-08-17",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 314,
+      "pending": 5,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-18T01:00:00+00:00",
+    "finishedAt": "2026-08-18T01:00:22+00:00",
+    "createdAt": "2026-08-18T01:00:00+00:00",
+    "updatedAt": "2026-08-18T01:00:22+00:00"
+  },
+  {
+    "id": 4,
+    "type": "DailyAssignment",
+    "day": "2026-08-18",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 314,
+      "pending": 6,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-19T01:00:00+00:00",
+    "finishedAt": "2026-08-19T01:00:24+00:00",
+    "createdAt": "2026-08-19T01:00:00+00:00",
+    "updatedAt": "2026-08-19T01:00:24+00:00"
+  },
+  {
+    "id": 5,
+    "type": "DailyAssignment",
+    "day": "2026-08-19",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 311,
+      "pending": 7,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-20T01:00:00+00:00",
+    "finishedAt": "2026-08-20T01:00:26+00:00",
+    "createdAt": "2026-08-20T01:00:00+00:00",
+    "updatedAt": "2026-08-20T01:00:26+00:00"
+  },
+  {
+    "id": 6,
+    "type": "DailyAssignment",
+    "day": "2026-08-20",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 312,
+      "pending": 4,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 4
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-21T01:00:00+00:00",
+    "finishedAt": "2026-08-21T01:00:19+00:00",
+    "createdAt": "2026-08-21T01:00:00+00:00",
+    "updatedAt": "2026-08-21T01:00:19+00:00"
+  },
+  {
+    "id": 7,
+    "type": "DailyAssignment",
+    "day": "2026-08-21",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 314,
+      "pending": 5,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-22T01:00:00+00:00",
+    "finishedAt": "2026-08-22T01:00:21+00:00",
+    "createdAt": "2026-08-22T01:00:00+00:00",
+    "updatedAt": "2026-08-22T01:00:21+00:00"
+  },
+  {
+    "id": 8,
+    "type": "DailyAssignment",
+    "day": "2026-08-22",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 312,
+      "pending": 6,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-23T01:00:00+00:00",
+    "finishedAt": "2026-08-23T01:00:23+00:00",
+    "createdAt": "2026-08-23T01:00:00+00:00",
+    "updatedAt": "2026-08-23T01:00:23+00:00"
+  },
+  {
+    "id": 9,
+    "type": "DailyAssignment",
+    "day": "2026-08-23",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 310,
+      "pending": 7,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 3
+        }
+      }
+    },
+    "startedAt": "2026-08-24T01:00:00+00:00",
+    "finishedAt": "2026-08-24T01:00:25+00:00",
+    "createdAt": "2026-08-24T01:00:00+00:00",
+    "updatedAt": "2026-08-24T01:00:25+00:00"
+  },
+  {
+    "id": 10,
+    "type": "WeeklyUpdate",
+    "day": "2026-08-23",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 8,
+      "moved": 8,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.02,
+          "drift": 0.02
+        },
+        "27": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.025,
+          "drift": 0.025
+        },
+        "28": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.03,
+          "drift": 0.03
+        },
+        "29": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.035,
+          "drift": 0.035
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.02,
+          "drift": 0.02
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.025,
+          "drift": 0.025
+        },
+        "32": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.03,
+          "drift": 0.03
+        },
+        "33": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.035,
+          "drift": 0.035
+        }
+      }
+    },
+    "startedAt": "2026-08-24T03:00:00+00:00",
+    "finishedAt": "2026-08-24T03:00:05+00:00",
+    "createdAt": "2026-08-24T03:00:00+00:00",
+    "updatedAt": "2026-08-24T03:00:05+00:00"
+  },
+  {
+    "id": 11,
+    "type": "DailyAssignment",
+    "day": "2026-08-24",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 315,
+      "pending": 4,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-25T01:00:00+00:00",
+    "finishedAt": "2026-08-25T01:00:18+00:00",
+    "createdAt": "2026-08-25T01:00:00+00:00",
+    "updatedAt": "2026-08-25T01:00:18+00:00"
+  },
+  {
+    "id": 12,
+    "type": "DailyAssignment",
+    "day": "2026-08-25",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 315,
+      "pending": 5,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-26T01:00:00+00:00",
+    "finishedAt": "2026-08-26T01:00:20+00:00",
+    "createdAt": "2026-08-26T01:00:00+00:00",
+    "updatedAt": "2026-08-26T01:00:20+00:00"
+  },
+  {
+    "id": 13,
+    "type": "DailyAssignment",
+    "day": "2026-08-26",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 312,
+      "pending": 6,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-27T01:00:00+00:00",
+    "finishedAt": "2026-08-27T01:00:22+00:00",
+    "createdAt": "2026-08-27T01:00:00+00:00",
+    "updatedAt": "2026-08-27T01:00:22+00:00"
+  },
+  {
+    "id": 14,
+    "type": "DailyAssignment",
+    "day": "2026-08-27",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 309,
+      "pending": 7,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 4
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-28T01:00:00+00:00",
+    "finishedAt": "2026-08-28T01:00:24+00:00",
+    "createdAt": "2026-08-28T01:00:00+00:00",
+    "updatedAt": "2026-08-28T01:00:24+00:00"
+  },
+  {
+    "id": 15,
+    "type": "DailyAssignment",
+    "day": "2026-08-28",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 315,
+      "pending": 4,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-29T01:00:00+00:00",
+    "finishedAt": "2026-08-29T01:00:26+00:00",
+    "createdAt": "2026-08-29T01:00:00+00:00",
+    "updatedAt": "2026-08-29T01:00:26+00:00"
+  },
+  {
+    "id": 16,
+    "type": "DailyAssignment",
+    "day": "2026-08-29",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 313,
+      "pending": 5,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-30T01:00:00+00:00",
+    "finishedAt": "2026-08-30T01:00:19+00:00",
+    "createdAt": "2026-08-30T01:00:00+00:00",
+    "updatedAt": "2026-08-30T01:00:19+00:00"
+  },
+  {
+    "id": 17,
+    "type": "DailyAssignment",
+    "day": "2026-08-30",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 311,
+      "pending": 6,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 3
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-08-31T01:00:00+00:00",
+    "finishedAt": "2026-08-31T01:00:21+00:00",
+    "createdAt": "2026-08-31T01:00:00+00:00",
+    "updatedAt": "2026-08-31T01:00:21+00:00"
+  },
+  {
+    "id": 18,
+    "type": "WeeklyUpdate",
+    "day": "2026-08-30",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 8,
+      "moved": 8,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.02,
+          "drift": 0.04
+        },
+        "27": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.025,
+          "drift": 0.05
+        },
+        "28": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.03,
+          "drift": 0.06
+        },
+        "29": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.035,
+          "drift": 0.07
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.02,
+          "drift": 0.04
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.025,
+          "drift": 0.05
+        },
+        "32": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.03,
+          "drift": 0.06
+        },
+        "33": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.035,
+          "drift": 0.07
+        }
+      }
+    },
+    "startedAt": "2026-08-31T03:00:00+00:00",
+    "finishedAt": "2026-08-31T03:00:06+00:00",
+    "createdAt": "2026-08-31T03:00:00+00:00",
+    "updatedAt": "2026-08-31T03:00:06+00:00"
+  },
+  {
+    "id": 19,
+    "type": "DailyAssignment",
+    "day": "2026-08-31",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 312,
+      "pending": 7,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 1
+        }
+      }
+    },
+    "startedAt": "2026-09-01T01:00:00+00:00",
+    "finishedAt": "2026-09-01T01:00:23+00:00",
+    "createdAt": "2026-09-01T01:00:00+00:00",
+    "updatedAt": "2026-09-01T01:00:23+00:00"
+  },
+  {
+    "id": 20,
+    "type": "DailyAssignment",
+    "day": "2026-09-01",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Failed",
+    "error": "OpenSearch request to auction-vectors timed out after 30 seconds.",
+    "summary": null,
+    "startedAt": "2026-09-02T01:00:00+00:00",
+    "finishedAt": "2026-09-02T01:00:30+00:00",
+    "createdAt": "2026-09-02T01:00:00+00:00",
+    "updatedAt": "2026-09-02T01:00:30+00:00"
+  },
+  {
+    "id": 21,
+    "type": "DailyAssignment",
+    "day": "2026-09-02",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 316,
+      "pending": 4,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-03T01:00:00+00:00",
+    "finishedAt": "2026-09-03T01:00:18+00:00",
+    "createdAt": "2026-09-03T01:00:00+00:00",
+    "updatedAt": "2026-09-03T01:00:18+00:00"
+  },
+  {
+    "id": 22,
+    "type": "DailyAssignment",
+    "day": "2026-09-03",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 313,
+      "pending": 5,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-04T01:00:00+00:00",
+    "finishedAt": "2026-09-04T01:00:20+00:00",
+    "createdAt": "2026-09-04T01:00:00+00:00",
+    "updatedAt": "2026-09-04T01:00:20+00:00"
+  },
+  {
+    "id": 23,
+    "type": "DailyAssignment",
+    "day": "2026-09-04",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 310,
+      "pending": 6,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 4
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-05T01:00:00+00:00",
+    "finishedAt": "2026-09-05T01:00:22+00:00",
+    "createdAt": "2026-09-05T01:00:00+00:00",
+    "updatedAt": "2026-09-05T01:00:22+00:00"
+  },
+  {
+    "id": 24,
+    "type": "DailyAssignment",
+    "day": "2026-09-05",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 312,
+      "pending": 7,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-06T01:00:00+00:00",
+    "finishedAt": "2026-09-06T01:00:24+00:00",
+    "createdAt": "2026-09-06T01:00:00+00:00",
+    "updatedAt": "2026-09-06T01:00:24+00:00"
+  },
+  {
+    "id": 25,
+    "type": "DailyAssignment",
+    "day": "2026-09-06",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 314,
+      "pending": 4,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-07T01:00:00+00:00",
+    "finishedAt": "2026-09-07T01:00:26+00:00",
+    "createdAt": "2026-09-07T01:00:00+00:00",
+    "updatedAt": "2026-09-07T01:00:26+00:00"
+  },
+  {
+    "id": 26,
+    "type": "WeeklyUpdate",
+    "day": "2026-09-06",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 8,
+      "moved": 8,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.02,
+          "drift": 0.06
+        },
+        "27": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.025,
+          "drift": 0.075
+        },
+        "28": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.03,
+          "drift": 0.09
+        },
+        "29": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.035,
+          "drift": 0.105
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.02,
+          "drift": 0.06
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.025,
+          "drift": 0.075
+        },
+        "32": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.03,
+          "drift": 0.09
+        },
+        "33": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.035,
+          "drift": 0.105
+        }
+      }
+    },
+    "startedAt": "2026-09-07T03:00:00+00:00",
+    "finishedAt": "2026-09-07T03:00:03+00:00",
+    "createdAt": "2026-09-07T03:00:00+00:00",
+    "updatedAt": "2026-09-07T03:00:03+00:00"
+  },
+  {
+    "id": 27,
+    "type": "DailyAssignment",
+    "day": "2026-09-07",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 312,
+      "pending": 5,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 3
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-08T01:00:00+00:00",
+    "finishedAt": "2026-09-08T01:00:19+00:00",
+    "createdAt": "2026-09-08T01:00:00+00:00",
+    "updatedAt": "2026-09-08T01:00:19+00:00"
+  },
+  {
+    "id": 28,
+    "type": "DailyAssignment",
+    "day": "2026-09-08",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 313,
+      "pending": 6,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-09T01:00:00+00:00",
+    "finishedAt": "2026-09-09T01:00:21+00:00",
+    "createdAt": "2026-09-09T01:00:00+00:00",
+    "updatedAt": "2026-09-09T01:00:21+00:00"
+  },
+  {
+    "id": 29,
+    "type": "DailyAssignment",
+    "day": "2026-09-09",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 313,
+      "pending": 7,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-10T01:00:00+00:00",
+    "finishedAt": "2026-09-10T01:00:23+00:00",
+    "createdAt": "2026-09-10T01:00:00+00:00",
+    "updatedAt": "2026-09-10T01:00:23+00:00"
+  },
+  {
+    "id": 30,
+    "type": "DailyAssignment",
+    "day": "2026-09-10",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 314,
+      "pending": 4,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-11T01:00:00+00:00",
+    "finishedAt": "2026-09-11T01:00:25+00:00",
+    "createdAt": "2026-09-11T01:00:00+00:00",
+    "updatedAt": "2026-09-11T01:00:25+00:00"
+  },
+  {
+    "id": 31,
+    "type": "DailyAssignment",
+    "day": "2026-09-11",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 311,
+      "pending": 5,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 4
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-12T01:00:00+00:00",
+    "finishedAt": "2026-09-12T01:00:18+00:00",
+    "createdAt": "2026-09-12T01:00:00+00:00",
+    "updatedAt": "2026-09-12T01:00:18+00:00"
+  },
+  {
+    "id": 32,
+    "type": "DailyAssignment",
+    "day": "2026-09-12",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 313,
+      "pending": 6,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-13T01:00:00+00:00",
+    "finishedAt": "2026-09-13T01:00:20+00:00",
+    "createdAt": "2026-09-13T01:00:00+00:00",
+    "updatedAt": "2026-09-13T01:00:20+00:00"
+  },
+  {
+    "id": 33,
+    "type": "DailyAssignment",
+    "day": "2026-09-13",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 311,
+      "pending": 7,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-14T01:00:00+00:00",
+    "finishedAt": "2026-09-14T01:00:22+00:00",
+    "createdAt": "2026-09-14T01:00:00+00:00",
+    "updatedAt": "2026-09-14T01:00:22+00:00"
+  },
+  {
+    "id": 34,
+    "type": "Training",
+    "day": "2026-09-13",
+    "cluster": null,
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "clusters": 8,
+      "restarts": 5,
+      "bySegmentCount": {
+        "3": {
+          "inertia": 19862.517,
+          "segments": 3,
+          "inherited": 3
+        },
+        "4": {
+          "inertia": 16431.209,
+          "segments": 4,
+          "inherited": 4
+        },
+        "5": {
+          "inertia": 12900.418,
+          "segments": 5,
+          "inherited": 5
+        },
+        "6": {
+          "inertia": 10650.236,
+          "segments": 6,
+          "inherited": 6
+        },
+        "7": {
+          "inertia": 8930.817,
+          "segments": 7,
+          "inherited": 6
+        },
+        "8": {
+          "inertia": 7410.342,
+          "segments": 8,
+          "inherited": 6
+        },
+        "9": {
+          "inertia": 6020.651,
+          "segments": 9,
+          "inherited": 6
+        },
+        "10": {
+          "inertia": 4780.129,
+          "segments": 10,
+          "inherited": 6
+        }
+      }
+    },
+    "startedAt": "2026-09-14T02:00:00+00:00",
+    "finishedAt": "2026-09-14T02:12:24+00:00",
+    "createdAt": "2026-09-14T02:00:00+00:00",
+    "updatedAt": "2026-09-14T02:12:24+00:00"
+  },
+  {
+    "id": 35,
+    "type": "WeeklyUpdate",
+    "day": "2026-09-13",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 8,
+      "moved": 8,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.02,
+          "drift": 0.08
+        },
+        "27": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.025,
+          "drift": 0.1
+        },
+        "28": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.03,
+          "drift": 0.12
+        },
+        "29": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.035,
+          "drift": 0.14
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.02,
+          "drift": 0.08
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.025,
+          "drift": 0.1
+        },
+        "32": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.03,
+          "drift": 0.12
+        },
+        "33": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.035,
+          "drift": 0.14
+        }
+      }
+    },
+    "startedAt": "2026-09-14T03:00:00+00:00",
+    "finishedAt": "2026-09-14T03:00:04+00:00",
+    "createdAt": "2026-09-14T03:00:00+00:00",
+    "updatedAt": "2026-09-14T03:00:04+00:00"
+  },
+  {
+    "id": 36,
+    "type": "DailyAssignment",
+    "day": "2026-09-14",
+    "cluster": {
+      "id": 6
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 320,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 313,
+      "pending": 4,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 3
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "32": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "33": {
+          "assigned": 40,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-15T01:00:00+00:00",
+    "finishedAt": "2026-09-15T01:00:24+00:00",
+    "createdAt": "2026-09-15T01:00:00+00:00",
+    "updatedAt": "2026-09-15T01:00:24+00:00"
+  },
+  {
+    "id": 37,
+    "type": "DailyAssignment",
+    "day": "2026-09-15",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 640,
+      "unchanged": 0,
+      "pending": 0,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-16T01:00:00+00:00",
+    "finishedAt": "2026-09-16T01:00:26+00:00",
+    "createdAt": "2026-09-16T01:00:00+00:00",
+    "updatedAt": "2026-09-16T01:00:26+00:00"
+  },
+  {
+    "id": 38,
+    "type": "DailyAssignment",
+    "day": "2026-09-16",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 5,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-17T01:00:00+00:00",
+    "finishedAt": "2026-09-17T01:00:19+00:00",
+    "createdAt": "2026-09-17T01:00:00+00:00",
+    "updatedAt": "2026-09-17T01:00:19+00:00"
+  },
+  {
+    "id": 39,
+    "type": "DailyAssignment",
+    "day": "2026-09-17",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 6,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-18T01:00:00+00:00",
+    "finishedAt": "2026-09-18T01:00:21+00:00",
+    "createdAt": "2026-09-18T01:00:00+00:00",
+    "updatedAt": "2026-09-18T01:00:21+00:00"
+  },
+  {
+    "id": 40,
+    "type": "DailyAssignment",
+    "day": "2026-09-18",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 7,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-19T01:00:00+00:00",
+    "finishedAt": "2026-09-19T01:00:23+00:00",
+    "createdAt": "2026-09-19T01:00:00+00:00",
+    "updatedAt": "2026-09-19T01:00:23+00:00"
+  },
+  {
+    "id": 41,
+    "type": "DailyAssignment",
+    "day": "2026-09-19",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 4,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 4
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-20T01:00:00+00:00",
+    "finishedAt": "2026-09-20T01:00:25+00:00",
+    "createdAt": "2026-09-20T01:00:00+00:00",
+    "updatedAt": "2026-09-20T01:00:25+00:00"
+  },
+  {
+    "id": 42,
+    "type": "DailyAssignment",
+    "day": "2026-09-20",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 5,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-21T01:00:00+00:00",
+    "finishedAt": "2026-09-21T01:00:18+00:00",
+    "createdAt": "2026-09-21T01:00:00+00:00",
+    "updatedAt": "2026-09-21T01:00:18+00:00"
+  },
+  {
+    "id": 43,
+    "type": "DailyAssignment",
+    "day": "2026-09-21",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 6,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-22T01:00:00+00:00",
+    "finishedAt": "2026-09-22T01:00:20+00:00",
+    "createdAt": "2026-09-22T01:00:00+00:00",
+    "updatedAt": "2026-09-22T01:00:20+00:00"
+  },
+  {
+    "id": 44,
+    "type": "DailyAssignment",
+    "day": "2026-09-22",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 630,
+      "pending": 7,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 3
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-23T01:00:00+00:00",
+    "finishedAt": "2026-09-23T01:00:22+00:00",
+    "createdAt": "2026-09-23T01:00:00+00:00",
+    "updatedAt": "2026-09-23T01:00:22+00:00"
+  },
+  {
+    "id": 45,
+    "type": "DailyAssignment",
+    "day": "2026-09-23",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 635,
+      "pending": 4,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-24T01:00:00+00:00",
+    "finishedAt": "2026-09-24T01:00:24+00:00",
+    "createdAt": "2026-09-24T01:00:00+00:00",
+    "updatedAt": "2026-09-24T01:00:24+00:00"
+  },
+  {
+    "id": 46,
+    "type": "DailyAssignment",
+    "day": "2026-09-24",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 635,
+      "pending": 5,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-25T01:00:00+00:00",
+    "finishedAt": "2026-09-25T01:00:26+00:00",
+    "createdAt": "2026-09-25T01:00:00+00:00",
+    "updatedAt": "2026-09-25T01:00:26+00:00"
+  },
+  {
+    "id": 47,
+    "type": "DailyAssignment",
+    "day": "2026-09-25",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 6,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-26T01:00:00+00:00",
+    "finishedAt": "2026-09-26T01:00:19+00:00",
+    "createdAt": "2026-09-26T01:00:00+00:00",
+    "updatedAt": "2026-09-26T01:00:19+00:00"
+  },
+  {
+    "id": 48,
+    "type": "DailyAssignment",
+    "day": "2026-09-26",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 629,
+      "pending": 7,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 4
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-27T01:00:00+00:00",
+    "finishedAt": "2026-09-27T01:00:21+00:00",
+    "createdAt": "2026-09-27T01:00:00+00:00",
+    "updatedAt": "2026-09-27T01:00:21+00:00"
+  },
+  {
+    "id": 49,
+    "type": "DailyAssignment",
+    "day": "2026-09-27",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 635,
+      "pending": 4,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-28T01:00:00+00:00",
+    "finishedAt": "2026-09-28T01:00:23+00:00",
+    "createdAt": "2026-09-28T01:00:00+00:00",
+    "updatedAt": "2026-09-28T01:00:23+00:00"
+  },
+  {
+    "id": 50,
+    "type": "WeeklyUpdate",
+    "day": "2026-09-27",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 10,
+      "moved": 10,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 560,
+          "switchShare": 0,
+          "step": 0.02,
+          "drift": 0.02
+        },
+        "27": {
+          "count": 560,
+          "switchShare": 0.012,
+          "step": 0.025,
+          "drift": 0.025
+        },
+        "28": {
+          "count": 560,
+          "switchShare": 0.024,
+          "step": 0.03,
+          "drift": 0.03
+        },
+        "29": {
+          "count": 560,
+          "switchShare": 0.036,
+          "step": 0.035,
+          "drift": 0.035
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.02,
+          "drift": 0.02
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.025,
+          "drift": 0.025
+        },
+        "56": {
+          "count": 560,
+          "switchShare": 0.012,
+          "step": 0.03,
+          "drift": 0.03
+        },
+        "57": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.035,
+          "drift": 0.035
+        },
+        "58": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.02,
+          "drift": 0.02
+        },
+        "59": {
+          "count": 560,
+          "switchShare": 0.048,
+          "step": 0.025,
+          "drift": 0.025
+        }
+      }
+    },
+    "startedAt": "2026-09-28T03:00:00+00:00",
+    "finishedAt": "2026-09-28T03:00:06+00:00",
+    "createdAt": "2026-09-28T03:00:00+00:00",
+    "updatedAt": "2026-09-28T03:00:06+00:00"
+  },
+  {
+    "id": 51,
+    "type": "DailyAssignment",
+    "day": "2026-09-28",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 5,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-29T01:00:00+00:00",
+    "finishedAt": "2026-09-29T01:00:25+00:00",
+    "createdAt": "2026-09-29T01:00:00+00:00",
+    "updatedAt": "2026-09-29T01:00:25+00:00"
+  },
+  {
+    "id": 52,
+    "type": "Training",
+    "day": "2026-09-28",
+    "cluster": null,
+    "marking": "Failed",
+    "error": "No feature vectors of version \"3f9a1c27b4e8-a7c41d09\" for 2026-09-28.",
+    "summary": null,
+    "startedAt": "2026-09-29T02:00:00+00:00",
+    "finishedAt": "2026-09-29T02:00:03+00:00",
+    "createdAt": "2026-09-29T02:00:00+00:00",
+    "updatedAt": "2026-09-29T02:00:03+00:00"
+  },
+  {
+    "id": 53,
+    "type": "DailyAssignment",
+    "day": "2026-09-29",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 6,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 3
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-09-30T01:00:00+00:00",
+    "finishedAt": "2026-09-30T01:00:18+00:00",
+    "createdAt": "2026-09-30T01:00:00+00:00",
+    "updatedAt": "2026-09-30T01:00:18+00:00"
+  },
+  {
+    "id": 54,
+    "type": "DailyAssignment",
+    "day": "2026-09-30",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 7,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-01T01:00:00+00:00",
+    "finishedAt": "2026-10-01T01:00:20+00:00",
+    "createdAt": "2026-10-01T01:00:00+00:00",
+    "updatedAt": "2026-10-01T01:00:20+00:00"
+  },
+  {
+    "id": 55,
+    "type": "DailyAssignment",
+    "day": "2026-10-01",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 636,
+      "pending": 4,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-02T01:00:00+00:00",
+    "finishedAt": "2026-10-02T01:00:22+00:00",
+    "createdAt": "2026-10-02T01:00:00+00:00",
+    "updatedAt": "2026-10-02T01:00:22+00:00"
+  },
+  {
+    "id": 56,
+    "type": "DailyAssignment",
+    "day": "2026-10-02",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 5,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-03T01:00:00+00:00",
+    "finishedAt": "2026-10-03T01:00:24+00:00",
+    "createdAt": "2026-10-03T01:00:00+00:00",
+    "updatedAt": "2026-10-03T01:00:24+00:00"
+  },
+  {
+    "id": 57,
+    "type": "DailyAssignment",
+    "day": "2026-10-03",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 630,
+      "pending": 6,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 4
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-04T01:00:00+00:00",
+    "finishedAt": "2026-10-04T01:00:26+00:00",
+    "createdAt": "2026-10-04T01:00:00+00:00",
+    "updatedAt": "2026-10-04T01:00:26+00:00"
+  },
+  {
+    "id": 58,
+    "type": "DailyAssignment",
+    "day": "2026-10-04",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Failed",
+    "error": "No feature vectors of version \"3f9a1c27b4e8-a7c41d09\" for 2026-10-04.",
+    "summary": null,
+    "startedAt": "2026-10-05T01:00:00+00:00",
+    "finishedAt": "2026-10-05T01:00:30+00:00",
+    "createdAt": "2026-10-05T01:00:00+00:00",
+    "updatedAt": "2026-10-05T01:00:30+00:00"
+  },
+  {
+    "id": 59,
+    "type": "WeeklyUpdate",
+    "day": "2026-10-04",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 10,
+      "moved": 10,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 560,
+          "switchShare": 0.012,
+          "step": 0.02,
+          "drift": 0.04
+        },
+        "27": {
+          "count": 560,
+          "switchShare": 0.024,
+          "step": 0.025,
+          "drift": 0.05
+        },
+        "28": {
+          "count": 560,
+          "switchShare": 0.036,
+          "step": 0.03,
+          "drift": 0.06
+        },
+        "29": {
+          "count": 560,
+          "switchShare": 0.048,
+          "step": 0.035,
+          "drift": 0.07
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.02,
+          "drift": 0.04
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.025,
+          "drift": 0.05
+        },
+        "56": {
+          "count": 560,
+          "switchShare": 0.024,
+          "step": 0.03,
+          "drift": 0.06
+        },
+        "57": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.035,
+          "drift": 0.07
+        },
+        "58": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.02,
+          "drift": 0.04
+        },
+        "59": {
+          "count": 560,
+          "switchShare": 0,
+          "step": 0.025,
+          "drift": 0.05
+        }
+      }
+    },
+    "startedAt": "2026-10-05T03:00:00+00:00",
+    "finishedAt": "2026-10-05T03:00:03+00:00",
+    "createdAt": "2026-10-05T03:00:00+00:00",
+    "updatedAt": "2026-10-05T03:00:03+00:00"
+  },
+  {
+    "id": 60,
+    "type": "DailyAssignment",
+    "day": "2026-10-05",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 7,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 1
+        }
+      }
+    },
+    "startedAt": "2026-10-06T01:00:00+00:00",
+    "finishedAt": "2026-10-06T01:00:21+00:00",
+    "createdAt": "2026-10-06T01:00:00+00:00",
+    "updatedAt": "2026-10-06T01:00:21+00:00"
+  },
+  {
+    "id": 61,
+    "type": "DailyAssignment",
+    "day": "2026-10-06",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 4,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-07T01:00:00+00:00",
+    "finishedAt": "2026-10-07T01:00:23+00:00",
+    "createdAt": "2026-10-07T01:00:00+00:00",
+    "updatedAt": "2026-10-07T01:00:23+00:00"
+  },
+  {
+    "id": 62,
+    "type": "DailyAssignment",
+    "day": "2026-10-07",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 5,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 3
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-08T01:00:00+00:00",
+    "finishedAt": "2026-10-08T01:00:25+00:00",
+    "createdAt": "2026-10-08T01:00:00+00:00",
+    "updatedAt": "2026-10-08T01:00:25+00:00"
+  },
+  {
+    "id": 63,
+    "type": "DailyAssignment",
+    "day": "2026-10-08",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 6,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-09T01:00:00+00:00",
+    "finishedAt": "2026-10-09T01:00:18+00:00",
+    "createdAt": "2026-10-09T01:00:00+00:00",
+    "updatedAt": "2026-10-09T01:00:18+00:00"
+  },
+  {
+    "id": 64,
+    "type": "DailyAssignment",
+    "day": "2026-10-09",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 7,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-10T01:00:00+00:00",
+    "finishedAt": "2026-10-10T01:00:20+00:00",
+    "createdAt": "2026-10-10T01:00:00+00:00",
+    "updatedAt": "2026-10-10T01:00:20+00:00"
+  },
+  {
+    "id": 65,
+    "type": "DailyAssignment",
+    "day": "2026-10-10",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 4,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-11T01:00:00+00:00",
+    "finishedAt": "2026-10-11T01:00:22+00:00",
+    "createdAt": "2026-10-11T01:00:00+00:00",
+    "updatedAt": "2026-10-11T01:00:22+00:00"
+  },
+  {
+    "id": 66,
+    "type": "DailyAssignment",
+    "day": "2026-10-11",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 5,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 4
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-12T01:00:00+00:00",
+    "finishedAt": "2026-10-12T01:00:24+00:00",
+    "createdAt": "2026-10-12T01:00:00+00:00",
+    "updatedAt": "2026-10-12T01:00:24+00:00"
+  },
+  {
+    "id": 67,
+    "type": "WeeklyUpdate",
+    "day": "2026-10-11",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 10,
+      "moved": 10,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 560,
+          "switchShare": 0.024,
+          "step": 0.02,
+          "drift": 0.06
+        },
+        "27": {
+          "count": 560,
+          "switchShare": 0.036,
+          "step": 0.025,
+          "drift": 0.075
+        },
+        "28": {
+          "count": 560,
+          "switchShare": 0.048,
+          "step": 0.03,
+          "drift": 0.09
+        },
+        "29": {
+          "count": 560,
+          "switchShare": 0,
+          "step": 0.035,
+          "drift": 0.105
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.02,
+          "drift": 0.06
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.025,
+          "drift": 0.075
+        },
+        "56": {
+          "count": 560,
+          "switchShare": 0.036,
+          "step": 0.03,
+          "drift": 0.09
+        },
+        "57": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.035,
+          "drift": 0.105
+        },
+        "58": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.02,
+          "drift": 0.06
+        },
+        "59": {
+          "count": 560,
+          "switchShare": 0.012,
+          "step": 0.025,
+          "drift": 0.075
+        }
+      }
+    },
+    "startedAt": "2026-10-12T03:00:00+00:00",
+    "finishedAt": "2026-10-12T03:00:04+00:00",
+    "createdAt": "2026-10-12T03:00:00+00:00",
+    "updatedAt": "2026-10-12T03:00:04+00:00"
+  },
+  {
+    "id": 68,
+    "type": "DailyAssignment",
+    "day": "2026-10-12",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 6,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-13T01:00:00+00:00",
+    "finishedAt": "2026-10-13T01:00:26+00:00",
+    "createdAt": "2026-10-13T01:00:00+00:00",
+    "updatedAt": "2026-10-13T01:00:26+00:00"
+  },
+  {
+    "id": 69,
+    "type": "DailyAssignment",
+    "day": "2026-10-13",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 7,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-14T01:00:00+00:00",
+    "finishedAt": "2026-10-14T01:00:19+00:00",
+    "createdAt": "2026-10-14T01:00:00+00:00",
+    "updatedAt": "2026-10-14T01:00:19+00:00"
+  },
+  {
+    "id": 70,
+    "type": "Training",
+    "day": "2026-10-13",
+    "cluster": null,
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "clusters": 8,
+      "restarts": 5,
+      "bySegmentCount": {
+        "3": {
+          "inertia": 19944.802,
+          "segments": 3,
+          "inherited": 3
+        },
+        "4": {
+          "inertia": 16502.376,
+          "segments": 4,
+          "inherited": 4
+        },
+        "5": {
+          "inertia": 13020.733,
+          "segments": 5,
+          "inherited": 5
+        },
+        "6": {
+          "inertia": 10780.512,
+          "segments": 6,
+          "inherited": 6
+        },
+        "7": {
+          "inertia": 9010.248,
+          "segments": 7,
+          "inherited": 7
+        },
+        "8": {
+          "inertia": 7520.961,
+          "segments": 8,
+          "inherited": 8
+        },
+        "9": {
+          "inertia": 6100.405,
+          "segments": 9,
+          "inherited": 9
+        },
+        "10": {
+          "inertia": 4850.627,
+          "segments": 10,
+          "inherited": 9
+        }
+      }
+    },
+    "startedAt": "2026-10-14T02:00:00+00:00",
+    "finishedAt": "2026-10-14T02:12:31+00:00",
+    "createdAt": "2026-10-14T02:00:00+00:00",
+    "updatedAt": "2026-10-14T02:12:31+00:00"
+  },
+  {
+    "id": 71,
+    "type": "DailyAssignment",
+    "day": "2026-10-14",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 4,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 3
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-15T01:00:00+00:00",
+    "finishedAt": "2026-10-15T01:00:21+00:00",
+    "createdAt": "2026-10-15T01:00:00+00:00",
+    "updatedAt": "2026-10-15T01:00:21+00:00"
+  },
+  {
+    "id": 72,
+    "type": "DailyAssignment",
+    "day": "2026-10-15",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 5,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 1
+        }
+      }
+    },
+    "startedAt": "2026-10-16T01:00:00+00:00",
+    "finishedAt": "2026-10-16T01:00:23+00:00",
+    "createdAt": "2026-10-16T01:00:00+00:00",
+    "updatedAt": "2026-10-16T01:00:23+00:00"
+  },
+  {
+    "id": 73,
+    "type": "DailyAssignment",
+    "day": "2026-10-16",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 6,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-17T01:00:00+00:00",
+    "finishedAt": "2026-10-17T01:00:25+00:00",
+    "createdAt": "2026-10-17T01:00:00+00:00",
+    "updatedAt": "2026-10-17T01:00:25+00:00"
+  },
+  {
+    "id": 74,
+    "type": "DailyAssignment",
+    "day": "2026-10-17",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 7,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-18T01:00:00+00:00",
+    "finishedAt": "2026-10-18T01:00:18+00:00",
+    "createdAt": "2026-10-18T01:00:00+00:00",
+    "updatedAt": "2026-10-18T01:00:18+00:00"
+  },
+  {
+    "id": 75,
+    "type": "DailyAssignment",
+    "day": "2026-10-18",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 4,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 4
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-19T01:00:00+00:00",
+    "finishedAt": "2026-10-19T01:00:20+00:00",
+    "createdAt": "2026-10-19T01:00:00+00:00",
+    "updatedAt": "2026-10-19T01:00:20+00:00"
+  },
+  {
+    "id": 76,
+    "type": "WeeklyUpdate",
+    "day": "2026-10-18",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 10,
+      "moved": 10,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 560,
+          "switchShare": 0.036,
+          "step": 0.02,
+          "drift": 0.08
+        },
+        "27": {
+          "count": 560,
+          "switchShare": 0.048,
+          "step": 0.025,
+          "drift": 0.1
+        },
+        "28": {
+          "count": 560,
+          "switchShare": 0,
+          "step": 0.03,
+          "drift": 0.12
+        },
+        "29": {
+          "count": 560,
+          "switchShare": 0.012,
+          "step": 0.035,
+          "drift": 0.14
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.02,
+          "drift": 0.08
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.025,
+          "drift": 0.1
+        },
+        "56": {
+          "count": 560,
+          "switchShare": 0.048,
+          "step": 0.03,
+          "drift": 0.12
+        },
+        "57": {
+          "count": 280,
+          "switchShare": 0,
+          "step": 0.035,
+          "drift": 0.14
+        },
+        "58": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.02,
+          "drift": 0.08
+        },
+        "59": {
+          "count": 560,
+          "switchShare": 0.024,
+          "step": 0.025,
+          "drift": 0.1
+        }
+      }
+    },
+    "startedAt": "2026-10-19T03:00:00+00:00",
+    "finishedAt": "2026-10-19T03:00:05+00:00",
+    "createdAt": "2026-10-19T03:00:00+00:00",
+    "updatedAt": "2026-10-19T03:00:05+00:00"
+  },
+  {
+    "id": 77,
+    "type": "DailyAssignment",
+    "day": "2026-10-19",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 5,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-20T01:00:00+00:00",
+    "finishedAt": "2026-10-20T01:00:22+00:00",
+    "createdAt": "2026-10-20T01:00:00+00:00",
+    "updatedAt": "2026-10-20T01:00:22+00:00"
+  },
+  {
+    "id": 78,
+    "type": "DailyAssignment",
+    "day": "2026-10-20",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 6,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-21T01:00:00+00:00",
+    "finishedAt": "2026-10-21T01:00:24+00:00",
+    "createdAt": "2026-10-21T01:00:00+00:00",
+    "updatedAt": "2026-10-21T01:00:24+00:00"
+  },
+  {
+    "id": 79,
+    "type": "DailyAssignment",
+    "day": "2026-10-21",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 630,
+      "pending": 7,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 3
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-22T01:00:00+00:00",
+    "finishedAt": "2026-10-22T01:00:26+00:00",
+    "createdAt": "2026-10-22T01:00:00+00:00",
+    "updatedAt": "2026-10-22T01:00:26+00:00"
+  },
+  {
+    "id": 80,
+    "type": "DailyAssignment",
+    "day": "2026-10-22",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 635,
+      "pending": 4,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-23T01:00:00+00:00",
+    "finishedAt": "2026-10-23T01:00:19+00:00",
+    "createdAt": "2026-10-23T01:00:00+00:00",
+    "updatedAt": "2026-10-23T01:00:19+00:00"
+  },
+  {
+    "id": 81,
+    "type": "DailyAssignment",
+    "day": "2026-10-23",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 635,
+      "pending": 5,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-24T01:00:00+00:00",
+    "finishedAt": "2026-10-24T01:00:21+00:00",
+    "createdAt": "2026-10-24T01:00:00+00:00",
+    "updatedAt": "2026-10-24T01:00:21+00:00"
+  },
+  {
+    "id": 82,
+    "type": "DailyAssignment",
+    "day": "2026-10-24",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 6,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-25T01:00:00+00:00",
+    "finishedAt": "2026-10-25T01:00:23+00:00",
+    "createdAt": "2026-10-25T01:00:00+00:00",
+    "updatedAt": "2026-10-25T01:00:23+00:00"
+  },
+  {
+    "id": 83,
+    "type": "DailyAssignment",
+    "day": "2026-10-25",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 629,
+      "pending": 7,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 4
+        }
+      }
+    },
+    "startedAt": "2026-10-26T01:00:00+00:00",
+    "finishedAt": "2026-10-26T01:00:25+00:00",
+    "createdAt": "2026-10-26T01:00:00+00:00",
+    "updatedAt": "2026-10-26T01:00:25+00:00"
+  },
+  {
+    "id": 84,
+    "type": "WeeklyUpdate",
+    "day": "2026-10-25",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "segments": 10,
+      "moved": 10,
+      "skipped": 0,
+      "bySegment": {
+        "26": {
+          "count": 560,
+          "switchShare": 0.048,
+          "step": 0.02,
+          "drift": 0.1
+        },
+        "27": {
+          "count": 560,
+          "switchShare": 0,
+          "step": 0.025,
+          "drift": 0.125
+        },
+        "28": {
+          "count": 560,
+          "switchShare": 0.012,
+          "step": 0.03,
+          "drift": 0.15
+        },
+        "29": {
+          "count": 560,
+          "switchShare": 0.024,
+          "step": 0.035,
+          "drift": 0.175
+        },
+        "30": {
+          "count": 280,
+          "switchShare": 0.036,
+          "step": 0.02,
+          "drift": 0.1
+        },
+        "31": {
+          "count": 280,
+          "switchShare": 0.048,
+          "step": 0.025,
+          "drift": 0.125
+        },
+        "56": {
+          "count": 560,
+          "switchShare": 0,
+          "step": 0.03,
+          "drift": 0.15
+        },
+        "57": {
+          "count": 280,
+          "switchShare": 0.012,
+          "step": 0.035,
+          "drift": 0.175
+        },
+        "58": {
+          "count": 280,
+          "switchShare": 0.024,
+          "step": 0.02,
+          "drift": 0.1
+        },
+        "59": {
+          "count": 560,
+          "switchShare": 0.036,
+          "step": 0.025,
+          "drift": 0.125
+        }
+      }
+    },
+    "startedAt": "2026-10-26T03:00:00+00:00",
+    "finishedAt": "2026-10-26T03:00:06+00:00",
+    "createdAt": "2026-10-26T03:00:00+00:00",
+    "updatedAt": "2026-10-26T03:00:06+00:00"
+  },
+  {
+    "id": 85,
+    "type": "DailyAssignment",
+    "day": "2026-10-26",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 635,
+      "pending": 4,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-27T01:00:00+00:00",
+    "finishedAt": "2026-10-27T01:00:18+00:00",
+    "createdAt": "2026-10-27T01:00:00+00:00",
+    "updatedAt": "2026-10-27T01:00:18+00:00"
+  },
+  {
+    "id": 86,
+    "type": "DailyAssignment",
+    "day": "2026-10-27",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 5,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-28T01:00:00+00:00",
+    "finishedAt": "2026-10-28T01:00:20+00:00",
+    "createdAt": "2026-10-28T01:00:00+00:00",
+    "updatedAt": "2026-10-28T01:00:20+00:00"
+  },
+  {
+    "id": 87,
+    "type": "DailyAssignment",
+    "day": "2026-10-28",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 6,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 3
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-29T01:00:00+00:00",
+    "finishedAt": "2026-10-29T01:00:22+00:00",
+    "createdAt": "2026-10-29T01:00:00+00:00",
+    "updatedAt": "2026-10-29T01:00:22+00:00"
+  },
+  {
+    "id": 88,
+    "type": "DailyAssignment",
+    "day": "2026-10-29",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 7,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-30T01:00:00+00:00",
+    "finishedAt": "2026-10-30T01:00:24+00:00",
+    "createdAt": "2026-10-30T01:00:00+00:00",
+    "updatedAt": "2026-10-30T01:00:24+00:00"
+  },
+  {
+    "id": 89,
+    "type": "DailyAssignment",
+    "day": "2026-10-30",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 636,
+      "pending": 4,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-10-31T01:00:00+00:00",
+    "finishedAt": "2026-10-31T01:00:26+00:00",
+    "createdAt": "2026-10-31T01:00:00+00:00",
+    "updatedAt": "2026-10-31T01:00:26+00:00"
+  },
+  {
+    "id": 90,
+    "type": "DailyAssignment",
+    "day": "2026-10-31",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 5,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-01T01:00:00+00:00",
+    "finishedAt": "2026-11-01T01:00:19+00:00",
+    "createdAt": "2026-11-01T01:00:00+00:00",
+    "updatedAt": "2026-11-01T01:00:19+00:00"
+  },
+  {
+    "id": 91,
+    "type": "DailyAssignment",
+    "day": "2026-11-01",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Failed",
+    "error": "cURL error 7: Failed to connect to opensearch port 9200: Connection refused.",
+    "summary": null,
+    "startedAt": "2026-11-02T01:00:00+00:00",
+    "finishedAt": "2026-11-02T01:00:30+00:00",
+    "createdAt": "2026-11-02T01:00:00+00:00",
+    "updatedAt": "2026-11-02T01:00:30+00:00"
+  },
+  {
+    "id": 92,
+    "type": "WeeklyUpdate",
+    "day": "2026-11-01",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Failed",
+    "error": "OpenSearch search_phase_execution_exception: all shards failed.",
+    "summary": null,
+    "startedAt": "2026-11-02T03:00:00+00:00",
+    "finishedAt": "2026-11-02T03:00:03+00:00",
+    "createdAt": "2026-11-02T03:00:00+00:00",
+    "updatedAt": "2026-11-02T03:00:03+00:00"
+  },
+  {
+    "id": 93,
+    "type": "DailyAssignment",
+    "day": "2026-11-02",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 630,
+      "pending": 6,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 4
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-03T01:00:00+00:00",
+    "finishedAt": "2026-11-03T01:00:23+00:00",
+    "createdAt": "2026-11-03T01:00:00+00:00",
+    "updatedAt": "2026-11-03T01:00:23+00:00"
+  },
+  {
+    "id": 94,
+    "type": "DailyAssignment",
+    "day": "2026-11-03",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 7,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-04T01:00:00+00:00",
+    "finishedAt": "2026-11-04T01:00:25+00:00",
+    "createdAt": "2026-11-04T01:00:00+00:00",
+    "updatedAt": "2026-11-04T01:00:25+00:00"
+  },
+  {
+    "id": 95,
+    "type": "DailyAssignment",
+    "day": "2026-11-04",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 4,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-05T01:00:00+00:00",
+    "finishedAt": "2026-11-05T01:00:18+00:00",
+    "createdAt": "2026-11-05T01:00:00+00:00",
+    "updatedAt": "2026-11-05T01:00:18+00:00"
+  },
+  {
+    "id": 96,
+    "type": "DailyAssignment",
+    "day": "2026-11-05",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 632,
+      "pending": 5,
+      "switched": 3,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 3
+        }
+      }
+    },
+    "startedAt": "2026-11-06T01:00:00+00:00",
+    "finishedAt": "2026-11-06T01:00:20+00:00",
+    "createdAt": "2026-11-06T01:00:00+00:00",
+    "updatedAt": "2026-11-06T01:00:20+00:00"
+  },
+  {
+    "id": 97,
+    "type": "DailyAssignment",
+    "day": "2026-11-06",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 6,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 1
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-07T01:00:00+00:00",
+    "finishedAt": "2026-11-07T01:00:22+00:00",
+    "createdAt": "2026-11-07T01:00:00+00:00",
+    "updatedAt": "2026-11-07T01:00:22+00:00"
+  },
+  {
+    "id": 98,
+    "type": "DailyAssignment",
+    "day": "2026-11-07",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 7,
+      "switched": 0,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-08T01:00:00+00:00",
+    "finishedAt": "2026-11-08T01:00:24+00:00",
+    "createdAt": "2026-11-08T01:00:00+00:00",
+    "updatedAt": "2026-11-08T01:00:24+00:00"
+  },
+  {
+    "id": 99,
+    "type": "DailyAssignment",
+    "day": "2026-11-08",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 634,
+      "pending": 4,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 2
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-09T01:00:00+00:00",
+    "finishedAt": "2026-11-09T01:00:26+00:00",
+    "createdAt": "2026-11-09T01:00:00+00:00",
+    "updatedAt": "2026-11-09T01:00:26+00:00"
+  },
+  {
+    "id": 100,
+    "type": "WeeklyUpdate",
+    "day": "2026-11-08",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Failed",
+    "error": "OpenSearch request to auction-vectors timed out after 30 seconds.",
+    "summary": null,
+    "startedAt": "2026-11-09T03:00:00+00:00",
+    "finishedAt": "2026-11-09T03:00:04+00:00",
+    "createdAt": "2026-11-09T03:00:00+00:00",
+    "updatedAt": "2026-11-09T03:00:04+00:00"
+  },
+  {
+    "id": 101,
+    "type": "DailyAssignment",
+    "day": "2026-11-09",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 5,
+      "switched": 4,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 4
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-10T01:00:00+00:00",
+    "finishedAt": "2026-11-10T01:00:19+00:00",
+    "createdAt": "2026-11-10T01:00:00+00:00",
+    "updatedAt": "2026-11-10T01:00:19+00:00"
+  },
+  {
+    "id": 102,
+    "type": "DailyAssignment",
+    "day": "2026-11-10",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 633,
+      "pending": 6,
+      "switched": 1,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 1
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-11T01:00:00+00:00",
+    "finishedAt": "2026-11-11T01:00:21+00:00",
+    "createdAt": "2026-11-11T01:00:00+00:00",
+    "updatedAt": "2026-11-11T01:00:21+00:00"
+  },
+  {
+    "id": 103,
+    "type": "DailyAssignment",
+    "day": "2026-11-11",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "new": 0,
+      "promoted": 0,
+      "unchanged": 631,
+      "pending": 7,
+      "switched": 2,
+      "bySegment": {
+        "26": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "27": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "28": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "29": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "30": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "31": {
+          "assigned": 40,
+          "switched": 2
+        },
+        "56": {
+          "assigned": 80,
+          "switched": 0
+        },
+        "57": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "58": {
+          "assigned": 40,
+          "switched": 0
+        },
+        "59": {
+          "assigned": 80,
+          "switched": 0
+        }
+      }
+    },
+    "startedAt": "2026-11-12T01:00:00+00:00",
+    "finishedAt": "2026-11-12T01:00:23+00:00",
+    "createdAt": "2026-11-12T01:00:00+00:00",
+    "updatedAt": "2026-11-12T01:00:23+00:00"
+  },
+  {
+    "id": 104,
+    "type": "Training",
+    "day": "2026-11-11",
+    "cluster": null,
+    "marking": "Completed",
+    "error": null,
+    "summary": {
+      "vectors": 640,
+      "clusters": 8,
+      "restarts": 5,
+      "bySegmentCount": {
+        "3": {
+          "inertia": 19710.384,
+          "segments": 3,
+          "inherited": 3
+        },
+        "4": {
+          "inertia": 16286.551,
+          "segments": 4,
+          "inherited": 4
+        },
+        "5": {
+          "inertia": 12768.093,
+          "segments": 5,
+          "inherited": 5
+        },
+        "6": {
+          "inertia": 10512.718,
+          "segments": 6,
+          "inherited": 6
+        },
+        "7": {
+          "inertia": 8791.462,
+          "segments": 7,
+          "inherited": 7
+        },
+        "8": {
+          "inertia": 7263.905,
+          "segments": 8,
+          "inherited": 8
+        },
+        "9": {
+          "inertia": 5871.236,
+          "segments": 9,
+          "inherited": 9
+        },
+        "10": {
+          "inertia": 4612.358,
+          "segments": 10,
+          "inherited": 10
+        }
+      }
+    },
+    "startedAt": "2026-11-12T02:00:00+00:00",
+    "finishedAt": "2026-11-12T02:12:02+00:00",
+    "createdAt": "2026-11-12T02:00:00+00:00",
+    "updatedAt": "2026-11-12T02:12:02+00:00"
+  },
+  {
+    "id": 105,
+    "type": "DailyAssignment",
+    "day": "2026-11-12",
+    "cluster": {
+      "id": 16
+    },
+    "marking": "Failed",
+    "error": "An exception occurred in the driver: SQLSTATE[HY000] [2002] Connection refused",
+    "summary": null,
+    "startedAt": "2026-11-13T01:00:00+00:00",
+    "finishedAt": "2026-11-13T01:00:30+00:00",
+    "createdAt": "2026-11-13T01:00:00+00:00",
+    "updatedAt": "2026-11-13T01:00:30+00:00"
+  }
+]

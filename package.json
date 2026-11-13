@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:fixtures": "FIXTURES=1 VITE_API_BASE_URL=/v2.0 vite",
+    "fixtures": "node fixtures/generate.ts",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"
