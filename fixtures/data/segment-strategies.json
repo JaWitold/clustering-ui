@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "segment": {
+      "id": 26,
+      "name": "calm market"
+    },
+    "cutStrategy": "MinimalUndercut",
+    "hikeStrategy": "MaxSafe",
+    "lastFreeChangeCutStrategy": "MinimalUndercut",
+    "lastFreeChangeHikeStrategy": "ClosingBisection",
+    "enabled": true,
+    "note": "Few changes and few rivals: undercut by the minimum and hike to the safe maximum.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-08-16T10:30:00+00:00"
+  },
+  {
+    "id": 2,
+    "segment": {
+      "id": 27,
+      "name": "price war"
+    },
+    "cutStrategy": "FloorProbe",
+    "hikeStrategy": "Bisection",
+    "lastFreeChangeCutStrategy": "ProportionalFloorProbe",
+    "lastFreeChangeHikeStrategy": "Bisection",
+    "enabled": true,
+    "note": "Rivals cut every hour: probe the floor, never chase below it, hike cautiously.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-08-16T10:30:00+00:00"
+  },
+  {
+    "id": 3,
+    "segment": {
+      "id": 28,
+      "name": "daily sawtooth"
+    },
+    "cutStrategy": "Bisection",
+    "hikeStrategy": "ClosingBisection",
+    "lastFreeChangeCutStrategy": "ProportionalBisection",
+    "lastFreeChangeHikeStrategy": "ProportionalClosingBisection",
+    "enabled": true,
+    "note": "Prices fall by day and recover at night: bisect cuts, close the gap on hikes.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-08-16T10:30:00+00:00"
+  },
+  {
+    "id": 4,
+    "segment": {
+      "id": 29,
+      "name": "duopoly"
+    },
+    "cutStrategy": "FollowerProbe",
+    "hikeStrategy": "Hybrid",
+    "lastFreeChangeCutStrategy": "FollowerProbe",
+    "lastFreeChangeHikeStrategy": "Hybrid",
+    "enabled": true,
+    "note": "Two sellers trade first place: follow the leader instead of starting a war.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-08-16T10:30:00+00:00"
+  },
+  {
+    "id": 5,
+    "segment": {
+      "id": 30,
+      "name": "lone seller"
+    },
+    "cutStrategy": "MinimalUndercut",
+    "hikeStrategy": "ProportionalMaxSafe",
+    "lastFreeChangeCutStrategy": "MinimalUndercut",
+    "lastFreeChangeHikeStrategy": "ProportionalMaxSafe",
+    "enabled": true,
+    "note": "No real competition: keep the price high and spend free changes on hikes.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-08-16T10:30:00+00:00"
+  },
+  {
+    "id": 6,
+    "segment": {
+      "id": 31,
+      "name": "leader rotation"
+    },
+    "cutStrategy": "Hybrid",
+    "hikeStrategy": "RelativeHybrid",
+    "lastFreeChangeCutStrategy": "RelativeHybrid",
+    "lastFreeChangeHikeStrategy": "RelativeHybrid",
+    "enabled": true,
+    "note": "Leader changes daily: hybrid cut, relative hike to stay near the top.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-08-16T10:30:00+00:00"
+  },
+  {
+    "id": 7,
+    "segment": {
+      "id": 56,
+      "name": "bot undercutters"
+    },
+    "cutStrategy": "ProportionalFloorProbe",
+    "hikeStrategy": "Proportional",
+    "lastFreeChangeCutStrategy": "FloorProbe",
+    "lastFreeChangeHikeStrategy": "Proportional",
+    "enabled": true,
+    "note": "Repricing bots answer within minutes: do not race, hold the floor.",
+    "createdAt": "2026-09-15T10:30:00+00:00",
+    "updatedAt": "2026-09-15T10:30:00+00:00"
+  },
+  {
+    "id": 8,
+    "segment": {
+      "id": 57,
+      "name": "premium holdouts"
+    },
+    "cutStrategy": "Proportional",
+    "hikeStrategy": "MaxSafe",
+    "lastFreeChangeCutStrategy": "Proportional",
+    "lastFreeChangeHikeStrategy": "MaxSafe",
+    "enabled": true,
+    "note": "Sellers above the best price that still sell: small proportional cuts only.",
+    "createdAt": "2026-09-15T10:30:00+00:00",
+    "updatedAt": "2026-09-15T10:30:00+00:00"
+  },
+  {
+    "id": 9,
+    "segment": {
+      "id": 58,
+      "name": "slow decline"
+    },
+    "cutStrategy": "ProportionalBisection",
+    "hikeStrategy": "ClosingBisection",
+    "lastFreeChangeCutStrategy": "ProportionalBisection",
+    "lastFreeChangeHikeStrategy": "ClosingBisection",
+    "enabled": true,
+    "note": "Best price drifts down for weeks: follow the trend, avoid early hikes.",
+    "createdAt": "2026-09-15T10:30:00+00:00",
+    "updatedAt": "2026-09-15T10:30:00+00:00"
+  },
+  {
+    "id": 10,
+    "segment": {
+      "id": 59,
+      "name": "flash sales"
+    },
+    "cutStrategy": "RelativeHybrid",
+    "hikeStrategy": "ProportionalClosingBisection",
+    "lastFreeChangeCutStrategy": "RelativeHybrid",
+    "lastFreeChangeHikeStrategy": "ProportionalClosingBisection",
+    "enabled": false,
+    "note": "Paused: deep cuts revert within hours and fight the price lanes; offers use the global strategy until reviewed.",
+    "createdAt": "2026-09-15T10:30:00+00:00",
+    "updatedAt": "2026-09-16T11:15:00+00:00"
+  },
+  {
+    "id": 11,
+    "segment": {
+      "id": 32,
+      "name": "bundle resellers"
+    },
+    "cutStrategy": "Proportional",
+    "hikeStrategy": "Proportional",
+    "lastFreeChangeCutStrategy": "Proportional",
+    "lastFreeChangeHikeStrategy": "Proportional",
+    "enabled": false,
+    "note": "Disabled: segment dropped by the retraining two months ago; its offers moved to price war.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-09-16T11:15:00+00:00"
+  },
+  {
+    "id": 12,
+    "segment": {
+      "id": 33,
+      "name": "old weekend spikes"
+    },
+    "cutStrategy": "Hybrid",
+    "hikeStrategy": "MaxSafe",
+    "lastFreeChangeCutStrategy": "Hybrid",
+    "lastFreeChangeHikeStrategy": "MaxSafe",
+    "enabled": false,
+    "note": "Disabled: merged into daily sawtooth by the retraining two months ago.",
+    "createdAt": "2026-08-16T10:30:00+00:00",
+    "updatedAt": "2026-09-16T11:15:00+00:00"
+  }
+]
