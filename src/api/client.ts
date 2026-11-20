@@ -2,8 +2,17 @@ import type {
   Cluster,
   ClusteringRun,
   ClusterAssignment,
+  ClusterMembership,
   AuctionSegment,
+  FeatureVectorRow,
+  VectorVersion,
+  SegmentDailyMembershipTotals,
+  SegmentMembershipTotals,
   SegmentStrategy,
+  AssignmentChange,
+  AssignmentDrift,
+  SegmentTransition,
+  AuctionDynamics,
 } from '../types/clustering'
 
 const DEFAULT_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:2080/v2.0'
@@ -248,6 +257,9 @@ export const api = {
     cluster?: number
     offerId?: string
     run?: number
+    /** Matches offer id, product id or product name. */
+    search?: string
+    sort?: string
     page?: number
     'per-page'?: number
   }): Promise<{ assignments: ClusterAssignment[]; totalCount?: number; totalPages?: number }> {
@@ -260,6 +272,8 @@ export const api = {
 
     const queryParams: Record<string, any> = {}
     if (Object.keys(filterObj).length > 0) queryParams.filter = filterObj
+    if (params?.search) queryParams.search = params.search
+    if (params?.sort) queryParams.sort = params.sort
     if (params?.page) queryParams.page = params.page
     if (params?.['per-page']) queryParams['per-page'] = params['per-page']
 
@@ -274,6 +288,89 @@ export const api = {
       : undefined
 
     return { assignments: res.data, totalCount, totalPages }
+  },
+
+  // Memberships (training-day grouping of a cluster with 14-day sales stats)
+  /** sort: distance | -profit | -revenue | -unitsSold | -priceChanges; search matches product name, offer id, product id. */
+  async listMemberships(params: {
+    cluster: number
+    segment?: number
+    search?: string
+    sort?: string
+    page?: number
+    'per-page'?: number
+  }): Promise<{ memberships: ClusterMembership[]; totalCount?: number; totalPages?: number }> {
+    const filter: Record<string, any> = { cluster: params.cluster }
+    if (params.segment) filter.segment = params.segment
+    const res = await apiFetch<ClusterMembership[]>('/price-engine/clustering/memberships', {
+      params: { filter, search: params.search, sort: params.sort, page: params.page, 'per-page': params['per-page'] },
+    })
+    const totalCount = res.headers.get('X-Pagination-Total-Count')
+    const totalPages = res.headers.get('X-Pagination-Page-Count')
+    return {
+      memberships: res.data,
+      totalCount: totalCount ? parseInt(totalCount, 10) : undefined,
+      totalPages: totalPages ? parseInt(totalPages, 10) : undefined,
+    }
+  },
+
+  async getMembershipTotals(clusterId: number): Promise<SegmentMembershipTotals[]> {
+    const res = await apiFetch<SegmentMembershipTotals[]>(`/price-engine/clustering/clusters/${clusterId}/membership-totals`)
+    return res.data
+  },
+
+  /** Per segment, one zero-filled entry per day of from–to (default: yesterday − feature window days … yesterday). */
+  async getMembershipDailyTotals(clusterId: number, range: { from?: string; to?: string } = {}): Promise<SegmentDailyMembershipTotals[]> {
+    const res = await apiFetch<SegmentDailyMembershipTotals[]>(`/price-engine/clustering/clusters/${clusterId}/membership-daily-totals`, {
+      params: { from: range.from, to: range.to },
+    })
+    return res.data
+  },
+
+  /** Queues recording the cluster's memberships (202, deduplicated per cluster). */
+  async recordMemberships(clusterId: number): Promise<void> {
+    await apiFetch('/price-engine/clustering/memberships', {
+      method: 'POST',
+      body: JSON.stringify({ cluster: clusterId }),
+    })
+  },
+
+  // Vector versions (feature-set versions of the auction vector; the promoted one feeds the daily pipeline)
+  async listVectorVersions(): Promise<VectorVersion[]> {
+    const res = await apiFetch<VectorVersion[]>('/price-engine/clustering/vector-versions', { params: { 'per-page': 100 } })
+    return res.data
+  },
+
+  async transitionVectorVersion(name: string, transition: 'Promote' | 'Retire'): Promise<VectorVersion> {
+    const res = await apiFetch<VectorVersion>(`/price-engine/clustering/vector-versions/${encodeURIComponent(name)}/transitions`, {
+      method: 'POST',
+      body: JSON.stringify({ transition }),
+    })
+    return res.data
+  },
+
+  /** Vectors of one day; search matches offer id, product id, product name; sort: offerId | productId | productName | distance | segment, "-" for descending. */
+  async listVectors(
+    name: string,
+    params: { day: string; search?: string; sort?: string; page?: number; 'per-page'?: number },
+  ): Promise<{ vectors: FeatureVectorRow[]; totalCount?: number; totalPages?: number }> {
+    const res = await apiFetch<FeatureVectorRow[]>(`/price-engine/clustering/vector-versions/${encodeURIComponent(name)}/vectors`, { params })
+    const totalCount = res.headers.get('X-Pagination-Total-Count')
+    const totalPages = res.headers.get('X-Pagination-Page-Count')
+    return {
+      vectors: res.data,
+      totalCount: totalCount ? parseInt(totalCount, 10) : undefined,
+      totalPages: totalPages ? parseInt(totalPages, 10) : undefined,
+    }
+  },
+
+  /** One offer's vectors over a day range, oldest first. */
+  async offerVectors(name: string, offerId: string, params: { from: string; to: string }): Promise<FeatureVectorRow[]> {
+    const res = await apiFetch<FeatureVectorRow[]>(
+      `/price-engine/clustering/vector-versions/${encodeURIComponent(name)}/offers/${encodeURIComponent(offerId)}/vectors`,
+      { params },
+    )
+    return res.data
   },
 
   // Segments
@@ -325,7 +422,10 @@ export const api = {
 
   // Segment Strategies
   async listSegmentStrategies(): Promise<SegmentStrategy[]> {
-    const res = await apiFetch<SegmentStrategy[]>('/price-engine/clustering/segment-strategies')
+    // shortcut: first 100 mappings only, page through once segments exceed 100
+    const res = await apiFetch<SegmentStrategy[]>('/price-engine/clustering/segment-strategies', {
+      params: { 'per-page': 100 },
+    })
     return res.data
   },
 
@@ -368,4 +468,80 @@ export const api = {
       method: 'DELETE',
     })
   },
+
+  // Segment history, drift and forecast
+  /** History rows, newest day first by default; type takes one case name or several. */
+  async listAssignmentChanges(params?: {
+    offerId?: string
+    /** Several auctions at once (takes precedence over offerId). */
+    offerIds?: string[]
+    type?: string | string[]
+    fromSegment?: number
+    toSegment?: number
+    dayFrom?: string
+    dayTo?: string
+    search?: string
+    sort?: string
+    page?: number
+    'per-page'?: number
+  }): Promise<{ changes: AssignmentChange[]; totalCount?: number; totalPages?: number }> {
+    const filter: Record<string, any> = {}
+    if (params?.offerIds && params.offerIds.length > 0) filter.offerId = { in: params.offerIds }
+    else if (params?.offerId) filter.offerId = params.offerId
+    if (params?.type && params.type.length > 0) filter.type = Array.isArray(params.type) ? { in: params.type } : params.type
+    if (params?.fromSegment) filter.fromSegment = params.fromSegment
+    if (params?.toSegment) filter.toSegment = params.toSegment
+    if (params?.dayFrom) filter.dayFrom = { gte: params.dayFrom }
+    if (params?.dayTo) filter.dayTo = { lte: params.dayTo }
+    const res = await apiFetch<AssignmentChange[]>('/price-engine/clustering/assignment-changes', {
+      params: {
+        filter: Object.keys(filter).length > 0 ? filter : undefined,
+        search: params?.search,
+        sort: params?.sort,
+        page: params?.page,
+        'per-page': params?.['per-page'],
+      },
+    })
+    return { changes: res.data, ...pagination(res.headers) }
+  },
+
+  /** Auctions that changed in the period, most cycles first (needs Clustering:report). */
+  async listAssignmentDrifts(params: { from: string; to: string; page?: number; 'per-page'?: number }): Promise<{ drifts: AssignmentDrift[]; totalCount?: number; totalPages?: number }> {
+    const res = await apiFetch<AssignmentDrift[]>('/price-engine/clustering/assignment-drifts', { params })
+    return { drifts: res.data, ...pagination(res.headers) }
+  },
+
+  /** Moves per (from segment, to segment) pair in the period, most moves first (needs Clustering:report). */
+  async listSegmentTransitions(params: { from: string; to: string }): Promise<SegmentTransition[]> {
+    const res = await apiFetch<SegmentTransition[]>('/price-engine/clustering/segment-transitions', { params })
+    return res.data
+  },
+
+  /** Dynamics of a day; sort: daysToSwitch | switchMargin | switchMarginVelocity | speed | offerId | productName, "-" for descending, missing values last. */
+  async listAuctionDynamics(params: {
+    day: string
+    sort?: string
+    search?: string
+    segment?: number
+    page?: number
+    'per-page'?: number
+  }): Promise<{ dynamics: AuctionDynamics[]; totalCount?: number; totalPages?: number }> {
+    const res = await apiFetch<AuctionDynamics[]>('/price-engine/clustering/auction-dynamics', { params })
+    return { dynamics: res.data, ...pagination(res.headers) }
+  },
+
+  /** One auction's dynamics over a day range, oldest first (at most 100 days). */
+  async offerAuctionDynamics(offerId: string, params: { from: string; to: string }): Promise<AuctionDynamics[]> {
+    const res = await apiFetch<AuctionDynamics[]>(`/price-engine/clustering/auction-dynamics/${encodeURIComponent(offerId)}`, { params })
+    return res.data
+  },
+}
+
+function pagination(headers: Headers): { totalCount?: number; totalPages?: number } {
+  const totalCount = headers.get('X-Pagination-Total-Count')
+  const totalPages = headers.get('X-Pagination-Page-Count')
+  return {
+    totalCount: totalCount ? parseInt(totalCount, 10) : undefined,
+    totalPages: totalPages ? parseInt(totalPages, 10) : undefined,
+  }
 }

@@ -67,7 +67,17 @@ npm run fixtures       # regenerate fixtures (optional date: npm run fixtures --
 - List and inline rename auction segments (`PUT /segments/{id}`).
 - Full CRUD for Task 15 Segment Strategies: map segments to `CutStrategyName` and `HikeStrategyName`, plus last-free-change strategies.
 
-### 6. Interactive API Explorer
+### 6. Segment movement in the business view, Drift & Forecast for analysts (`/auction-dynamics`, `/assignment-drifts`, `/segment-transitions`, `/assignment-changes`)
+- **Segments (business view)**, live grouping only: a "Segment stability" bar (auctions expected to change segment within a week, auctions bouncing in the last 14 days, busiest route) and a **Movement** column per segment (leaving soon, joining soon, bouncing). Clicking it opens the segment's movement drawer: who is about to leave or join and when, whether their pricing strategy changes with the move, where auctions went and came from, and the bouncing auctions. Any auction opens the drill-down. If the movement endpoints are unavailable the view simply shows no movement.
+- **Drift & Forecast** is an Admin tab with the detailed panels below; the business view links to it.
+- **Forecast**: auctions of a day ordered by the soonest predicted segment switch, with the predicted segment, the switch margin (distance to the runner-up minus distance to the held segment), its daily change and the auction's speed. Tiles count switches expected tomorrow, in 2–3 and in 4–7 days.
+- **Drift**: auctions that changed in a period — moves, cycles (a move back into a segment left earlier in the period), distinct segments, proposed and cancelled candidates. Cycling auctions first.
+- **Flows**: heatmap of moves per (from, to) segment pair plus the busiest routes; click a cell or a route to list its moves.
+- **History**: every recorded event (New, Promoted, Proposed, Restarted, Cancelled, Switched) with the distance to the old and the new segment.
+- **Auction drill-down** (click any row): 30-day switch-margin trend with event markers, distance to the four nearest segments, the features that moved most on the day, acceleration (difference of two days' margin change) and the auction's full history.
+- Forecast, Drift and Flows need `Clustering:report`; History needs `Clustering:list`. In fixtures mode the data is derived from the assignments by `fixtures/drift.ts`.
+
+### 7. Interactive API Explorer
 - Test every endpoint in the flow with preloaded templates, editable HTTP methods, request bodies, and real-time response inspection (headers, status, timing, JSON body).
 
 ---

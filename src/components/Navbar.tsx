@@ -12,10 +12,12 @@ import {
   RefreshCw,
   Gauge,
   Menu,
+  Binary,
+  TrendingUp,
   X,
 } from 'lucide-react'
 
-export type TabId = 'viz' | 'pipeline' | 'runs' | 'assignments' | 'segments' | 'api-explorer' | 'capacity'
+export type TabId = 'viz' | 'pipeline' | 'runs' | 'assignments' | 'segments' | 'drift' | 'vectors' | 'api-explorer' | 'capacity'
 
 interface NavbarProps {
   activeTab: TabId
@@ -36,15 +38,28 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const tabs: { id: TabId; label: string; icon: React.ReactNode }[] = [
+  const [showAdmin, setShowAdmin] = useState(activeTab !== 'segments')
+
+  const businessTabs: { id: TabId; label: string; icon: React.ReactNode }[] = [
+    { id: 'segments', label: 'Segments', icon: <Settings2 className="w-4 h-4" /> },
+  ]
+  const adminTabs: { id: TabId; label: string; icon: React.ReactNode }[] = [
     { id: 'viz', label: 'Clusters & 2D Viz', icon: <Network className="w-4 h-4" /> },
     { id: 'pipeline', label: 'Pipeline Runner', icon: <Play className="w-4 h-4" /> },
     { id: 'runs', label: 'Runs Monitor', icon: <Activity className="w-4 h-4" /> },
     { id: 'assignments', label: 'Assignments', icon: <Layers className="w-4 h-4" /> },
-    { id: 'segments', label: 'Segments & Strategies', icon: <Settings2 className="w-4 h-4" /> },
+    { id: 'drift', label: 'Drift & Forecast', icon: <TrendingUp className="w-4 h-4" /> },
+    { id: 'vectors', label: 'Vectors', icon: <Binary className="w-4 h-4" /> },
     { id: 'api-explorer', label: 'API Explorer', icon: <Terminal className="w-4 h-4" /> },
     { id: 'capacity', label: 'Capacity', icon: <Gauge className="w-4 h-4" /> },
   ]
+  const adminVisible = showAdmin || adminTabs.some((tab) => tab.id === activeTab)
+  const tabs = adminVisible ? [...businessTabs, ...adminTabs] : businessTabs
+
+  const toggleAdmin = () => {
+    if (adminVisible && activeTab !== 'segments') onTabChange('segments')
+    setShowAdmin(!adminVisible)
+  }
 
   return (
     <header className="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
@@ -123,6 +138,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <RefreshCw className={`w-3 h-3 ${isChecking ? 'animate-spin' : ''}`} />
               </button>
             </div>
+
+            <button
+              onClick={toggleAdmin}
+              className={`px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors shrink-0 ${
+                adminVisible ? 'bg-slate-800 text-slate-200 border-slate-600' : 'text-slate-400 border-slate-800 hover:text-slate-200'
+              }`}
+              title="Show technical tabs (clusters, pipeline, runs, API)"
+            >
+              Admin
+            </button>
 
             {/* Settings Button */}
             <button

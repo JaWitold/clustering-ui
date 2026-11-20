@@ -314,6 +314,11 @@ export const PipelineRunner: React.FC<PipelineRunnerProps> = ({ onNavigateToRuns
         </div>
       </div>
 
+      <p className="text-xs text-slate-500 px-1">
+        Measure / Vectorize / Train run the promoted vector version. To compute another version for comparison use the CLI
+        option <code className="text-slate-300">--vector-version=v1</code>, then inspect it in the Vectors tab.
+      </p>
+
       {/* Grid of 3 Stage Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Stage 1: Measure Market Days */}

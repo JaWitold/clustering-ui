@@ -5,13 +5,15 @@ import { ClustersViz } from './components/ClustersViz'
 import { PipelineRunner } from './components/PipelineRunner'
 import { RunsMonitor } from './components/RunsMonitor'
 import { AssignmentsView } from './components/AssignmentsView'
-import { SegmentsView } from './components/SegmentsView'
+import { SegmentsBoard } from './components/SegmentsBoard'
+import { DriftView } from './components/DriftView'
+import { VectorVersionsView } from './components/VectorVersionsView'
 import { ApiExplorer } from './components/ApiExplorer'
 import { CapacityReport } from './components/CapacityReport'
 import { api } from './api/client'
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<TabId>('viz')
+  const [activeTab, setActiveTab] = useState<TabId>('segments')
   const [assignmentsOfferId, setAssignmentsOfferId] = useState<string>('')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [isConnected, setIsConnected] = useState<boolean | null>(null)
@@ -63,7 +65,24 @@ export const App: React.FC = () => {
         {activeTab === 'assignments' && (
           <AssignmentsView key={assignmentsOfferId} initialOfferId={assignmentsOfferId} />
         )}
-        {activeTab === 'segments' && <SegmentsView />}
+        {activeTab === 'segments' && (
+          <SegmentsBoard
+            onOpenDrift={() => setActiveTab('drift')}
+            onOpenOfferAssignments={(offerId) => {
+              setAssignmentsOfferId(offerId)
+              setActiveTab('assignments')
+            }}
+          />
+        )}
+        {activeTab === 'drift' && (
+          <DriftView
+            onOpenOfferAssignments={(offerId) => {
+              setAssignmentsOfferId(offerId)
+              setActiveTab('assignments')
+            }}
+          />
+        )}
+        {activeTab === 'vectors' && <VectorVersionsView />}
         {activeTab === 'api-explorer' && <ApiExplorer />}
         {activeTab === 'capacity' && <CapacityReport />}
       </main>

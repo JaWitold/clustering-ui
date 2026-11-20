@@ -64,6 +64,7 @@ export interface ClusterAssignment {
   id: number
   offerId: string
   productId: string
+  productName: string | null
   segment: AuctionSegment
   candidateSegment: AuctionSegment | null
   cluster: { id: number }
@@ -72,6 +73,70 @@ export interface ClusterAssignment {
   marking: AssignmentMarking
   day: string
   candidateSince: string | null
+}
+
+/** A feature-set version of the auction vector (v1, v2, …); versions come from code, only their lifecycle is managed. */
+export interface VectorVersion {
+  id: number
+  name: string
+  marking: ClusterMarking
+  createdAt: string
+  /** Detail only, not on list cards. */
+  updatedAt?: string
+}
+
+/** One auction's vector of one day under one version; feature names differ per version. */
+export interface FeatureVectorRow {
+  offerId: string
+  productId: string
+  productName: string | null
+  day: string
+  features: Record<string, number>
+  segment: number | null
+  distance: number | null
+}
+
+export interface ClusterMembership {
+  id: number
+  cluster: { id: number }
+  segment: AuctionSegment
+  offerId: string
+  productId: string
+  productName: string | null
+  distance: number
+  priceChanges: number
+  paidPriceChanges: number
+  unitsSold: number
+  revenue: number
+  profit: number
+  features: Record<string, number>
+}
+
+export interface SegmentMembershipTotals {
+  segmentId: number
+  segmentName: string | null
+  offers: number
+  priceChanges: number
+  paidPriceChanges: number
+  unitsSold: number
+  revenue: number
+  profit: number
+}
+
+export interface MembershipDayTotals {
+  day: string
+  priceChanges: number
+  paidPriceChanges: number
+  unitsSold: number
+  revenue: number
+  profit: number
+}
+
+export interface SegmentDailyMembershipTotals {
+  segmentId: number
+  segmentName: string | null
+  offers: number
+  days: MembershipDayTotals[]
 }
 
 export interface SegmentStrategy {
@@ -131,3 +196,69 @@ export const HIKE_STRATEGY_NAMES = [
   'ProportionalMaxSafe',
   'ProportionalClosingBisection',
 ]
+
+export type AssignmentChangeType = 'New' | 'Promoted' | 'Proposed' | 'Restarted' | 'Cancelled' | 'Switched'
+
+/** One event in the segment history of an auction (GET /assignment-changes). */
+export interface AssignmentChange {
+  id: number
+  offerId: string
+  productId: string
+  productName: string | null
+  type: AssignmentChangeType
+  day: string
+  cluster: { id: number }
+  run: { id: number } | null
+  fromSegment: AuctionSegment | null
+  toSegment: AuctionSegment
+  fromDistance: number | null
+  toDistance: number
+  /** Segment id → distance to that segment's centroid on the day. */
+  distances: Record<string, number>
+  createdAt?: string
+}
+
+/** Per auction over a period (GET /assignment-drifts): a move is a Promoted/Switched change between two segments, a cycle a move back into a segment left earlier in the period. */
+export interface AssignmentDrift {
+  offerId: string
+  productId: string
+  productName: string | null
+  segmentId: number
+  segmentName: string | null
+  moves: number
+  cycles: number
+  segments: number
+  proposals: number
+  cancellations: number
+  lastChangeDay: string
+}
+
+/** Moves per pair of segments over a period (GET /segment-transitions). */
+export interface SegmentTransition {
+  fromSegmentId: number
+  fromSegmentName: string | null
+  toSegmentId: number
+  toSegmentName: string | null
+  moves: number
+  meanFromDistance: number
+  meanToDistance: number
+}
+
+/** How one auction moved on one day in the scaled feature space (GET /auction-dynamics). */
+export interface AuctionDynamics {
+  offerId: string
+  productId: string
+  day: string
+  clusterId: number
+  segment: number
+  productName: string | null
+  runnerUpSegment: number | null
+  /** Distance to the nearest other segment minus the distance to the held one; negative while another segment is nearer. */
+  switchMargin: number | null
+  switchMarginVelocity: number | null
+  speed: number | null
+  daysToSwitch: number | null
+  predictedSegment: number | null
+  distances: { segmentId: number; distance: number; previousDistance: number | null }[]
+  velocity: { feature: string; value: number }[]
+}

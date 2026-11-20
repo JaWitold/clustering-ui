@@ -1345,7 +1345,7 @@ export const ClustersViz: React.FC<ClustersVizProps> = ({
           <InertiaTooltip value={c.inertia} isMin={isMinInertia} />
         </div>
         <div className="mt-2.5 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 font-mono">
-          <span>v: {c.vectorVersion?.slice(0, 12)}...</span>
+          <span>vectors: {c.vectorVersion}</span>
           <span>
             {c.createdAt
               ? new Date(c.createdAt).toLocaleDateString()

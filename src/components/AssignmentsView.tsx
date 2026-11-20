@@ -14,7 +14,7 @@ import type { ClusterAssignment, AuctionSegment } from '../types/clustering'
 import { api } from '../api/client'
 
 interface AssignmentsViewProps {
-  /** Pre-fills the Offer ID search and runs it on mount (used by cross-tab navigation). */
+  /** Pre-fills the search (offer id, product id or product name) and runs it on mount (used by cross-tab navigation). */
   initialOfferId?: string
 }
 
@@ -29,7 +29,8 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
   // Filters
   const [selectedSegment, setSelectedSegment] = useState<string>('')
   const [selectedMarking, setSelectedMarking] = useState<string>('')
-  const [offerIdSearch, setOfferIdSearch] = useState<string>(initialOfferId)
+  const [search, setSearch] = useState<string>(initialOfferId)
+  const [sort, setSort] = useState<string>('-updatedAt')
   const [page, setPage] = useState<number>(0)
   const perPage = 20
 
@@ -45,7 +46,8 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
       const res = await api.listAssignments({
         segment: selectedSegment ? parseInt(selectedSegment, 10) : undefined,
         marking: selectedMarking || undefined,
-        offerId: offerIdSearch ? offerIdSearch.trim() : undefined,
+        search: search.trim() || undefined,
+        sort,
         page,
         'per-page': perPage,
       })
@@ -61,7 +63,7 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
 
   useEffect(() => {
     fetchAssignments()
-  }, [selectedSegment, selectedMarking, page])
+  }, [selectedSegment, selectedMarking, sort, page])
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -100,10 +102,11 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
               <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
               <input
                 type="text"
-                value={offerIdSearch}
-                onChange={(e) => setOfferIdSearch(e.target.value)}
-                placeholder="Search by Offer ID..."
-                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500 font-mono"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Product name, offer or product ID..."
+                aria-label="Search assignments"
+                className="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500"
               />
             </div>
             <button
@@ -149,6 +152,23 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
               <option value="Pending">Pending (Hysteresis)</option>
             </select>
 
+            <select
+              value={sort}
+              onChange={(e) => {
+                setSort(e.target.value)
+                setPage(0)
+              }}
+              aria-label="Sort assignments"
+              className="bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500"
+            >
+              <option value="-updatedAt">Recently changed</option>
+              <option value="productName">Product name A–Z</option>
+              <option value="-productName">Product name Z–A</option>
+              <option value="distance">Distance (closest)</option>
+              <option value="-day">Day (newest)</option>
+              <option value="-candidateSince">Candidate since (newest)</option>
+            </select>
+
             <button
               onClick={fetchAssignments}
               disabled={loading}
@@ -174,6 +194,7 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
           <table className="min-w-full divide-y divide-slate-800 text-left text-xs">
             <thead className="bg-slate-950/80 text-slate-400 font-semibold uppercase tracking-wider">
               <tr>
+                <th className="px-4 py-3 whitespace-nowrap">Product</th>
                 <th className="px-4 py-3 whitespace-nowrap">Offer ID</th>
                 <th className="px-4 py-3 whitespace-nowrap">Product ID</th>
                 <th className="px-4 py-3 whitespace-nowrap">Current Segment</th>
@@ -186,6 +207,9 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
             <tbody className="divide-y divide-slate-800/80 bg-slate-900/40 font-mono">
               {assignments.map((a) => (
                 <tr key={a.id} className="hover:bg-slate-800/40 transition-colors">
+                  <td className="px-4 py-3 font-sans text-slate-200 max-w-xs truncate" title={a.productName ?? undefined}>
+                    {a.productName ?? <span className="text-slate-600">—</span>}
+                  </td>
                   <td className="px-4 py-3 font-semibold text-purple-300 whitespace-nowrap">{a.offerId}</td>
                   <td className="px-4 py-3 text-slate-400 whitespace-nowrap">{a.productId}</td>
                   <td className="px-4 py-3 font-sans whitespace-nowrap">
@@ -230,7 +254,7 @@ export const AssignmentsView: React.FC<AssignmentsViewProps> = ({ initialOfferId
               ))}
               {assignments.length === 0 && !loading && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 font-sans">
+                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500 font-sans">
                     No assignments found matching criteria.
                   </td>
                 </tr>

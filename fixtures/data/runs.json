@@ -7,103 +7,72 @@
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
-      "clusters": 8,
+      "vectors": 200,
+      "clusters": 5,
       "restarts": 3,
       "bySegmentCount": {
+        "2": {
+          "inertia": 6120.418,
+          "segments": 2,
+          "inherited": 0
+        },
         "3": {
-          "inertia": 9846.205,
+          "inertia": 4210.612,
           "segments": 3,
           "inherited": 0
         },
         "4": {
-          "inertia": 7118.934,
+          "inertia": 1902.347,
           "segments": 4,
           "inherited": 0
         },
         "5": {
-          "inertia": 4210.612,
-          "segments": 5,
+          "inertia": 1880.106,
+          "segments": 4,
           "inherited": 0
         },
         "6": {
-          "inertia": 2980.347,
-          "segments": 6,
-          "inherited": 0
-        },
-        "7": {
-          "inertia": 1760.218,
-          "segments": 7,
-          "inherited": 0
-        },
-        "8": {
-          "inertia": 186.441,
-          "segments": 8,
-          "inherited": 0
-        },
-        "9": {
-          "inertia": 185.107,
-          "segments": 8,
-          "inherited": 0
-        },
-        "10": {
-          "inertia": 184.736,
-          "segments": 8,
+          "inertia": 1874.932,
+          "segments": 4,
           "inherited": 0
         }
       }
     },
     "startedAt": "2026-08-15T02:00:00+00:00",
-    "finishedAt": "2026-08-15T02:07:29+00:00",
+    "finishedAt": "2026-08-15T02:04:47+00:00",
     "createdAt": "2026-08-15T02:00:00+00:00",
-    "updatedAt": "2026-08-15T02:07:29+00:00"
+    "updatedAt": "2026-08-15T02:04:47+00:00"
   },
   {
     "id": 2,
     "type": "DailyAssignment",
     "day": "2026-08-16",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
-      "new": 320,
+      "vectors": 180,
+      "new": 180,
       "promoted": 0,
       "unchanged": 0,
       "pending": 0,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -119,47 +88,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-17",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 314,
+      "unchanged": 174,
       "pending": 5,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 1
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -175,47 +128,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-18",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 314,
+      "unchanged": 174,
       "pending": 6,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -231,49 +168,33 @@
     "type": "DailyAssignment",
     "day": "2026-08-19",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 311,
+      "unchanged": 171,
       "pending": 7,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
+        "9": {
           "assigned": 40,
           "switched": 2
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
-          "assigned": 40,
-          "switched": 0
         }
       }
     },
@@ -287,47 +208,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-20",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 312,
+      "unchanged": 172,
       "pending": 4,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 4
         },
-        "31": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -343,47 +248,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-21",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 314,
+      "unchanged": 174,
       "pending": 5,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 1
         },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -399,47 +288,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-22",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 312,
+      "unchanged": 172,
       "pending": 6,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 2
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -455,47 +328,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-23",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 310,
+      "unchanged": 170,
       "pending": 7,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 3
         }
@@ -511,60 +368,36 @@
     "type": "WeeklyUpdate",
     "day": "2026-08-23",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 8,
-      "moved": 8,
+      "segments": 4,
+      "moved": 4,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 280,
+        "6": {
+          "count": 140,
           "switchShare": 0,
           "step": 0.02,
           "drift": 0.02
         },
-        "27": {
-          "count": 280,
+        "7": {
+          "count": 350,
           "switchShare": 0.012,
           "step": 0.025,
           "drift": 0.025
         },
-        "28": {
-          "count": 280,
+        "8": {
+          "count": 490,
           "switchShare": 0.024,
           "step": 0.03,
           "drift": 0.03
         },
-        "29": {
+        "9": {
           "count": 280,
           "switchShare": 0.036,
-          "step": 0.035,
-          "drift": 0.035
-        },
-        "30": {
-          "count": 280,
-          "switchShare": 0.048,
-          "step": 0.02,
-          "drift": 0.02
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0,
-          "step": 0.025,
-          "drift": 0.025
-        },
-        "32": {
-          "count": 280,
-          "switchShare": 0.012,
-          "step": 0.03,
-          "drift": 0.03
-        },
-        "33": {
-          "count": 280,
-          "switchShare": 0.024,
           "step": 0.035,
           "drift": 0.035
         }
@@ -580,47 +413,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-24",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 315,
+      "unchanged": 175,
       "pending": 4,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 1
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -636,47 +453,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-25",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 315,
+      "unchanged": 175,
       "pending": 5,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -692,47 +493,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-26",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 312,
+      "unchanged": 172,
       "pending": 6,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 2
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -748,49 +533,33 @@
     "type": "DailyAssignment",
     "day": "2026-08-27",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 309,
+      "unchanged": 169,
       "pending": 7,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
+        "9": {
           "assigned": 40,
           "switched": 4
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
-          "assigned": 40,
-          "switched": 0
         }
       }
     },
@@ -804,47 +573,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-28",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 315,
+      "unchanged": 175,
       "pending": 4,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 1
         },
-        "31": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -860,47 +613,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-29",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 313,
+      "unchanged": 173,
       "pending": 5,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 2
         },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -916,47 +653,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-30",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 311,
+      "unchanged": 171,
       "pending": 6,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 3
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -972,60 +693,36 @@
     "type": "WeeklyUpdate",
     "day": "2026-08-30",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 8,
-      "moved": 8,
+      "segments": 4,
+      "moved": 4,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 280,
+        "6": {
+          "count": 140,
           "switchShare": 0.012,
           "step": 0.02,
           "drift": 0.04
         },
-        "27": {
-          "count": 280,
+        "7": {
+          "count": 350,
           "switchShare": 0.024,
           "step": 0.025,
           "drift": 0.05
         },
-        "28": {
-          "count": 280,
+        "8": {
+          "count": 490,
           "switchShare": 0.036,
           "step": 0.03,
           "drift": 0.06
         },
-        "29": {
+        "9": {
           "count": 280,
           "switchShare": 0.048,
-          "step": 0.035,
-          "drift": 0.07
-        },
-        "30": {
-          "count": 280,
-          "switchShare": 0,
-          "step": 0.02,
-          "drift": 0.04
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0.012,
-          "step": 0.025,
-          "drift": 0.05
-        },
-        "32": {
-          "count": 280,
-          "switchShare": 0.024,
-          "step": 0.03,
-          "drift": 0.06
-        },
-        "33": {
-          "count": 280,
-          "switchShare": 0.036,
           "step": 0.035,
           "drift": 0.07
         }
@@ -1041,47 +738,31 @@
     "type": "DailyAssignment",
     "day": "2026-08-31",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 312,
+      "unchanged": 172,
       "pending": 7,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 1
         }
@@ -1097,7 +778,7 @@
     "type": "DailyAssignment",
     "day": "2026-09-01",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Failed",
     "error": "OpenSearch request to auction-vectors timed out after 30 seconds.",
@@ -1112,47 +793,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-02",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 316,
+      "unchanged": 176,
       "pending": 4,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1168,47 +833,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-03",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 313,
+      "unchanged": 173,
       "pending": 5,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 2
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1224,47 +873,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-04",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 310,
+      "unchanged": 170,
       "pending": 6,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 4
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1280,49 +913,33 @@
     "type": "DailyAssignment",
     "day": "2026-09-05",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 312,
+      "unchanged": 172,
       "pending": 7,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
+        "9": {
           "assigned": 40,
           "switched": 1
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
-          "assigned": 40,
-          "switched": 0
         }
       }
     },
@@ -1336,47 +953,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-06",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 314,
+      "unchanged": 174,
       "pending": 4,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 2
         },
-        "31": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1392,60 +993,36 @@
     "type": "WeeklyUpdate",
     "day": "2026-09-06",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 8,
-      "moved": 8,
+      "segments": 4,
+      "moved": 4,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 280,
+        "6": {
+          "count": 140,
           "switchShare": 0.024,
           "step": 0.02,
           "drift": 0.06
         },
-        "27": {
-          "count": 280,
+        "7": {
+          "count": 350,
           "switchShare": 0.036,
           "step": 0.025,
           "drift": 0.075
         },
-        "28": {
-          "count": 280,
+        "8": {
+          "count": 490,
           "switchShare": 0.048,
           "step": 0.03,
           "drift": 0.09
         },
-        "29": {
+        "9": {
           "count": 280,
           "switchShare": 0,
-          "step": 0.035,
-          "drift": 0.105
-        },
-        "30": {
-          "count": 280,
-          "switchShare": 0.012,
-          "step": 0.02,
-          "drift": 0.06
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0.024,
-          "step": 0.025,
-          "drift": 0.075
-        },
-        "32": {
-          "count": 280,
-          "switchShare": 0.036,
-          "step": 0.03,
-          "drift": 0.09
-        },
-        "33": {
-          "count": 280,
-          "switchShare": 0.048,
           "step": 0.035,
           "drift": 0.105
         }
@@ -1461,47 +1038,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-07",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 312,
+      "unchanged": 172,
       "pending": 5,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 3
         },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1517,47 +1078,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-08",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 313,
+      "unchanged": 173,
       "pending": 6,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 1
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1573,47 +1118,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-09",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 313,
+      "unchanged": 173,
       "pending": 7,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1629,47 +1158,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-10",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 314,
+      "unchanged": 174,
       "pending": 4,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 2
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1685,47 +1198,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-11",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 311,
+      "unchanged": 171,
       "pending": 5,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 4
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1741,47 +1238,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-12",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 313,
+      "unchanged": 173,
       "pending": 6,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 1
         },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -1797,49 +1278,33 @@
     "type": "DailyAssignment",
     "day": "2026-09-13",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 311,
+      "unchanged": 171,
       "pending": 7,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "29": {
+        "9": {
           "assigned": 40,
           "switched": 2
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "32": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "33": {
-          "assigned": 40,
-          "switched": 0
         }
       }
     },
@@ -1856,116 +1321,77 @@
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
-      "clusters": 8,
+      "vectors": 265,
+      "clusters": 5,
       "restarts": 5,
       "bySegmentCount": {
         "3": {
-          "inertia": 19862.517,
+          "inertia": 12900.418,
           "segments": 3,
           "inherited": 3
         },
         "4": {
-          "inertia": 16431.209,
+          "inertia": 9650.236,
           "segments": 4,
-          "inherited": 4
+          "inherited": 3
         },
         "5": {
-          "inertia": 12900.418,
+          "inertia": 4780.129,
           "segments": 5,
-          "inherited": 5
+          "inherited": 3
         },
         "6": {
-          "inertia": 10650.236,
+          "inertia": 4702.651,
           "segments": 6,
-          "inherited": 6
+          "inherited": 3
         },
         "7": {
-          "inertia": 8930.817,
+          "inertia": 4655.317,
           "segments": 7,
-          "inherited": 6
-        },
-        "8": {
-          "inertia": 7410.342,
-          "segments": 8,
-          "inherited": 6
-        },
-        "9": {
-          "inertia": 6020.651,
-          "segments": 9,
-          "inherited": 6
-        },
-        "10": {
-          "inertia": 4780.129,
-          "segments": 10,
-          "inherited": 6
+          "inherited": 3
         }
       }
     },
     "startedAt": "2026-09-14T02:00:00+00:00",
-    "finishedAt": "2026-09-14T02:12:24+00:00",
+    "finishedAt": "2026-09-14T02:07:54+00:00",
     "createdAt": "2026-09-14T02:00:00+00:00",
-    "updatedAt": "2026-09-14T02:12:24+00:00"
+    "updatedAt": "2026-09-14T02:07:54+00:00"
   },
   {
     "id": 35,
     "type": "WeeklyUpdate",
     "day": "2026-09-13",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 8,
-      "moved": 8,
+      "segments": 4,
+      "moved": 4,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 280,
+        "6": {
+          "count": 140,
           "switchShare": 0.036,
           "step": 0.02,
           "drift": 0.08
         },
-        "27": {
-          "count": 280,
+        "7": {
+          "count": 350,
           "switchShare": 0.048,
           "step": 0.025,
           "drift": 0.1
         },
-        "28": {
-          "count": 280,
+        "8": {
+          "count": 490,
           "switchShare": 0,
           "step": 0.03,
           "drift": 0.12
         },
-        "29": {
+        "9": {
           "count": 280,
           "switchShare": 0.012,
-          "step": 0.035,
-          "drift": 0.14
-        },
-        "30": {
-          "count": 280,
-          "switchShare": 0.024,
-          "step": 0.02,
-          "drift": 0.08
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0.036,
-          "step": 0.025,
-          "drift": 0.1
-        },
-        "32": {
-          "count": 280,
-          "switchShare": 0.048,
-          "step": 0.03,
-          "drift": 0.12
-        },
-        "33": {
-          "count": 280,
-          "switchShare": 0,
           "step": 0.035,
           "drift": 0.14
         }
@@ -1981,47 +1407,31 @@
     "type": "DailyAssignment",
     "day": "2026-09-14",
     "cluster": {
-      "id": 6
+      "id": 3
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 320,
+      "vectors": 180,
       "new": 0,
       "promoted": 0,
-      "unchanged": 313,
+      "unchanged": 173,
       "pending": 4,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 3
         },
-        "31": {
-          "assigned": 40,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "32": {
-          "assigned": 40,
+        "8": {
+          "assigned": 70,
           "switched": 0
         },
-        "33": {
+        "9": {
           "assigned": 40,
           "switched": 0
         }
@@ -2037,56 +1447,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-15",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
-      "promoted": 640,
+      "promoted": 265,
       "unchanged": 0,
       "pending": 0,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2101,56 +1491,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-16",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 5,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 1
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2165,56 +1535,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-17",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 6,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2229,56 +1579,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-18",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 7,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 2
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2293,57 +1623,37 @@
     "type": "DailyAssignment",
     "day": "2026-09-19",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 4,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
+        "20": {
+          "assigned": 25,
           "switched": 4
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
-          "switched": 0
         }
       }
     },
@@ -2357,56 +1667,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-20",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 5,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 1
         },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2421,56 +1711,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-21",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 6,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 2
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2485,56 +1755,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-22",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 630,
+      "unchanged": 255,
       "pending": 7,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 3
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2549,56 +1799,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-23",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 635,
+      "unchanged": 260,
       "pending": 4,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 1
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2613,56 +1843,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-24",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 635,
+      "unchanged": 260,
       "pending": 5,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2677,56 +1887,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-25",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 6,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 2
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2741,56 +1931,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-26",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 629,
+      "unchanged": 254,
       "pending": 7,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 4
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2805,56 +1975,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-27",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 635,
+      "unchanged": 260,
       "pending": 4,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 1
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -2869,74 +2019,44 @@
     "type": "WeeklyUpdate",
     "day": "2026-09-27",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 10,
-      "moved": 10,
+      "segments": 5,
+      "moved": 5,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 560,
+        "6": {
+          "count": 140,
           "switchShare": 0,
           "step": 0.02,
           "drift": 0.02
         },
-        "27": {
-          "count": 560,
+        "7": {
+          "count": 350,
           "switchShare": 0.012,
           "step": 0.025,
           "drift": 0.025
         },
-        "28": {
-          "count": 560,
+        "8": {
+          "count": 700,
           "switchShare": 0.024,
           "step": 0.03,
           "drift": 0.03
         },
-        "29": {
-          "count": 560,
+        "19": {
+          "count": 490,
           "switchShare": 0.036,
           "step": 0.035,
           "drift": 0.035
         },
-        "30": {
-          "count": 280,
+        "20": {
+          "count": 175,
           "switchShare": 0.048,
           "step": 0.02,
           "drift": 0.02
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0,
-          "step": 0.025,
-          "drift": 0.025
-        },
-        "56": {
-          "count": 560,
-          "switchShare": 0.012,
-          "step": 0.03,
-          "drift": 0.03
-        },
-        "57": {
-          "count": 280,
-          "switchShare": 0.024,
-          "step": 0.035,
-          "drift": 0.035
-        },
-        "58": {
-          "count": 280,
-          "switchShare": 0.036,
-          "step": 0.02,
-          "drift": 0.02
-        },
-        "59": {
-          "count": 560,
-          "switchShare": 0.048,
-          "step": 0.025,
-          "drift": 0.025
         }
       }
     },
@@ -2950,56 +2070,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-28",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 5,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 2
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3027,57 +2127,37 @@
     "type": "DailyAssignment",
     "day": "2026-09-29",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 6,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
+        "20": {
+          "assigned": 25,
           "switched": 3
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
-          "switched": 0
         }
       }
     },
@@ -3091,56 +2171,36 @@
     "type": "DailyAssignment",
     "day": "2026-09-30",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 7,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 1
         },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3155,56 +2215,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-01",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 636,
+      "unchanged": 261,
       "pending": 4,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3219,56 +2259,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-02",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 5,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 2
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3283,56 +2303,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-03",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 630,
+      "unchanged": 255,
       "pending": 6,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 4
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3347,7 +2347,7 @@
     "type": "DailyAssignment",
     "day": "2026-10-04",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Failed",
     "error": "No feature vectors of version \"3f9a1c27b4e8-a7c41d09\" for 2026-10-04.",
@@ -3362,74 +2362,44 @@
     "type": "WeeklyUpdate",
     "day": "2026-10-04",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 10,
-      "moved": 10,
+      "segments": 5,
+      "moved": 5,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 560,
+        "6": {
+          "count": 140,
           "switchShare": 0.012,
           "step": 0.02,
           "drift": 0.04
         },
-        "27": {
-          "count": 560,
+        "7": {
+          "count": 350,
           "switchShare": 0.024,
           "step": 0.025,
           "drift": 0.05
         },
-        "28": {
-          "count": 560,
+        "8": {
+          "count": 700,
           "switchShare": 0.036,
           "step": 0.03,
           "drift": 0.06
         },
-        "29": {
-          "count": 560,
+        "19": {
+          "count": 490,
           "switchShare": 0.048,
           "step": 0.035,
           "drift": 0.07
         },
-        "30": {
-          "count": 280,
+        "20": {
+          "count": 175,
           "switchShare": 0,
           "step": 0.02,
           "drift": 0.04
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0.012,
-          "step": 0.025,
-          "drift": 0.05
-        },
-        "56": {
-          "count": 560,
-          "switchShare": 0.024,
-          "step": 0.03,
-          "drift": 0.06
-        },
-        "57": {
-          "count": 280,
-          "switchShare": 0.036,
-          "step": 0.035,
-          "drift": 0.07
-        },
-        "58": {
-          "count": 280,
-          "switchShare": 0.048,
-          "step": 0.02,
-          "drift": 0.04
-        },
-        "59": {
-          "count": 560,
-          "switchShare": 0,
-          "step": 0.025,
-          "drift": 0.05
         }
       }
     },
@@ -3443,56 +2413,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-05",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 7,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 1
         }
       }
@@ -3507,56 +2457,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-06",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 4,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 2
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3571,56 +2501,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-07",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 5,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 3
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3635,56 +2545,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-08",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 6,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 1
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3699,56 +2589,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-09",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 7,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3763,57 +2633,37 @@
     "type": "DailyAssignment",
     "day": "2026-10-10",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 4,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
+        "20": {
+          "assigned": 25,
           "switched": 2
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
-          "switched": 0
         }
       }
     },
@@ -3827,56 +2677,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-11",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 5,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 4
         },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -3891,74 +2721,44 @@
     "type": "WeeklyUpdate",
     "day": "2026-10-11",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 10,
-      "moved": 10,
+      "segments": 5,
+      "moved": 5,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 560,
+        "6": {
+          "count": 140,
           "switchShare": 0.024,
           "step": 0.02,
           "drift": 0.06
         },
-        "27": {
-          "count": 560,
+        "7": {
+          "count": 350,
           "switchShare": 0.036,
           "step": 0.025,
           "drift": 0.075
         },
-        "28": {
-          "count": 560,
+        "8": {
+          "count": 700,
           "switchShare": 0.048,
           "step": 0.03,
           "drift": 0.09
         },
-        "29": {
-          "count": 560,
+        "19": {
+          "count": 490,
           "switchShare": 0,
           "step": 0.035,
           "drift": 0.105
         },
-        "30": {
-          "count": 280,
+        "20": {
+          "count": 175,
           "switchShare": 0.012,
           "step": 0.02,
           "drift": 0.06
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0.024,
-          "step": 0.025,
-          "drift": 0.075
-        },
-        "56": {
-          "count": 560,
-          "switchShare": 0.036,
-          "step": 0.03,
-          "drift": 0.09
-        },
-        "57": {
-          "count": 280,
-          "switchShare": 0.048,
-          "step": 0.035,
-          "drift": 0.105
-        },
-        "58": {
-          "count": 280,
-          "switchShare": 0,
-          "step": 0.02,
-          "drift": 0.06
-        },
-        "59": {
-          "count": 560,
-          "switchShare": 0.012,
-          "step": 0.025,
-          "drift": 0.075
         }
       }
     },
@@ -3972,56 +2772,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-12",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 6,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 1
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4036,56 +2816,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-13",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 7,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 2
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4103,112 +2863,77 @@
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
-      "clusters": 8,
+      "vectors": 265,
+      "clusters": 5,
       "restarts": 5,
       "bySegmentCount": {
         "3": {
-          "inertia": 19944.802,
+          "inertia": 13020.733,
           "segments": 3,
           "inherited": 3
         },
         "4": {
-          "inertia": 16502.376,
+          "inertia": 9780.512,
           "segments": 4,
           "inherited": 4
         },
         "5": {
-          "inertia": 13020.733,
+          "inertia": 4850.627,
           "segments": 5,
           "inherited": 5
         },
         "6": {
-          "inertia": 10780.512,
+          "inertia": 4761.248,
           "segments": 6,
-          "inherited": 6
+          "inherited": 5
         },
         "7": {
-          "inertia": 9010.248,
+          "inertia": 4720.961,
           "segments": 7,
-          "inherited": 7
-        },
-        "8": {
-          "inertia": 7520.961,
-          "segments": 8,
-          "inherited": 8
-        },
-        "9": {
-          "inertia": 6100.405,
-          "segments": 9,
-          "inherited": 9
-        },
-        "10": {
-          "inertia": 4850.627,
-          "segments": 10,
-          "inherited": 9
+          "inherited": 5
         }
       }
     },
     "startedAt": "2026-10-14T02:00:00+00:00",
-    "finishedAt": "2026-10-14T02:12:31+00:00",
+    "finishedAt": "2026-10-14T02:08:01+00:00",
     "createdAt": "2026-10-14T02:00:00+00:00",
-    "updatedAt": "2026-10-14T02:12:31+00:00"
+    "updatedAt": "2026-10-14T02:08:01+00:00"
   },
   {
     "id": 71,
     "type": "DailyAssignment",
     "day": "2026-10-14",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 4,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 3
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4223,56 +2948,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-15",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 5,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 1
         }
       }
@@ -4287,56 +2992,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-16",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 6,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4351,56 +3036,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-17",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 7,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 2
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4415,56 +3080,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-18",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 4,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 4
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4479,74 +3124,44 @@
     "type": "WeeklyUpdate",
     "day": "2026-10-18",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 10,
-      "moved": 10,
+      "segments": 5,
+      "moved": 5,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 560,
+        "6": {
+          "count": 140,
           "switchShare": 0.036,
           "step": 0.02,
           "drift": 0.08
         },
-        "27": {
-          "count": 560,
+        "7": {
+          "count": 350,
           "switchShare": 0.048,
           "step": 0.025,
           "drift": 0.1
         },
-        "28": {
-          "count": 560,
+        "8": {
+          "count": 700,
           "switchShare": 0,
           "step": 0.03,
           "drift": 0.12
         },
-        "29": {
-          "count": 560,
+        "19": {
+          "count": 490,
           "switchShare": 0.012,
           "step": 0.035,
           "drift": 0.14
         },
-        "30": {
-          "count": 280,
+        "20": {
+          "count": 175,
           "switchShare": 0.024,
           "step": 0.02,
           "drift": 0.08
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0.036,
-          "step": 0.025,
-          "drift": 0.1
-        },
-        "56": {
-          "count": 560,
-          "switchShare": 0.048,
-          "step": 0.03,
-          "drift": 0.12
-        },
-        "57": {
-          "count": 280,
-          "switchShare": 0,
-          "step": 0.035,
-          "drift": 0.14
-        },
-        "58": {
-          "count": 280,
-          "switchShare": 0.012,
-          "step": 0.02,
-          "drift": 0.08
-        },
-        "59": {
-          "count": 560,
-          "switchShare": 0.024,
-          "step": 0.025,
-          "drift": 0.1
         }
       }
     },
@@ -4560,56 +3175,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-19",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 5,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 1
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4624,57 +3219,37 @@
     "type": "DailyAssignment",
     "day": "2026-10-20",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 6,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
+        "20": {
+          "assigned": 25,
           "switched": 2
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
-          "switched": 0
         }
       }
     },
@@ -4688,56 +3263,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-21",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 630,
+      "unchanged": 255,
       "pending": 7,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 3
         },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4752,56 +3307,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-22",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 635,
+      "unchanged": 260,
       "pending": 4,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 1
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4816,56 +3351,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-23",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 635,
+      "unchanged": 260,
       "pending": 5,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4880,56 +3395,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-24",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 6,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 2
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -4944,56 +3439,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-25",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 629,
+      "unchanged": 254,
       "pending": 7,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 4
         }
       }
@@ -5008,74 +3483,44 @@
     "type": "WeeklyUpdate",
     "day": "2026-10-25",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "segments": 10,
-      "moved": 10,
+      "segments": 5,
+      "moved": 5,
       "skipped": 0,
       "bySegment": {
-        "26": {
-          "count": 560,
+        "6": {
+          "count": 140,
           "switchShare": 0.048,
           "step": 0.02,
           "drift": 0.1
         },
-        "27": {
-          "count": 560,
+        "7": {
+          "count": 350,
           "switchShare": 0,
           "step": 0.025,
           "drift": 0.125
         },
-        "28": {
-          "count": 560,
+        "8": {
+          "count": 700,
           "switchShare": 0.012,
           "step": 0.03,
           "drift": 0.15
         },
-        "29": {
-          "count": 560,
+        "19": {
+          "count": 490,
           "switchShare": 0.024,
           "step": 0.035,
           "drift": 0.175
         },
-        "30": {
-          "count": 280,
+        "20": {
+          "count": 175,
           "switchShare": 0.036,
           "step": 0.02,
           "drift": 0.1
-        },
-        "31": {
-          "count": 280,
-          "switchShare": 0.048,
-          "step": 0.025,
-          "drift": 0.125
-        },
-        "56": {
-          "count": 560,
-          "switchShare": 0,
-          "step": 0.03,
-          "drift": 0.15
-        },
-        "57": {
-          "count": 280,
-          "switchShare": 0.012,
-          "step": 0.035,
-          "drift": 0.175
-        },
-        "58": {
-          "count": 280,
-          "switchShare": 0.024,
-          "step": 0.02,
-          "drift": 0.1
-        },
-        "59": {
-          "count": 560,
-          "switchShare": 0.036,
-          "step": 0.025,
-          "drift": 0.125
         }
       }
     },
@@ -5089,56 +3534,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-26",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 635,
+      "unchanged": 260,
       "pending": 4,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 1
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5153,56 +3578,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-27",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 5,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 2
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5217,56 +3622,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-28",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 6,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 3
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5281,56 +3666,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-29",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 7,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 1
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5345,56 +3710,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-30",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 636,
+      "unchanged": 261,
       "pending": 4,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5409,56 +3754,36 @@
     "type": "DailyAssignment",
     "day": "2026-10-31",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 5,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 2
         },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5473,7 +3798,7 @@
     "type": "DailyAssignment",
     "day": "2026-11-01",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Failed",
     "error": "cURL error 7: Failed to connect to opensearch port 9200: Connection refused.",
@@ -5488,7 +3813,7 @@
     "type": "WeeklyUpdate",
     "day": "2026-11-01",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Failed",
     "error": "OpenSearch search_phase_execution_exception: all shards failed.",
@@ -5503,56 +3828,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-02",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 630,
+      "unchanged": 255,
       "pending": 6,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 4
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5567,56 +3872,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-03",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 7,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 1
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5631,56 +3916,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-04",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 4,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 2
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5695,56 +3960,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-05",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 632,
+      "unchanged": 257,
       "pending": 5,
       "switched": 3,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 3
         }
       }
@@ -5759,56 +4004,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-06",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 6,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 1
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5823,56 +4048,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-07",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 7,
       "switched": 0,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5887,56 +4092,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-08",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 634,
+      "unchanged": 259,
       "pending": 4,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 2
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -5951,7 +4136,7 @@
     "type": "WeeklyUpdate",
     "day": "2026-11-08",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Failed",
     "error": "OpenSearch request to auction-vectors timed out after 30 seconds.",
@@ -5966,56 +4151,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-09",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 5,
       "switched": 4,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 4
         },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -6030,57 +4195,37 @@
     "type": "DailyAssignment",
     "day": "2026-11-10",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 633,
+      "unchanged": 258,
       "pending": 6,
       "switched": 1,
       "bySegment": {
-        "26": {
-          "assigned": 80,
+        "6": {
+          "assigned": 20,
           "switched": 0
         },
-        "27": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "28": {
-          "assigned": 80,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "29": {
-          "assigned": 80,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "30": {
-          "assigned": 40,
+        "20": {
+          "assigned": 25,
           "switched": 1
-        },
-        "31": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "56": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "57": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "58": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "59": {
-          "assigned": 80,
-          "switched": 0
         }
       }
     },
@@ -6094,56 +4239,36 @@
     "type": "DailyAssignment",
     "day": "2026-11-11",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
+      "vectors": 265,
       "new": 0,
       "promoted": 0,
-      "unchanged": 631,
+      "unchanged": 256,
       "pending": 7,
       "switched": 2,
       "bySegment": {
-        "26": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "27": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "28": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "29": {
-          "assigned": 80,
-          "switched": 0
-        },
-        "30": {
-          "assigned": 40,
-          "switched": 0
-        },
-        "31": {
-          "assigned": 40,
+        "6": {
+          "assigned": 20,
           "switched": 2
         },
-        "56": {
-          "assigned": 80,
+        "7": {
+          "assigned": 50,
           "switched": 0
         },
-        "57": {
-          "assigned": 40,
+        "8": {
+          "assigned": 100,
           "switched": 0
         },
-        "58": {
-          "assigned": 40,
+        "19": {
+          "assigned": 70,
           "switched": 0
         },
-        "59": {
-          "assigned": 80,
+        "20": {
+          "assigned": 25,
           "switched": 0
         }
       }
@@ -6161,63 +4286,48 @@
     "marking": "Completed",
     "error": null,
     "summary": {
-      "vectors": 640,
-      "clusters": 8,
+      "vectors": 265,
+      "clusters": 5,
       "restarts": 5,
       "bySegmentCount": {
         "3": {
-          "inertia": 19710.384,
+          "inertia": 12768.093,
           "segments": 3,
           "inherited": 3
         },
         "4": {
-          "inertia": 16286.551,
+          "inertia": 9512.718,
           "segments": 4,
           "inherited": 4
         },
         "5": {
-          "inertia": 12768.093,
+          "inertia": 4612.358,
           "segments": 5,
           "inherited": 5
         },
         "6": {
-          "inertia": 10512.718,
+          "inertia": 4571.462,
           "segments": 6,
-          "inherited": 6
+          "inherited": 5
         },
         "7": {
-          "inertia": 8791.462,
+          "inertia": 4530.905,
           "segments": 7,
-          "inherited": 7
-        },
-        "8": {
-          "inertia": 7263.905,
-          "segments": 8,
-          "inherited": 8
-        },
-        "9": {
-          "inertia": 5871.236,
-          "segments": 9,
-          "inherited": 9
-        },
-        "10": {
-          "inertia": 4612.358,
-          "segments": 10,
-          "inherited": 10
+          "inherited": 5
         }
       }
     },
     "startedAt": "2026-11-12T02:00:00+00:00",
-    "finishedAt": "2026-11-12T02:12:02+00:00",
+    "finishedAt": "2026-11-12T02:07:32+00:00",
     "createdAt": "2026-11-12T02:00:00+00:00",
-    "updatedAt": "2026-11-12T02:12:02+00:00"
+    "updatedAt": "2026-11-12T02:07:32+00:00"
   },
   {
     "id": 105,
     "type": "DailyAssignment",
     "day": "2026-11-12",
     "cluster": {
-      "id": 16
+      "id": 8
     },
     "marking": "Failed",
     "error": "An exception occurred in the driver: SQLSTATE[HY000] [2002] Connection refused",
