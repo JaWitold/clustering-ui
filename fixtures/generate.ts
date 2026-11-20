@@ -8,7 +8,6 @@ const TODAY = process.argv[2] ?? '2026-11-13'
 const OUT = join(dirname(fileURLToPath(import.meta.url)), 'data')
 
 const SEED = 42
-const OFFERS_PER_PROFILE = 40
 const PENDING_PER_PROFILE = 8
 const WEEK_DAYS = 7
 const NOISE = 0.3
@@ -46,30 +45,43 @@ const SCALER_STATS: Record<string, [number, number]> = {
 }
 const FEATURE_NAMES = Object.keys(SCALER_STATS)
 
+// Segment names and sizes modelled on the production grouping of 2026-11 (cluster 54), scaled down.
+const BESTSELLERS = 'Bestsellery · duży zysk przy niskiej marży'
+const PRICE_WAR = 'Wojna cenowa · brak sprzedaży'
+const CALM = 'Niska marża · spokojnie, brak sprzedaży'
+const CHASING = 'Gonimy lidera · brak sprzedaży'
+const GIFT_CARDS = 'Wojna cenowa na kartach podarunkowych · strata'
+const FEW_CHANGES = 'Niska marża · mało zmian cen, brak sprzedaży'
+const LEAD_FIGHT = 'Walka o prowadzenie · średnia marża, brak sprzedaży'
+const BUNDLES = 'Pakiety · niska cena, mała konkurencja'
+const WEEKEND = 'Weekendowe podwyżki'
+
 const PROFILES: Record<string, Record<string, number>> = {
-  'calm market': { competitors: -1.2, changeRateMedian: -1.3, activeChangers: -1.2, leaderChurn: -1.0, bestVolatility: -1.0 },
-  'price war': { competitors: 1.3, changeRateMedian: 1.5, changeRateTop3: 1.5, undercutRate: 1.4, cutHikeBalance: -1.2, bestTrend: -1.0 },
-  'daily sawtooth': { changeRateMedian: 1.0, cutHikeBalance: 1.3, hikeSize: 1.4, cutSize: 1.2, bestVolatility: 1.5 },
-  duopoly: { competitors: -1.5, spreadTop3: 1.4, firstPositionShare: 1.2, leaderChurn: 1.3 },
-  'lone seller': { competitors: -2.0, density5Pct: -1.5, firstPositionShare: 2.0, reactionTimeMissing: 2.0 },
-  'leader rotation': { leaderChurn: 2.0, firstPositionShare: -1.3, changeRateTop3: 1.0, gapToBest: -1.0 },
-  'bot undercutters': { reactionTime: -1.6, undercutRate: 2.0, changeRateTop3: 2.0, cutSize: -1.0 },
-  'premium holdouts': { priceLevel: 2.0, gapToBest: 1.8, firstPositionShare: -1.5, changeRateMedian: -0.8 },
-  'slow decline': { bestTrend: -2.0, bestAccel: -1.2, cutHikeBalance: -1.0, bestVolatility: -0.8 },
-  'flash sales': { cutSize: 2.2, hikeSize: 2.0, bestVolatility: 2.0, bestAccel: 1.2 },
-  'crowded stable': { competitors: 2.0, density5Pct: 2.0, changeRateMedian: -1.0, spreadTop3: -1.2 },
-  'evening cuts': { reactionTime: 1.8, cutHikeBalance: -1.5, activeChangers: 1.2, priceLevel: -1.0 },
-  'follower pack': { activeChangers: 2.0, reactionTime: -1.2, gapToBest: -1.5, spreadTop3: -1.0 },
-  'weekend spikes': { hikeSize: 1.6, bestTrend: 1.5, bestAccel: 1.6, cutHikeBalance: 1.0 },
-  'thin market': { density5Pct: -2.0, competitors: -0.8, reactionTimeMissing: 1.6, spreadTop3: 1.8 },
-  'volatile niche': { bestVolatility: 2.2, priceLevel: 1.4, leaderChurn: 1.2, gapToBest: 1.0 },
+  [BESTSELLERS]: { competitors: 1.0, density5Pct: 1.4, firstPositionShare: 1.6, changeRateTop3: 0.9, priceLevel: -0.6 },
+  [PRICE_WAR]: { competitors: 1.3, changeRateMedian: 1.5, changeRateTop3: 1.5, undercutRate: 1.4, cutHikeBalance: -1.2, bestTrend: -1.0 },
+  [CALM]: { competitors: -1.2, changeRateMedian: -1.3, activeChangers: -1.2, leaderChurn: -1.0, bestVolatility: -1.0 },
+  [CHASING]: { leaderChurn: 1.6, firstPositionShare: -1.5, changeRateTop3: 1.0, gapToBest: 1.2 },
+  [GIFT_CARDS]: { priceLevel: -1.5, reactionTime: -1.6, undercutRate: 2.0, changeRateTop3: 2.0, cutSize: -1.0 },
+  [FEW_CHANGES]: { competitors: 1.2, density5Pct: 1.0, changeRateMedian: -1.0, spreadTop3: -1.2 },
+  [LEAD_FIGHT]: { competitors: -1.5, spreadTop3: 1.4, firstPositionShare: 0.6, leaderChurn: 1.3 },
 }
 const LEGACY_PROFILES: Record<string, Record<string, number>> = {
-  'bundle resellers': { priceLevel: -1.8, competitors: 0.8, spreadTop3: -1.5, undercutRate: 1.0 },
-  'old weekend spikes': { hikeSize: 1.4, bestTrend: 1.2, bestAccel: 1.2 },
+  [BUNDLES]: { priceLevel: -1.8, competitors: -0.8, spreadTop3: -1.5, undercutRate: 1.0 },
+  [WEEKEND]: { hikeSize: 1.4, bestTrend: 1.2, bestAccel: 1.2 },
 }
 const PROFILE_NAMES = Object.keys(PROFILES)
-const FIRST_MARKET = ['calm market', 'price war', 'daily sawtooth', 'duopoly', 'lone seller', 'leader rotation', 'bundle resellers', 'old weekend spikes']
+const FIRST_MARKET = [BESTSELLERS, PRICE_WAR, CALM, BUNDLES, WEEKEND]
+// Auctions per profile; the absorbed ones count towards their target segment.
+const OFFERS: Record<string, number> = { [BESTSELLERS]: 20, [PRICE_WAR]: 50, [CALM]: 70, [CHASING]: 45, [GIFT_CARDS]: 25, [FEW_CHANGES]: 30, [LEAD_FIGHT]: 25, [BUNDLES]: 40, [WEEKEND]: 40 }
+const PRODUCTS: Record<string, string[]> = {
+  [BESTSELLERS]: ['EA SPORTS FC 26 (PC) Steam Key GLOBAL', 'Minecraft: Java & Bedrock Edition (PC) Key GLOBAL', 'Red Dead Redemption 2 (PC) Rockstar Key GLOBAL', 'Grand Theft Auto V Enhanced (PC) Steam Key GLOBAL', 'Elden Ring Nightreign (PC) Steam Key EUROPE'],
+  [PRICE_WAR]: ['Cyberpunk 2077 (PC) Steam Key GLOBAL', 'Hogwarts Legacy (PC) Steam Key EUROPE', 'Baldur\'s Gate 3 (PC) Steam Key GLOBAL', 'Starfield (PC) Steam Key EUROPE', 'Palworld (PC) Steam Key GLOBAL'],
+  [CALM]: ['Roguebook Deluxe Edition (PC) Steam Key EUROPE', 'Frostpunk (PC) Steam Key GLOBAL', 'Torchlight II (PC) Steam Key GLOBAL', 'Shadow Tactics (PC) Steam Key EUROPE', 'SteamWorld Dig 2 (PC) Steam Key GLOBAL'],
+  [CHASING]: ['The Witcher 3: Wild Hunt GOTY (PC) GOG Key GLOBAL', 'Hades II (PC) Steam Key GLOBAL', 'Satisfactory (PC) Steam Key GLOBAL', 'Lies of P (PC) Steam Key EUROPE', 'Sons of the Forest (PC) Steam Key GLOBAL'],
+  [GIFT_CARDS]: ['Steam Gift Card 20 EUR Key EUROPE', 'PlayStation Network Card 50 EUR (DE) Key', 'Xbox Game Pass Ultimate 1 Month Key GLOBAL', 'Nintendo eShop Card 25 EUR Key EUROPE', 'Steam Gift Card 50 EUR Key EUROPE'],
+  [FEW_CHANGES]: ['Dishonored 2 (PC) Steam Key GLOBAL', 'Mafia: Definitive Edition (PC) Steam Key GLOBAL', 'Prey (PC) Steam Key EUROPE'],
+  [LEAD_FIGHT]: ['Stardew Valley (PC) Steam Key GLOBAL', 'Terraria (PC) Steam Key GLOBAL', 'Hollow Knight (PC) Steam Key GLOBAL'],
+}
 
 interface Training {
   daysAgo: number
@@ -84,10 +96,10 @@ interface Training {
 }
 
 const TRAININGS: Training[] = [
-  { daysAgo: 91, restarts: 3, vectors: 320, inherits: 0, firstMarket: true, chosen: 8, promotedDaysAgo: 89, retiredDaysAgo: 59, counts: [[3, 9846.205, 3], [4, 7118.934, 4], [5, 4210.612, 5], [6, 2980.347, 6], [7, 1760.218, 7], [8, 186.441, 8], [9, 185.107, 8], [10, 184.736, 8]] },
-  { daysAgo: 61, restarts: 5, vectors: 640, inherits: 6, firstMarket: false, chosen: 10, promotedDaysAgo: 59, retiredDaysAgo: null, counts: [[3, 19862.517, 3], [4, 16431.209, 4], [5, 12900.418, 5], [6, 10650.236, 6], [7, 8930.817, 7], [8, 7410.342, 8], [9, 6020.651, 9], [10, 4780.129, 10]] },
-  { daysAgo: 31, restarts: 5, vectors: 640, inherits: 9, firstMarket: false, chosen: null, promotedDaysAgo: null, retiredDaysAgo: null, counts: [[3, 19944.802, 3], [4, 16502.376, 4], [5, 13020.733, 5], [6, 10780.512, 6], [7, 9010.248, 7], [8, 7520.961, 8], [9, 6100.405, 9], [10, 4850.627, 10]] },
-  { daysAgo: 2, restarts: 5, vectors: 640, inherits: 10, firstMarket: false, chosen: null, promotedDaysAgo: null, retiredDaysAgo: null, counts: [[3, 19710.384, 3], [4, 16286.551, 4], [5, 12768.093, 5], [6, 10512.718, 6], [7, 8791.462, 7], [8, 7263.905, 8], [9, 5871.236, 9], [10, 4612.358, 10]] },
+  { daysAgo: 91, restarts: 3, vectors: 200, inherits: 0, firstMarket: true, chosen: 4, promotedDaysAgo: 89, retiredDaysAgo: 59, counts: [[2, 6120.418, 2], [3, 4210.612, 3], [4, 1902.347, 4], [5, 1880.106, 4], [6, 1874.932, 4]] },
+  { daysAgo: 61, restarts: 5, vectors: 265, inherits: 3, firstMarket: false, chosen: 5, promotedDaysAgo: 59, retiredDaysAgo: null, counts: [[3, 12900.418, 3], [4, 9650.236, 4], [5, 4780.129, 5], [6, 4702.651, 6], [7, 4655.317, 7]] },
+  { daysAgo: 31, restarts: 5, vectors: 265, inherits: 5, firstMarket: false, chosen: null, promotedDaysAgo: null, retiredDaysAgo: null, counts: [[3, 13020.733, 3], [4, 9780.512, 4], [5, 4850.627, 5], [6, 4761.248, 6], [7, 4720.961, 7]] },
+  { daysAgo: 2, restarts: 5, vectors: 265, inherits: 5, firstMarket: false, chosen: null, promotedDaysAgo: null, retiredDaysAgo: null, counts: [[3, 12768.093, 3], [4, 9512.718, 4], [5, 4612.358, 5], [6, 4571.462, 6], [7, 4530.905, 7]] },
 ]
 
 const FAILED_TRAINING_DAYS_AGO = 46
@@ -101,32 +113,21 @@ const FAILED_WEEKLY: Record<number, string> = { 5: 'OpenSearch search_phase_exec
 const LATEST_WEEKLY_ERROR = 'OpenSearch request to auction-vectors timed out after 30 seconds.'
 const DAILY_SWITCHES = [3, 1, 0, 2, 4, 1, 2]
 const ABSORBED: Record<string, string> = {
-  'crowded stable': 'calm market',
-  'evening cuts': 'price war',
-  'follower pack': 'bot undercutters',
-  'weekend spikes': 'daily sawtooth',
-  'thin market': 'duopoly',
-  'volatile niche': 'flash sales',
+  [FEW_CHANGES]: CALM,
+  [LEAD_FIGHT]: CHASING,
 }
 const PENDING_CANDIDATES: Record<string, string> = {
-  'follower pack': 'leader rotation',
-  'weekend spikes': 'flash sales',
-  'thin market': 'lone seller',
-  'volatile niche': 'premium holdouts',
+  [FEW_CHANGES]: CHASING,
+  [LEAD_FIGHT]: PRICE_WAR,
+  [PRICE_WAR]: GIFT_CARDS,
 }
 const STRATEGIES: Record<string, [string, string, string, string, boolean, string]> = {
-  'calm market': ['MinimalUndercut', 'MaxSafe', 'MinimalUndercut', 'ClosingBisection', true, 'Few changes and few rivals: undercut by the minimum and hike to the safe maximum.'],
-  'price war': ['FloorProbe', 'Bisection', 'ProportionalFloorProbe', 'Bisection', true, 'Rivals cut every hour: probe the floor, never chase below it, hike cautiously.'],
-  'daily sawtooth': ['Bisection', 'ClosingBisection', 'ProportionalBisection', 'ProportionalClosingBisection', true, 'Prices fall by day and recover at night: bisect cuts, close the gap on hikes.'],
-  duopoly: ['FollowerProbe', 'Hybrid', 'FollowerProbe', 'Hybrid', true, 'Two sellers trade first place: follow the leader instead of starting a war.'],
-  'lone seller': ['MinimalUndercut', 'ProportionalMaxSafe', 'MinimalUndercut', 'ProportionalMaxSafe', true, 'No real competition: keep the price high and spend free changes on hikes.'],
-  'leader rotation': ['Hybrid', 'RelativeHybrid', 'RelativeHybrid', 'RelativeHybrid', true, 'Leader changes daily: hybrid cut, relative hike to stay near the top.'],
-  'bot undercutters': ['ProportionalFloorProbe', 'Proportional', 'FloorProbe', 'Proportional', true, 'Repricing bots answer within minutes: do not race, hold the floor.'],
-  'premium holdouts': ['Proportional', 'MaxSafe', 'Proportional', 'MaxSafe', true, 'Sellers above the best price that still sell: small proportional cuts only.'],
-  'slow decline': ['ProportionalBisection', 'ClosingBisection', 'ProportionalBisection', 'ClosingBisection', true, 'Best price drifts down for weeks: follow the trend, avoid early hikes.'],
-  'flash sales': ['RelativeHybrid', 'ProportionalClosingBisection', 'RelativeHybrid', 'ProportionalClosingBisection', false, 'Paused: deep cuts revert within hours and fight the price lanes; offers use the global strategy until reviewed.'],
-  'bundle resellers': ['Proportional', 'Proportional', 'Proportional', 'Proportional', false, 'Disabled: segment dropped by the retraining two months ago; its offers moved to price war.'],
-  'old weekend spikes': ['Hybrid', 'MaxSafe', 'Hybrid', 'MaxSafe', false, 'Disabled: merged into daily sawtooth by the retraining two months ago.'],
+  [BESTSELLERS]: ['MinimalUndercut', 'Bisection', 'MinimalUndercut', 'ClosingBisection', true, 'Sells every day at a thin margin: keep first place with minimal cuts, hike back carefully.'],
+  [PRICE_WAR]: ['FloorProbe', 'Bisection', 'ProportionalFloorProbe', 'Bisection', true, 'Rivals cut every hour: probe the floor, never chase below it, hike cautiously.'],
+  [CALM]: ['MinimalUndercut', 'MaxSafe', 'MinimalUndercut', 'ClosingBisection', true, 'Few changes and few rivals: undercut by the minimum and hike to the safe maximum.'],
+  [CHASING]: ['Hybrid', 'RelativeHybrid', 'RelativeHybrid', 'RelativeHybrid', true, 'Leader keeps moving: hybrid cut, relative hike to stay near the top.'],
+  [GIFT_CARDS]: ['ProportionalFloorProbe', 'Proportional', 'FloorProbe', 'Proportional', false, 'Paused: gift cards sell below cost in a bot war; offers use the global strategy until reviewed.'],
+  [BUNDLES]: ['Proportional', 'Proportional', 'Proportional', 'Proportional', false, 'Disabled: segment dropped by the retraining two months ago; its offers moved to the calm segment.'],
 }
 
 // shortcut: mulberry32 instead of PHP Mt19937, so values differ from the PHP fixtures while the structure matches.
@@ -169,6 +170,14 @@ const split = (rng: Rng, total: number, parts: number) => {
   sizes[0] += total - sizes.reduce((a, b) => a + b, 0)
   return sizes
 }
+const REGIONS = ['GLOBAL', 'EUROPE', 'EU & UK', 'NORTH AMERICA', 'LATAM', 'TURKEY', 'ARGENTINA', 'INDIA']
+const productName = (profile: string, offer: number) => {
+  const titles = PRODUCTS[profile]
+  const round = Math.floor(offer / titles.length)
+  const edition = round >= REGIONS.length ? ' Deluxe Edition' : ''
+  return `${titles[offer % titles.length].replace(/ Key( [A-Z &]+)?$/, '')}${edition} Key ${REGIONS[round % REGIONS.length]}`
+}
+const liveOffers = (name: string) => OFFERS[name] + Object.entries(ABSORBED).filter(([, target]) => target === name).reduce((sum, [absorbed]) => sum + OFFERS[absorbed], 0)
 const sprintf = (format: string, ...args: string[]) => args.reduce((s, a) => s.replace('%s', a), format)
 
 type Segment = { id: number; name: string | null; createdAt: string; updatedAt: string }
@@ -332,15 +341,13 @@ for (const event of events) {
       const drift = isChosen ? weeklyDrift(position) : 0.0
       const driftAt = FEATURE_NAMES.indexOf(DRIFT_FEATURE)
       const scaled = anchor.map((v, i) => (i === driftAt ? round(v + drift, 4) : v))
-      const absorbed = Object.values(ABSORBED).filter((target) => target === name).length
-
       return {
         id: ++centroidId,
         segment: card(segment),
         scaled,
         source: source(scaled),
         anchor,
-        size: isLive ? OFFERS_PER_PROFILE * (1 + absorbed) : isChosen ? OFFERS_PER_PROFILE : sizes[position],
+        size: isLive ? liveOffers(name) : isChosen ? OFFERS[name] : sizes[position],
         createdAt: iso(finishedAt),
         updatedAt: iso(finishedAt),
         inherited: null as boolean | null,
@@ -372,10 +379,7 @@ for (const event of events) {
     if (!isChosen) continue
 
     const assigned = new Map<number, number>()
-    for (const name of profiles.slice(0, segs)) {
-      const absorbed = Object.values(ABSORBED).filter((target) => target === name).length
-      assigned.set(named.get(name)!.id, OFFERS_PER_PROFILE * (1 + (isLive ? absorbed : 0)))
-    }
+    for (const name of profiles.slice(0, segs)) assigned.set(named.get(name)!.id, isLive ? liveOffers(name) : OFFERS[name])
     liveClusters.set(pos, cluster)
     liveSizes.set(pos, assigned)
     dailyIndex.set(pos, 0)
@@ -408,17 +412,19 @@ for (const [name, [cut, hike, lastFreeCut, lastFreeHike, enabled, note]] of Obje
 
 const finalRun = lastRun!
 const rng = randomizer(SEED)
-PROFILE_NAMES.forEach((name, position) => {
+let number = -1
+PROFILE_NAMES.forEach((name) => {
   const target = ABSORBED[name] ?? name
   const candidate = PENDING_CANDIDATES[name] ?? null
   const anchor = offsets(target)
-  for (let offer = 0; offer < OFFERS_PER_PROFILE; offer++) {
-    const number = position * OFFERS_PER_PROFILE + offer
+  for (let offer = 0; offer < OFFERS[name]; offer++) {
+    number++
     const pending = candidate !== null && offer < PENDING_PER_PROFILE
     assignments.push({
       id: number + 1,
       offerId: offerId(number),
       productId: productId(number),
+      productName: productName(name, offer),
       cluster: { id: finalRun.cluster.id },
       segment: card(named.get(target)!),
       distance: distance(jitter(rng, offsets(name), NOISE), anchor),

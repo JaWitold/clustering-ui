@@ -10,7 +10,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/v2.0': {
-        target: 'http://localhost:2080',
+        target: process.env.API_TARGET ?? 'http://localhost:2080',
         changeOrigin: true,
       },
     },
