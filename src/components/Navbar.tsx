@@ -13,11 +13,12 @@ import {
   Gauge,
   Menu,
   Binary,
+  Blocks,
   TrendingUp,
   X,
 } from 'lucide-react'
 
-export type TabId = 'viz' | 'pipeline' | 'runs' | 'assignments' | 'segments' | 'drift' | 'vectors' | 'api-explorer' | 'capacity'
+export type TabId = 'viz' | 'pipeline' | 'runs' | 'assignments' | 'segments' | 'drift' | 'vectors' | 'api-explorer' | 'capacity' | 'programs'
 
 interface NavbarProps {
   activeTab: TabId
@@ -42,6 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const businessTabs: { id: TabId; label: string; icon: React.ReactNode }[] = [
     { id: 'segments', label: 'Segments', icon: <Settings2 className="w-4 h-4" /> },
+    { id: 'programs', label: 'Programs', icon: <Blocks className="w-4 h-4" /> },
   ]
   const adminTabs: { id: TabId; label: string; icon: React.ReactNode }[] = [
     { id: 'viz', label: 'Clusters & 2D Viz', icon: <Network className="w-4 h-4" /> },

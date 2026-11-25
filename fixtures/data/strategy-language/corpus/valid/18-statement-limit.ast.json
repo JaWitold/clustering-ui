@@ -1,0 +1,3689 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "limit",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "0"
+      },
+      "comment": null
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "const_ref",
+              "name": "limit"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "1"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "2"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "3"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "4"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "5"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "6"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "7"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "8"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "9"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "10"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "11"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "12"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "13"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "14"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "15"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "16"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "17"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "18"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "19"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "20"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "21"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "22"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "23"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "24"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "25"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "26"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "27"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "28"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "29"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "30"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "31"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "32"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "33"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "34"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "35"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "36"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "37"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "38"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "39"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "40"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "41"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "42"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "43"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "44"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "45"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "46"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "47"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "48"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "49"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "50"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "51"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "52"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "53"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "54"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "55"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "56"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "57"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "58"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "59"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "60"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "61"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "62"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "63"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "64"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "65"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "66"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "67"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "68"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "69"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "70"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "71"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "72"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "73"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "74"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "75"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "76"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "77"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "78"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "79"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "80"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "81"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "82"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "83"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "84"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "85"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "86"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "87"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "88"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "89"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "90"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "91"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "92"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "93"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "94"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "95"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "96"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "97"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "98"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}

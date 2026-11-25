@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "standard",
+    "name": "Standard",
+    "languageVersion": 1,
+    "constants": [
+      {
+        "name": "hike_cooldown_in_seconds",
+        "type": "int",
+        "value": "3600"
+      }
+    ]
+  },
+  {
+    "slug": "night_pause",
+    "name": "Night pause",
+    "languageVersion": 1,
+    "constants": [
+      {
+        "name": "first_hour",
+        "type": "int",
+        "value": "22"
+      },
+      {
+        "name": "last_hour",
+        "type": "int",
+        "value": "5"
+      },
+      {
+        "name": "enabled",
+        "type": "bool",
+        "value": true
+      }
+    ]
+  }
+]

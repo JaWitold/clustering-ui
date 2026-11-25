@@ -1,0 +1,148 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "or",
+            "left": {
+              "type": "sys_call",
+              "name": "has_last_change",
+              "args": []
+            },
+            "right": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "sys_call",
+                "name": "has_competitor_ahead",
+                "args": []
+              },
+              "right": {
+                "type": "unary",
+                "op": "not",
+                "operand": {
+                  "type": "binary",
+                  "op": "==",
+                  "left": {
+                    "type": "sys_call",
+                    "name": "has_competitor_behind",
+                    "args": []
+                  },
+                  "right": {
+                    "type": "literal",
+                    "kind": "bool",
+                    "value": true
+                  }
+                }
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": ">=",
+            "left": {
+              "type": "binary",
+              "op": "+",
+              "left": {
+                "type": "binary",
+                "op": "-",
+                "left": {
+                  "type": "sys_call",
+                  "name": "my_price_in_cents",
+                  "args": []
+                },
+                "right": {
+                  "type": "binary",
+                  "op": "*",
+                  "left": {
+                    "type": "sys_call",
+                    "name": "floor_in_cents",
+                    "args": []
+                  },
+                  "right": {
+                    "type": "literal",
+                    "kind": "int",
+                    "value": "2"
+                  }
+                }
+              },
+              "right": {
+                "type": "binary",
+                "op": "/",
+                "left": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "10"
+                },
+                "right": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "4"
+                }
+              }
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "0"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": "proportional",
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}

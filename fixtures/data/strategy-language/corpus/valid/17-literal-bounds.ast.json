@@ -1,0 +1,172 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "max_int",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "9223372036854775807"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "min_int",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "-9223372036854775807"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "big_decimal",
+      "value": {
+        "type": "literal",
+        "kind": "decimal",
+        "value": "999999999999.999999"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "1"
+      },
+      "comment": null
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "<",
+              "left": {
+                "type": "sys_call",
+                "name": "my_price_in_cents",
+                "args": []
+              },
+              "right": {
+                "type": "const_ref",
+                "name": "max_int"
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "my_price_in_cents",
+                "args": []
+              },
+              "right": {
+                "type": "const_ref",
+                "name": "min_int"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "sys_call",
+                "name": "has_mapped_margin",
+                "args": []
+              },
+              "right": {
+                "type": "binary",
+                "op": "<",
+                "left": {
+                  "type": "sys_call",
+                  "name": "mapped_margin_ratio",
+                  "args": []
+                },
+                "right": {
+                  "type": "const_ref",
+                  "name": "big_decimal"
+                }
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "free_price_changes",
+                "args": []
+              },
+              "right": {
+                "type": "const_ref",
+                "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}

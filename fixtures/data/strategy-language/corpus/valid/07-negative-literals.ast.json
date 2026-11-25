@@ -1,0 +1,162 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "a",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "-5"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "b",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "-5"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "c",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "5"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "d",
+      "value": {
+        "type": "literal",
+        "kind": "decimal",
+        "value": "-0.5"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "e",
+      "value": {
+        "type": "binary",
+        "op": "-",
+        "left": {
+          "type": "literal",
+          "kind": "int",
+          "value": "3"
+        },
+        "right": {
+          "type": "literal",
+          "kind": "int",
+          "value": "-2"
+        }
+      },
+      "comment": null
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "binary",
+                "op": ">",
+                "left": {
+                  "type": "sys_call",
+                  "name": "my_price_in_cents",
+                  "args": []
+                },
+                "right": {
+                  "type": "binary",
+                  "op": "+",
+                  "left": {
+                    "type": "binary",
+                    "op": "+",
+                    "left": {
+                      "type": "binary",
+                      "op": "+",
+                      "left": {
+                        "type": "const_ref",
+                        "name": "a"
+                      },
+                      "right": {
+                        "type": "const_ref",
+                        "name": "b"
+                      }
+                    },
+                    "right": {
+                      "type": "const_ref",
+                      "name": "c"
+                    }
+                  },
+                  "right": {
+                    "type": "const_ref",
+                    "name": "e"
+                  }
+                }
+              },
+              "right": {
+                "type": "sys_call",
+                "name": "has_mapped_margin",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "mapped_margin_ratio",
+                "args": []
+              },
+              "right": {
+                "type": "const_ref",
+                "name": "d"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}

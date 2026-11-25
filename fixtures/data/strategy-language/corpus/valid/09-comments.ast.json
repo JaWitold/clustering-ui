@@ -1,0 +1,63 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "reserve",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "2"
+      },
+      "comment": "how many free changes we keep in reserve"
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "<=",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "const_ref",
+              "name": "reserve"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": "nothing to do"
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": "keep the reserve\n  (two lines, the second one indented)"
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": "proportional",
+      "hike": "proportional"
+    },
+    "comment": "default"
+  }
+}

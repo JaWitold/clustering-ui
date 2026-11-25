@@ -10,6 +10,7 @@ import { DriftView } from './components/DriftView'
 import { VectorVersionsView } from './components/VectorVersionsView'
 import { ApiExplorer } from './components/ApiExplorer'
 import { CapacityReport } from './components/CapacityReport'
+import { StrategyProgramEditor } from './components/StrategyProgramEditor'
 import { api } from './api/client'
 
 export const App: React.FC = () => {
@@ -85,6 +86,7 @@ export const App: React.FC = () => {
         {activeTab === 'vectors' && <VectorVersionsView />}
         {activeTab === 'api-explorer' && <ApiExplorer />}
         {activeTab === 'capacity' && <CapacityReport />}
+        {activeTab === 'programs' && <StrategyProgramEditor />}
       </main>
 
       {/* Footer */}

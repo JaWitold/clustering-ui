@@ -1,0 +1,104 @@
+[
+  {
+    "direction": "cut",
+    "number": 1,
+    "name": "minimal_undercut",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "cut",
+    "number": 2,
+    "name": "proportional",
+    "worksWithoutFreeChanges": false
+  },
+  {
+    "direction": "cut",
+    "number": 3,
+    "name": "bisection",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "cut",
+    "number": 4,
+    "name": "hybrid",
+    "worksWithoutFreeChanges": false
+  },
+  {
+    "direction": "cut",
+    "number": 5,
+    "name": "relative_hybrid",
+    "worksWithoutFreeChanges": false
+  },
+  {
+    "direction": "cut",
+    "number": 6,
+    "name": "follower_probe",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "cut",
+    "number": 7,
+    "name": "floor_probe",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "cut",
+    "number": 8,
+    "name": "proportional_floor_probe",
+    "worksWithoutFreeChanges": false
+  },
+  {
+    "direction": "cut",
+    "number": 9,
+    "name": "proportional_bisection",
+    "worksWithoutFreeChanges": false
+  },
+  {
+    "direction": "hike",
+    "number": 1,
+    "name": "max_safe",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "hike",
+    "number": 2,
+    "name": "proportional",
+    "worksWithoutFreeChanges": false
+  },
+  {
+    "direction": "hike",
+    "number": 3,
+    "name": "bisection",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "hike",
+    "number": 4,
+    "name": "hybrid",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "hike",
+    "number": 5,
+    "name": "relative_hybrid",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "hike",
+    "number": 6,
+    "name": "closing_bisection",
+    "worksWithoutFreeChanges": true
+  },
+  {
+    "direction": "hike",
+    "number": 7,
+    "name": "proportional_max_safe",
+    "worksWithoutFreeChanges": false
+  },
+  {
+    "direction": "hike",
+    "number": 8,
+    "name": "proportional_closing_bisection",
+    "worksWithoutFreeChanges": false
+  }
+]

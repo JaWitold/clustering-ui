@@ -1,0 +1,584 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "my_price_in_cents",
+                "args": []
+              },
+              "right": {
+                "type": "sys_call",
+                "name": "floor_in_cents",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": "<",
+              "left": {
+                "type": "sys_call",
+                "name": "my_price_in_cents",
+                "args": []
+              },
+              "right": {
+                "type": "sys_call",
+                "name": "ceiling_in_cents",
+                "args": []
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "binary",
+                "op": ">",
+                "left": {
+                  "type": "sys_call",
+                  "name": "competitors_in_reach",
+                  "args": []
+                },
+                "right": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "0"
+                }
+              },
+              "right": {
+                "type": "binary",
+                "op": ">",
+                "left": {
+                  "type": "sys_call",
+                  "name": "cheapest_competitor_price_in_cents",
+                  "args": []
+                },
+                "right": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "0"
+                }
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": "==",
+              "left": {
+                "type": "sys_call",
+                "name": "competitors_out_of_reach",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "0"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "binary",
+                "op": ">",
+                "left": {
+                  "type": "sys_call",
+                  "name": "free_price_changes",
+                  "args": []
+                },
+                "right": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "0"
+                }
+              },
+              "right": {
+                "type": "sys_call",
+                "name": "has_last_change",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "since_last_change_in_seconds",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "0"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "or",
+            "left": {
+              "type": "binary",
+              "op": "==",
+              "left": {
+                "type": "sys_call",
+                "name": "hour_of_day",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "0"
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": "==",
+              "left": {
+                "type": "sys_call",
+                "name": "day_of_week",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "7"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "sys_call",
+              "name": "has_competitor_ahead",
+              "args": []
+            },
+            "right": {
+              "type": "sys_call",
+              "name": "is_competitor_ahead_vat_seller",
+              "args": []
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "sys_call",
+              "name": "has_competitor_behind",
+              "args": []
+            },
+            "right": {
+              "type": "sys_call",
+              "name": "is_competitor_behind_vat_seller",
+              "args": []
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "sys_call",
+                "name": "has_mapped_margin",
+                "args": []
+              },
+              "right": {
+                "type": "binary",
+                "op": ">",
+                "left": {
+                  "type": "sys_call",
+                  "name": "mapped_margin_in_cents",
+                  "args": []
+                },
+                "right": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "0"
+                }
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "mapped_margin_ratio",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "decimal",
+                "value": "0.0"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "sys_call",
+                "name": "has_real_margin",
+                "args": []
+              },
+              "right": {
+                "type": "binary",
+                "op": ">",
+                "left": {
+                  "type": "sys_call",
+                  "name": "real_margin_in_cents",
+                  "args": []
+                },
+                "right": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "0"
+                }
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "real_margin_ratio",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "decimal",
+                "value": "0.0"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "or",
+            "left": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "my_price_changes_in_short_period",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "0"
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "competitor_price_changes_in_short_period",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "0"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "sys_call",
+                "name": "has_price_change_statistics",
+                "args": []
+              },
+              "right": {
+                "type": "binary",
+                "op": ">",
+                "left": {
+                  "type": "sys_call",
+                  "name": "my_average_daily_price_changes",
+                  "args": []
+                },
+                "right": {
+                  "type": "literal",
+                  "kind": "int",
+                  "value": "0"
+                }
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "competitor_average_daily_price_changes",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "0"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}

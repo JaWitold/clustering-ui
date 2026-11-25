@@ -1,0 +1,15 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [],
+  "statements": [],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "fast_cooldown_in_seconds",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "600"
+      },
+      "comment": null
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": ">=",
+            "left": {
+              "type": "sys_call",
+              "name": "competitors_in_reach",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "5"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "program_call",
+                "slug": "standard",
+                "overrides": [
+                  {
+                    "type": "override",
+                    "name": "hike_cooldown_in_seconds",
+                    "value": {
+                      "type": "const_ref",
+                      "name": "fast_cooldown_in_seconds"
+                    }
+                  }
+                ]
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "program_call",
+      "slug": "standard",
+      "overrides": []
+    },
+    "comment": null
+  }
+}

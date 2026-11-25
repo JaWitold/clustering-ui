@@ -1,0 +1,53 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "0"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": "proportional",
+      "hike": "proportional"
+    },
+    "comment": null
+  }
+}

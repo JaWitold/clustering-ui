@@ -77,7 +77,21 @@ npm run fixtures       # regenerate fixtures (optional date: npm run fixtures --
 - **Auction drill-down** (click any row): 30-day switch-margin trend with event markers, distance to the four nearest segments, the features that moved most on the day, acceleration (difference of two days' margin change) and the auction's full history.
 - Forecast, Drift and Flows need `Clustering:report`; History needs `Clustering:list`. In fixtures mode the data is derived from the assignments by `fixtures/drift.ts`.
 
-### 7. Interactive API Explorer
+### 7. Strategy program editor (prototype)
+
+Block editor (Blockly 13) for the price-engine strategy language v1, the check that its grammar maps to blocks one to one. Tab **Programs**. Runs on fixtures only: nothing is saved, no backend call.
+
+- `src/strategyLanguage/blocks.ts`: one block per grammar production (graph-v2 `docs/price-engine/strategy-language/spec-v1.md` §6). Socket shapes carry the types (Boolean, Number, Action).
+- `src/strategyLanguage/mapping.ts`: AST JSON (spec §6.1) ⇄ Blockly workspace state, pure functions. An empty socket is reported as a hole and the AST is not sendable.
+- The final `return` is a fixed socket of the program block. A `return` block is refused in the top-level chain (custom connection checker).
+- A number dropped into a negation block becomes a negative number at once.
+- A program call shows one socket per constant of the called program; an empty socket means no override.
+- Catalogue (26 system functions, 17 strategies, callable programs) comes from `fixtures/data/strategy-language/*.json`, generated from spec §12.
+- `fixtures/data/strategy-language/corpus/valid/` is a copy of the frozen conformance corpus (`graph-v2/symfony/tests/Assets/strategy-language/v1/valid/`). `npm test` runs every case through AST → blocks → AST and expects no difference. Refresh the copy with `cp -r` when the corpus gains cases.
+
+Not in the prototype: text printing (the backend prints canonical text from the AST), diagnostics on blocks, saving.
+
+### 8. Interactive API Explorer
 - Test every endpoint in the flow with preloaded templates, editable HTTP methods, request bodies, and real-time response inspection (headers, status, timing, JSON body).
 
 ---

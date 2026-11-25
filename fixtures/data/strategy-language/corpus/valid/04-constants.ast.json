@@ -1,0 +1,209 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "hours",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "2"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "cooldown_in_seconds",
+      "value": {
+        "type": "binary",
+        "op": "*",
+        "left": {
+          "type": "binary",
+          "op": "*",
+          "left": {
+            "type": "const_ref",
+            "name": "hours"
+          },
+          "right": {
+            "type": "literal",
+            "kind": "int",
+            "value": "60"
+          }
+        },
+        "right": {
+          "type": "literal",
+          "kind": "int",
+          "value": "60"
+        }
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "min_ratio",
+      "value": {
+        "type": "literal",
+        "kind": "decimal",
+        "value": "0.03"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "night_mode",
+      "value": {
+        "type": "literal",
+        "kind": "bool",
+        "value": true
+      },
+      "comment": null
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "const_ref",
+              "name": "night_mode"
+            },
+            "right": {
+              "type": "binary",
+              "op": "<",
+              "left": {
+                "type": "sys_call",
+                "name": "hour_of_day",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "6"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "sys_call",
+              "name": "has_last_change",
+              "args": []
+            },
+            "right": {
+              "type": "binary",
+              "op": "<",
+              "left": {
+                "type": "sys_call",
+                "name": "since_last_change_in_seconds",
+                "args": []
+              },
+              "right": {
+                "type": "const_ref",
+                "name": "cooldown_in_seconds"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": "proportional",
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "sys_call",
+              "name": "has_mapped_margin",
+              "args": []
+            },
+            "right": {
+              "type": "binary",
+              "op": "<",
+              "left": {
+                "type": "sys_call",
+                "name": "mapped_margin_ratio",
+                "args": []
+              },
+              "right": {
+                "type": "const_ref",
+                "name": "min_ratio"
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": "max_safe"
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": "proportional",
+      "hike": "proportional"
+    },
+    "comment": null
+  }
+}

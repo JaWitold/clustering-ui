@@ -1,0 +1,202 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "hike_cooldown_in_seconds",
+      "value": {
+        "type": "literal",
+        "kind": "int",
+        "value": "3600"
+      },
+      "comment": null
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "0"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": "bez darmowych zmian nic nie robimy"
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "or",
+            "left": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "competitors_out_of_reach",
+                "args": []
+              },
+              "right": {
+                "type": "literal",
+                "kind": "int",
+                "value": "0"
+              }
+            },
+            "right": {
+              "type": "binary",
+              "op": "and",
+              "left": {
+                "type": "sys_call",
+                "name": "has_last_change",
+                "args": []
+              },
+              "right": {
+                "type": "binary",
+                "op": "<",
+                "left": {
+                  "type": "sys_call",
+                  "name": "since_last_change_in_seconds",
+                  "args": []
+                },
+                "right": {
+                  "type": "const_ref",
+                  "name": "hike_cooldown_in_seconds"
+                }
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [
+              {
+                "type": "if",
+                "branches": [
+                  {
+                    "type": "branch",
+                    "condition": {
+                      "type": "binary",
+                      "op": "==",
+                      "left": {
+                        "type": "sys_call",
+                        "name": "free_price_changes",
+                        "args": []
+                      },
+                      "right": {
+                        "type": "literal",
+                        "kind": "int",
+                        "value": "1"
+                      }
+                    },
+                    "block": {
+                      "type": "block",
+                      "statements": [],
+                      "result": {
+                        "type": "return",
+                        "value": {
+                          "type": "action",
+                          "cut": "minimal_undercut",
+                          "hike": null
+                        },
+                        "comment": null
+                      }
+                    }
+                  }
+                ],
+                "else": null,
+                "comment": null
+              }
+            ],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": "proportional",
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": "walka o niższe miejsce albo zbyt świeża zmiana: tylko obniżka"
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "sys_call",
+              "name": "free_price_changes",
+              "args": []
+            },
+            "right": {
+              "type": "literal",
+              "kind": "int",
+              "value": "1"
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": "minimal_undercut",
+                "hike": "proportional_max_safe"
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": "ostatnia darmowa zmiana: ostrożniejsze strategie"
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": "proportional",
+      "hike": "proportional"
+    },
+    "comment": null
+  }
+}

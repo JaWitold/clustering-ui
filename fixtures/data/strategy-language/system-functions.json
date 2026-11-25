@@ -1,0 +1,236 @@
+[
+  {
+    "number": 1,
+    "name": "my_price_in_cents",
+    "returnType": "int",
+    "parameters": [],
+    "category": "price",
+    "description": "nasza obecna cena na aukcji",
+    "deprecation": null
+  },
+  {
+    "number": 2,
+    "name": "floor_in_cents",
+    "returnType": "int",
+    "parameters": [],
+    "category": "price",
+    "description": "podłoga: najniższa cena, na jaką silnik pozwoli (z ceny minimalnej oferty, ceny minimalnej produktu i minimalnego zysku). 0, gdy oferta nie ma żadnej podłogi",
+    "deprecation": null
+  },
+  {
+    "number": 3,
+    "name": "ceiling_in_cents",
+    "returnType": "int",
+    "parameters": [],
+    "category": "price",
+    "description": "sufit: najwyższa cena, na jaką silnik pozwoli. Gdy jest konkurent w zasięgu, najwyżej jego cena minus 1 cent",
+    "deprecation": null
+  },
+  {
+    "number": 4,
+    "name": "competitors_in_reach",
+    "returnType": "int",
+    "parameters": [],
+    "category": "competitors",
+    "description": "liczba konkurentów w zasięgu",
+    "deprecation": null
+  },
+  {
+    "number": 5,
+    "name": "competitors_out_of_reach",
+    "returnType": "int",
+    "parameters": [],
+    "category": "competitors",
+    "description": "liczba konkurentów poza zasięgiem",
+    "deprecation": null
+  },
+  {
+    "number": 6,
+    "name": "cheapest_competitor_price_in_cents",
+    "returnType": "int",
+    "parameters": [],
+    "category": "competitors",
+    "description": "cena najtańszego konkurenta w zasięgu. Jest to cena skuteczna: niższa z jego ceny bieżącej i najniższej ceny, jaką u niego widzieliśmy w ostatnich 3 dniach",
+    "deprecation": null
+  },
+  {
+    "number": 7,
+    "name": "free_price_changes",
+    "returnType": "int",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "liczba darmowych zmian ceny, które zostały ofercie do najbliższego odnowienia; nigdy ujemna",
+    "deprecation": null
+  },
+  {
+    "number": 8,
+    "name": "has_last_change",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "czy cena tej aukcji była kiedykolwiek zmieniana (jest zapisany czas ostatniej zmiany)",
+    "deprecation": null
+  },
+  {
+    "number": 9,
+    "name": "since_last_change_in_seconds",
+    "returnType": "int",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "sekundy od ostatniej zmiany ceny tej aukcji do chwili decyzji; nigdy ujemna",
+    "deprecation": null
+  },
+  {
+    "number": 10,
+    "name": "hour_of_day",
+    "returnType": "int",
+    "parameters": [],
+    "category": "time",
+    "description": "godzina chwili decyzji, 0–23, w czasie UTC",
+    "deprecation": null
+  },
+  {
+    "number": 11,
+    "name": "day_of_week",
+    "returnType": "int",
+    "parameters": [],
+    "category": "time",
+    "description": "dzień tygodnia chwili decyzji w czasie UTC: 1 = poniedziałek … 7 = niedziela",
+    "deprecation": null
+  },
+  {
+    "number": 12,
+    "name": "has_competitor_ahead",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "competitors",
+    "description": "czy jest konkurent przed nami",
+    "deprecation": null
+  },
+  {
+    "number": 13,
+    "name": "has_competitor_behind",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "competitors",
+    "description": "czy jest konkurent za nami",
+    "deprecation": null
+  },
+  {
+    "number": 14,
+    "name": "is_competitor_ahead_vat_seller",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "competitors",
+    "description": "czy konkurent przed nami jest sprzedawcą VAT. Gdy kolejności kilku konkurentów w tej samej cenie nie da się ustalić z historii: prawda, jeśli którykolwiek z nich jest sprzedawcą VAT. Fałsz także wtedy, gdy sprzedawca nie został jeszcze rozpoznany",
+    "deprecation": null
+  },
+  {
+    "number": 15,
+    "name": "is_competitor_behind_vat_seller",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "competitors",
+    "description": "czy konkurent za nami jest sprzedawcą VAT. Gdy kolejności kilku konkurentów w tej samej cenie nie da się ustalić z historii: prawda, jeśli którykolwiek z nich jest sprzedawcą VAT. Fałsz także wtedy, gdy sprzedawca nie został jeszcze rozpoznany",
+    "deprecation": null
+  },
+  {
+    "number": 16,
+    "name": "has_mapped_margin",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "margin",
+    "description": "czy marżę zmapowaną da się policzyć: zapas ma dodatnią cenę zakupu po mapowaniu",
+    "deprecation": null
+  },
+  {
+    "number": 17,
+    "name": "mapped_margin_in_cents",
+    "returnType": "int",
+    "parameters": [],
+    "category": "margin",
+    "description": "marża zmapowana przy obecnej cenie, w centach. Ujemna, gdy sprzedajemy poniżej zmapowanej ceny zakupu z opłatami",
+    "deprecation": null
+  },
+  {
+    "number": 18,
+    "name": "mapped_margin_ratio",
+    "returnType": "decimal",
+    "parameters": [],
+    "category": "margin",
+    "description": "marża zmapowana jako część obecnej ceny: 3% to 0.03. Dokładnie mapped_margin_in_cents() / my_price_in_cents(), z obcięciem jak każde dzielenie (§9.4)",
+    "deprecation": null
+  },
+  {
+    "number": 19,
+    "name": "has_real_margin",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "margin",
+    "description": "czy marżę rzeczywistą da się policzyć: zapas ma dodatnią faktyczną cenę zakupu",
+    "deprecation": null
+  },
+  {
+    "number": 20,
+    "name": "real_margin_in_cents",
+    "returnType": "int",
+    "parameters": [],
+    "category": "margin",
+    "description": "marża rzeczywista przy obecnej cenie, w centach. Ujemna, gdy naprawdę tracimy na sztuce",
+    "deprecation": null
+  },
+  {
+    "number": 21,
+    "name": "real_margin_ratio",
+    "returnType": "decimal",
+    "parameters": [],
+    "category": "margin",
+    "description": "marża rzeczywista jako część obecnej ceny. Dokładnie real_margin_in_cents() / my_price_in_cents(), z obcięciem (§9.4)",
+    "deprecation": null
+  },
+  {
+    "number": 22,
+    "name": "my_price_changes_in_short_period",
+    "returnType": "int",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "ile razy zmieniła się nasza cena na tej aukcji w krótkim okresie (ostatnia godzina)",
+    "deprecation": null
+  },
+  {
+    "number": 23,
+    "name": "competitor_price_changes_in_short_period",
+    "returnType": "int",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "ile razy zmieniły się ceny konkurentów na tej aukcji w krótkim okresie, zsumowane po wszystkich konkurentach, także tych poza zasięgiem",
+    "deprecation": null
+  },
+  {
+    "number": 24,
+    "name": "my_average_daily_price_changes",
+    "returnType": "decimal",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "średnia dobowa zmian naszej ceny na tej aukcji. 0.0, gdy statystyki są, a zmian nie było",
+    "deprecation": null
+  },
+  {
+    "number": 25,
+    "name": "competitor_average_daily_price_changes",
+    "returnType": "decimal",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "średnia dobowa zmian cen konkurentów na tej aukcji, zsumowana po wszystkich obecnych konkurentach. 0.0, gdy statystyki są, a zmian nie było",
+    "deprecation": null
+  },
+  {
+    "number": 26,
+    "name": "has_price_change_statistics",
+    "returnType": "bool",
+    "parameters": [],
+    "category": "price_changes",
+    "description": "czy dla tej aukcji istnieją statystyki zmian cen: parser śledzi aukcję i policzył już licznik zmian dla naszej oferty",
+    "deprecation": null
+  }
+]

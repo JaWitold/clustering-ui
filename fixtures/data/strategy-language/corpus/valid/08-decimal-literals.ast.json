@@ -1,0 +1,108 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [
+    {
+      "type": "const",
+      "name": "low",
+      "value": {
+        "type": "literal",
+        "kind": "decimal",
+        "value": "1.5"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "high",
+      "value": {
+        "type": "literal",
+        "kind": "decimal",
+        "value": "2.0"
+      },
+      "comment": null
+    },
+    {
+      "type": "const",
+      "name": "tiny",
+      "value": {
+        "type": "literal",
+        "kind": "decimal",
+        "value": "0.000001"
+      },
+      "comment": null
+    }
+  ],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "and",
+            "left": {
+              "type": "sys_call",
+              "name": "has_real_margin",
+              "args": []
+            },
+            "right": {
+              "type": "binary",
+              "op": ">",
+              "left": {
+                "type": "sys_call",
+                "name": "real_margin_ratio",
+                "args": []
+              },
+              "right": {
+                "type": "binary",
+                "op": "+",
+                "left": {
+                  "type": "binary",
+                  "op": "-",
+                  "left": {
+                    "type": "const_ref",
+                    "name": "low"
+                  },
+                  "right": {
+                    "type": "const_ref",
+                    "name": "high"
+                  }
+                },
+                "right": {
+                  "type": "const_ref",
+                  "name": "tiny"
+                }
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}

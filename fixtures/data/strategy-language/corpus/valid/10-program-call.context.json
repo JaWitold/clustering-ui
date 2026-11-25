@@ -1,0 +1,9 @@
+{
+  "slug": "segment_busy",
+  "programs": {
+    "standard": {
+      "source": "version v1\n\nconst hike_cooldown_in_seconds = 3600\n\n# bez darmowych zmian nic nie robimy\nif free_price_changes() == 0 then\n    return stay\nend\n\n# walka o niższe miejsce albo zbyt świeża zmiana: tylko obniżka\nif competitors_out_of_reach() > 0 or has_last_change() and since_last_change_in_seconds() < hike_cooldown_in_seconds then\n    if free_price_changes() == 1 then\n        return cut::minimal_undercut\n    end\n    return cut::proportional\nend\n\n# ostatnia darmowa zmiana: ostrożniejsze strategie\nif free_price_changes() == 1 then\n    return cut::minimal_undercut, hike::proportional_max_safe\nend\n\nreturn cut::proportional, hike::proportional\n",
+      "needsFix": false
+    }
+  }
+}

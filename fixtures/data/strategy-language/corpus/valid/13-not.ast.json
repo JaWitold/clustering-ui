@@ -1,0 +1,134 @@
+{
+  "type": "program",
+  "version": 1,
+  "constants": [],
+  "statements": [
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "unary",
+            "op": "not",
+            "operand": {
+              "type": "unary",
+              "op": "not",
+              "operand": {
+                "type": "sys_call",
+                "name": "has_last_change",
+                "args": []
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "unary",
+            "op": "not",
+            "operand": {
+              "type": "binary",
+              "op": "or",
+              "left": {
+                "type": "sys_call",
+                "name": "has_last_change",
+                "args": []
+              },
+              "right": {
+                "type": "sys_call",
+                "name": "has_competitor_ahead",
+                "args": []
+              }
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    },
+    {
+      "type": "if",
+      "branches": [
+        {
+          "type": "branch",
+          "condition": {
+            "type": "binary",
+            "op": "==",
+            "left": {
+              "type": "unary",
+              "op": "not",
+              "operand": {
+                "type": "sys_call",
+                "name": "has_last_change",
+                "args": []
+              }
+            },
+            "right": {
+              "type": "sys_call",
+              "name": "has_competitor_ahead",
+              "args": []
+            }
+          },
+          "block": {
+            "type": "block",
+            "statements": [],
+            "result": {
+              "type": "return",
+              "value": {
+                "type": "action",
+                "cut": null,
+                "hike": null
+              },
+              "comment": null
+            }
+          }
+        }
+      ],
+      "else": null,
+      "comment": null
+    }
+  ],
+  "result": {
+    "type": "return",
+    "value": {
+      "type": "action",
+      "cut": null,
+      "hike": null
+    },
+    "comment": null
+  }
+}
